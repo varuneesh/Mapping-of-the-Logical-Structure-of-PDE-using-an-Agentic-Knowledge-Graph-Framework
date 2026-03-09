@@ -1,0 +1,129 @@
+{
+  "ontology_metadata": {
+    "ontology_version": "0.0",
+    "status": "immutable",
+    "description": "Core ontology defining fundamental classes and relations for numerical analysis knowledge graph."
+  },
+
+  "core_classes": {
+
+    "MathematicalObject": {
+      "description": "Base abstract class for all mathematical entities."
+    },
+
+    "NumericalMethod": {
+      "parent": "MathematicalObject",
+      "description": "Algorithmic procedure used to approximate mathematical problems."
+    },
+
+    "ProblemType": {
+      "parent": "MathematicalObject",
+      "description": "Formal mathematical problem class such as ODE, PDE, linear system."
+    },
+
+    "TheoreticalProperty": {
+      "parent": "MathematicalObject",
+      "description": "Analytical property such as stability, convergence, consistency."
+    },
+
+    "ErrorConcept": {
+      "parent": "MathematicalObject",
+      "description": "Quantified deviation between exact and approximate solutions."
+    },
+
+    "MathematicalStructure": {
+      "parent": "MathematicalObject",
+      "description": "Abstract mathematical structure such as matrix, operator, function space."
+    },
+
+    "ComputationalStructure": {
+      "parent": "MathematicalObject",
+      "description": "Discretization-related object such as mesh, grid, basis function."
+    },
+
+    "Theorem": {
+      "parent": "MathematicalObject",
+      "description": "Formally proven mathematical statement."
+    },
+
+    "Definition": {
+      "parent": "MathematicalObject",
+      "description": "Formal mathematical definition."
+    }
+  },
+
+  "core_relations": {
+
+    "is_instance_of": {
+      "domain": "MathematicalObject",
+      "range": "MathematicalObject",
+      "description": "Indicates that an entity is an instance of a class."
+    },
+
+    "is_subclass_of": {
+      "domain": "MathematicalObject",
+      "range": "MathematicalObject",
+      "description": "Indicates hierarchical subclass relationship."
+    },
+
+    "applies_to": {
+      "domain": "NumericalMethod",
+      "range": "ProblemType",
+      "description": "Indicates which problem type a method applies to."
+    },
+
+    "solves": {
+      "domain": "NumericalMethod",
+      "range": "ProblemType",
+      "description": "Indicates that a method solves a specific problem type."
+    },
+
+    "has_property": {
+      "domain": "NumericalMethod",
+      "range": "TheoreticalProperty",
+      "description": "Indicates analytical property of a method."
+    },
+
+    "analyzes": {
+      "domain": "ErrorConcept",
+      "range": "NumericalMethod",
+      "description": "Indicates error analysis applied to a method."
+    },
+
+    "uses": {
+      "domain": "NumericalMethod",
+      "range": "MathematicalObject",
+      "description": "Indicates mathematical objects used within a method."
+    },
+
+    "depends_on": {
+      "domain": "MathematicalObject",
+      "range": "MathematicalObject",
+      "description": "Indicates dependency relationship."
+    },
+
+    "approximates": {
+      "domain": "NumericalMethod",
+      "range": "MathematicalStructure",
+      "description": "Indicates what mathematical structure is approximated."
+    },
+
+    "requires": {
+      "domain": "MathematicalObject",
+      "range": "MathematicalObject",
+      "description": "Indicates logical or structural requirement."
+    },
+
+    "implies": {
+      "domain": "MathematicalObject",
+      "range": "MathematicalObject",
+      "description": "Indicates logical implication."
+    },
+
+    "defined_by": {
+      "domain": "MathematicalObject",
+      "range": "Definition",
+      "description": "Links concept to its formal definition."
+    }
+  }
+}

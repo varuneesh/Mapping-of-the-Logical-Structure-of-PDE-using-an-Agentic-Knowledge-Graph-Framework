@@ -1,0 +1,994 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{mathrsfs}
+\usepackage{arydshln}
+
+\title{Survey of the Stability of Linear Finite Difference Equations* }
+
+\author{P. D. LAX and R. D. RICHTMYER}
+\date{}
+
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+\maketitle
+
+
+\section*{PART I}
+\section*{AN EQUIVALENCE THEOREM}
+\section*{1. Introduction}
+Beginning with the discovery by Courant, Friedrichs and Lewy [1] of the conditional stability of certain finite difference approximations to partial differential equations, the subject of stability has been variously discussed in the literature (see bibliography at end). The present paper is concerned with the numerical solution of initial value problems by finite difference methods, generally for a finite time interval, by a sequence of calculations with increasingly finer mesh. Thus if \(t\) is the time variable and \(\Delta t\) its increment, we are concerned with limits as \(\Delta t \rightarrow 0\) for fixed \(t\), not with limits as \(t \rightarrow \infty\) for fixed \(\Delta t\) (although often the stability considerations are similar). The basic question is whether the solution converges to the true solution of the initial value problem as the mesh is refined. The term stability, as usually understood, refers to a property of the finite difference equations, or rather of the above mentioned sequence of finite difference equations with increasingly finer mesh. We shall give a definition of stability in terms of the uniform boundedness of a certain set of operators and then show that under suitable circumstances, for linear initial value problems, stability is necessary and sufficient for convergence in a certain uniform sense for arbitrary initial data. The circumstances are first that a certain consistency condition must be satisfied which essentially insures that the difference equations approximate the differential equations under study, rather than for example some other differential equations, and secondly that the initial value problem be properly posed, in a sense to be defined later.
+
+We shall not be concerned with rounding errors, and in fact assume that all arithmetic steps are carried out with infinite precision. But it will
+
+\footnotetext{*The work for this paper was done under Contract AT-(30-1)-1480 of the Atomic Energy Commission.
+}
+be evident to the reader that there is an intimate connection between stability and practicality of the equations from the point of view of the growth and amplification of rounding errors. Indeed, O'Brien, Hyman and Kaplan [8] defined stability in terms of the growth of rounding errors. However, we have a slight preference for the definition given below, because it emphasizes that stability still has to be considered, even if rounding errors are negligible, unless, of course, the initial data are chosen with diabolical care so as to be exactly free of those components that would be unduly amplified if they were present.
+
+The basic notions will be spelled out in considerable detail below in an attempt to motivate the definitions given and to justify the approach via the theory of linear operators in Banach space. We shall then give the usual definition of a properly posed initial value problem, define the consistency of a finite difference approximation, define the stability of a sequence of finite difference equations, and prove the equivalence theorem.
+
+\section*{2. The Function Space of an Initial-Value Problem}
+In the solution of an initial-value problem the time variable \(t\) plays a special role. An instantaneous state of the physical system is described by one or more functions of certain other variables which we shall call space variables. At any stage of a machine- or hand-calculation one has at hand a numerical representation (e.g. in tabular form) of these functions, that is, of the state of the system at some time \(t\). As time goes on, the state of the system changes according to certain differential or integro-differential equations. It is convenient to think of these functions, for a fixed \(t\), as an element or point in a function space \(\mathscr{B}\) and to denote them by a single symbol \(u\).
+
+The initial-value problems under consideration are linear and we suppose \(\mathscr{B}\) to be linear also. This may force us to accept as elements of \(\mathscr{B}\) some functions not having direct significance as states of a physical system, e.g., functions having negative values for inherently positive quantities like temperature and particle density. But it is convenient to admit such functions as representing generalized states of the system, and also to admit complex valued functions. If sums and differences of elements of \(\mathscr{B}\) are defined in the obvious manner by sums and differences of the corresponding functions, and if multiplication of an element of \(\mathscr{B}\) by a number is defined in the equally obvious manner as multiplication of the corresponding functions by that number, it is clear that \(\mathscr{B}\) is a linear vector space.
+
+For a discussion of approximation and errors, one needs a measure of the difference of two states \(u\) and \(v\), and it is clear that this measure should have the properties of a norm of the element \(w=u-v\); we there-\\
+fore denote this quantity by \(\|w\|\) and suppose that \(\mathscr{B}\) is a Banach space. The specific choice of norm may vary from one application to another; in many cases it can be identified with energy. Our assumption that \(\mathscr{B}\) is complete with respect to the norm plays an important role in the equivalence theorem of Section 8.
+
+\section*{3. The Initial Value Problem}
+Let \(A\) denote a linear operator that transforms the element \(u\) into the element \(A u\) by spatial differentiations, matrix-vector multiplications and the like. The initial value problem is to find a one-parameter set of elements \(u(t)\) such that
+
+\[
+\begin{array}{ll}
+\frac{d}{d t} u(t)=A u(t), & 0 \leqq t \leqq T \\
+u(0)=u_{0} &
+\end{array}
+\]
+
+where \(u_{0}\) represents a preassigned initial state of the system.\\
+Systems involving higher order derivatives with respect to \(t\) can be put into the above form in the usual way by introducing the lower order derivatives as further unknown functions.
+
+All the general considerations in the present discussion apply as well when the operator \(A\) depends explicitly on \(t\), and in fact were originally presented in that generality \({ }^{1}\), but in the interest of simplicity of the formulas we discuss here only the case of an operator \(A\) not depending on the parameter \(t\).
+
+If there are boundary conditions in the problem, it is assumed that they are linear homogeneous and are taken care of by restricting the domain of \(A\) to functions satisfying the conditions.
+
+By a genuine solution of (1) we mean a one-parameter set \(u(t)\) such that first, \(u(t)\) is in the domain of \(A\) for \(0 \leqq t \leqq T\) and secondly\\
+(3) as \(\boldsymbol{\tau} \rightarrow \mathbf{0},\left\|\frac{u(t+\tau)-u(t)}{\tau}-A u(t)\right\| \rightarrow \mathbf{0}\) uniformly in \(t, \quad 0 \leqq t \leqq T\).
+
+If we pick an element \(u_{0}\) not in the domain of \(A\) (e.g., if \(A\) is a differential operator and the functions represented by \(u_{0}\) are nondifferentiable at one or more points), we obviously cannot find a genuine solution satisfying (2), but we assume that \(u_{0}\) can always be approximated, as closely as one desires, by an element \(u_{\text {" }}\) for which a unique genuine solution exists. That
+
+\footnotetext{\({ }^{1}\) P. D. Lax, Seminar, New York University, January 1954.
+}
+is, if we define an operator \(E_{0}(t)\) - really a one-parameter family of operators - so that
+\[
+u(t)=E_{0}(t) u(0), \quad 0 \leqq t \leqq T
+\]
+for any genuine solution of (1) depending uniquely on \(u(0)\), we assume that the domain of \(E_{0}(t)\) is dense in \(\mathscr{B}\).
+
+It is also desirable that the solution depend continuously on the initial data. If we alter the initial date \(u_{0}\) by addition of \(v_{0}\), we want to guarantee that the alteration of the solution is small if \(v_{0}\) is small, i.e., that there should be a constant \(K\) such that
+
+\[
+\left\|E_{0}(t) v_{0}\right\| \leqq K\left\|v_{0}\right\|, \quad 0 \leqq t \leqq T
+\]
+
+We therefore assume that the operators \(E_{0}(t)\) are uniformly bounded, for \(0 \leqq t \leqq T\).
+
+The foregoing assumptions characterize a properly posed problem. For such a problem, \(E_{0}(t)\) has a bounded linear extension \(E(t)\) whose domain is the entire space \(\mathscr{B}\) and whose bound is the same as that of \(E_{0}(t)\), because a bounded linear operator with a dense domain can always be so extended. Then, for arbitrary \(u_{0}\), the one-parameter set of elements of \(\mathscr{B}, u(t)\), given by
+
+\[
+u(t)=E(t) u_{0}
+\]
+
+is interpreted as a generalized solution of the initial value problem (1), (2).
+
+\section*{4. Finite Difference Approximations}
+When an approximate solution is obtained by finite difference methods, the time variable \(t\), in the first place, assumes discrete values \(t=t^{0}, t^{1}, \cdots, t^{n}, \cdots\), where \(t^{n}=n \Delta t\), and correspondingly, one deals with a discrete sequence \(u^{0}, u^{1}, \cdots, u^{n}, \cdots\), of states of the physical system.
+
+In the second place, the space variables are also discrete so that the functions describing a state of the system are specified only at the points of a lattice or net of values of the space variables. However, we may still regard such a specification (although imperfect) as represented by a point in the same function space \(\mathscr{B}\), by adopting some rule for specifying function values between the points of the space lattice, for example linear interpolation. Such a rule, if chosen with reasonable care, will not interfere with the linearity or boundedness of the operators dealt with. (Some authors, such as L. V. Kantorovitch [5] prefer to represent the sates \(u^{n}\) in a different Banach space \(\mathscr{B}^{\prime}\), and to establish suitable homomorphisms between \(\mathscr{B}\) and \(\mathscr{B}^{\prime}\).)
+
+The finite difference equations are:
+
+\[
+u^{n+1}=B(\Delta t, \Delta x, \Delta y, \cdots) u^{n}
+\]
+
+where \(u^{n}\) is (it is hoped) an approximation to \(u\left(t^{n}\right)\), and \(B\) denotes a linear finite difference operator which depends, as indicated, on the size of the time increment \(\Delta t\) and on the sizes of the space increments \(\Delta x, \Delta y, \cdots\).
+
+Contrary to possible appearance, this formulation is not restricted to explicit difference systems. If the system is implicit, the operator \(B\) will contain the inverse of a (possibly infinite) matrix, but for present purposes it is not necessary to suppose that \(B\) can be easily written in explicit form. Whatever the calculation procedure may be which leads to \(u^{n+1}\) when \(u^{n}\) is known, it results in a transformation in \(\mathscr{B}\) and this transformation is denoted by \(B\).
+
+We do assume, however, that the calculation procedure is a definite one which can be applied to any function \(u^{n}\) and that the result \(u^{n+1}\) depends linearly and continuously on \(u^{n}\), as is clearly the case for any reasonable scheme. In other words, for any fixed \(\Delta t, \Delta x\) and \(\Delta y, B\) is a bounded linear transformation whose domain is the whole Banach space.
+
+The concepts of stability and convergence with which we deal here suppose an infinite sequence of calculations with increasingly finer mesh. We assume relations
+
+\[
+\begin{aligned}
+& \Delta x=g_{1}(\Delta t), \\
+& \Delta y=g_{2}(\Delta t), \\
+& \cdots \ldots \ldots
+\end{aligned}
+\]
+
+which tell how the space increments approach zero as the time increment goes to zero along the sequence, and we set
+
+\[
+B\left(\Delta t, g_{1}(\Delta t), g_{2}(\Delta t), \cdots\right)=C(\Delta t)
+\]
+
+so that
+
+\[
+u^{n+1}=C(\Delta t) u^{n}
+\]
+
+\section*{5. The Consistency Condition}
+Since
+
+\[
+\frac{u^{n+1}-u^{n}}{\Delta t}
+\]
+
+is to be an approximation to the time derivative,
+
+\[
+\frac{C(\Delta t) u-u}{\Delta t}
+\]
+
+must be an approximation, in some sense, to \(A u\). We cannot expect this to be true for all \(u\) in \(\mathscr{B}\), because in general \(A u\) is not even defined for all \(u\) in \(\mathscr{B}\) But we want it to be true for nearly all \(u\) that can appear in a genuine solution of the initial value problem; and for any particular genuine\\
+solution we want the approximation to be uniformly good for all \(t\) in \(0 \leqq t \leqq T\). Specifically, we shall call the family of operators \(C(\Delta t)\) a consistent approximation for the initial value problem, if for some class \(U\) of genuine solutions it is true that, for any \(u(t)\) in this class,
+
+\[
+\lim _{\Delta t \rightarrow 0}\left\|\left\{\frac{C(\Delta t)-I}{\Delta t}-A\right\} u(t)\right\|=0 \text { uniformly in } t, \quad 0 \leqq t \leqq T
+\]
+
+provided that the class \(U\) is sufficiently wide and that its initial elements \(u(0)\) are dense in \(\mathscr{B}\). (6) is called the consistency condition.
+
+In applications, \(A\) is usually a differential and \(C\) a difference operator in the space variables. To verify the consistency condition (6), \(A u\) has to be compared to \((C(\Delta t)-I) u / \Delta t\); to carry out this comparison expand each term in \(C(\Delta t) u\) into a finite Taylor series (take two or three terms, depending on the order of the differential operator \(A\) ), obtaining a differential operator. The error in replacing \(C u\) by such a differential expression can be estimated, by Taylor's theorem, for sufficiently smooth functions. Therefore the comparison can be carried out for all sufficiently smooth solutions, and it is well known that the smooth solutions are dense among all solutions.
+
+\section*{6. Convergence}
+Operating \(n\) times on \(u_{0}\) with \(C(\Delta t)\) gives \(u^{n}=C(\Delta t)^{n} u_{0}\) which, it is hoped, approximates \(u(n \Delta t)\). Since \(u(t)=E(t) u_{0}\), we therefore make the following definition: the family of operators \(C(\Delta t)\) provides a convergent approximation for the initial value problem if for any \(u_{0}\) in \(\mathscr{B}\) and for any sequences \(\Delta_{j} t, n_{j}\) such that \(\Delta_{j} t\) tends to zero and \(n_{j} \Delta_{j} t \rightarrow t\) where \(0 \leqq t \leqq T\) then
+
+\[
+\left\|\left\{C\left(\Delta_{j} t\right)\right\}^{n_{j}} u_{0}-E(t) u_{0}\right\| \rightarrow 0, \quad 0 \leqq t \leqq T
+\]
+
+Note that we require (7) to hold for every \(u_{0}\) in \(\mathscr{B}\) if \(C(\Delta t)\) is to be called a convergent approximation.
+
+\section*{7. Stability}
+In a sequence of calculations with \(\Delta_{j} t \rightarrow 0\), if each calculation is carried from \(t=0\) to \(t \approx T\), the operators which are used are those belonging to the set
+
+\[
+\left\{C\left(A_{j} t\right)\right\}^{n}, \quad \begin{aligned}
+& j=1,2,3, \cdots \\
+& 0 \leqq n A_{j} t<T \text { for each } j
+\end{aligned}
+\]
+
+all applied to \(u_{0}\). The idea of stability is that there should be a limit to\\
+the extent to which any component of an initial function can be amplified in the numerical procedure. Therefore the approximation \(C\left(A_{j} t\right)\) is said to be stable if the operators of the above set are uniformly bounded. Note that we make no reference here to the differential equation whose solution is desired so that stability, as defined, is a property solely of a sequence of difference equation systems.
+
+In practice the bound of \(\{C(\Delta t)\}^{n}\) is generally a continuous function of \(\Delta t\) in some interval, \(0<\Delta t \leqq \tau\), so that we may equivalently define the approximation \(C(\Delta t)\) to be stable if for some \(\tau>0\), the set of operators
+
+\[
+\{C(\Delta t)\}^{n}, \quad 0<\Delta t \leqq \tau ~ 0 \leqq n \Delta t \leqq T ~ 0.0 r l \text { 部 }
+\]
+
+is uniformly bounded.
+
+\section*{8. The Equivalence Theorem}
+Given a properly posed initial value problem (1), (2) and a finite difference approximation \(C(\Delta t)\) to it that satisfies the consistency condition, stability is a necessary and sufficient condition that \(C(\Delta t)\) be a convergent approximation.
+
+According to the definition of Section 6, this involves convergence for an arbitrary initial element \(u_{0}\). In principle, an unstable scheme can sometimes give convergence for special initial elements. (Such schemes are not generally very useful in practise, because the initial data seldom have the required properties, and even if they do, round-off errors are likely to perturb the calculation enough to throw it into a neighboring divergent situation.)
+
+We now prove the first part of the theorem: a convergent scheme is necessarily stable.
+
+We start by showing that for a convergent scheme, the set of elements
+
+\[
+C^{n}(\Delta t) u_{0}, \quad n \Delta t \leqq T
+\]
+
+are bounded for each fixed \(t_{\mathbf{0}}\) in \(\mathscr{B}\). For, assume to the contrary that for a sequence \(n_{j}, \Delta_{j} t, n_{j} \Delta_{j} t \leqq T\), the norms of the elements \(C^{n_{j}}\left(\Delta_{j} t\right) u_{0}\) tend to infinity. Select a subsequence such that \(n_{j} \Delta_{j} t\) tends to some limit \(t\); since the scheme was assumed convergent, \(C^{n_{j}}\left(\Delta_{j} t\right) u_{0}\) would have to tend to \(E(t) u_{0}\), which it couldn't if it were unbounded.
+
+We now appeal to the principle of uniform boundedness, which says that if each operator \(L\) of a set is bounded and if there exists a function \(K(u)\) such that \(\|L u\| \leqq K(u)\) for all \(L\) in the set and all \(u\) in \(\mathscr{B}\), then the set is uniformly bounded. Applying this to the present case, we see that the set (8) is uniformly bounded, and the approximation is stable.
+
+To prove that, conversely, stability implies convergence, let \(u(t)=E(t) u_{0}\) be a genuine solution belonging to the set \(U\) referred to in the definition of consistency. Then, for any positive \(\varepsilon\),
+
+\[
+\left\|\left\{\frac{C(\Delta t)-I}{\Delta t}-A\right\} u(t)\right\|<\frac{\varepsilon}{2}, \quad 0 \leqq t \leqq T
+\]
+
+for sufficiently small \(\Delta t\). Also, from the definition of a genuine solution,
+
+\[
+\left\|\left\{\frac{E(\Delta t)-I}{\Delta t}-A\right\} u(t)\right\|<\frac{\varepsilon}{2}, \quad 0 \leqq t \leqq T
+\]
+
+for sufficiently small \(\Delta t\), so that by the triangle inequality,
+
+\[
+\|\{C(\Delta t)-E(\Delta t)\} u(t)\|<\varepsilon \Delta t, \quad 0 \leqq t \leqq T
+\]
+
+for sufficiently small \(\Delta t\). This last inequality might have been taken as the basis of the definition of consistency, but the definition given in Section 5 is preferred for practical applications because it involves the operator \(A\) rather than the generally unknown solution operator \(E(t)\). Set
+
+\[
+\begin{aligned}
+\psi_{j} & =\left[\left\{C\left(\Delta_{j} t\right)\right\}^{n_{j}}-E\left(n_{j} \Delta_{j} t\right)\right] u_{0} \\
+& =\sum_{0}^{n_{j}-1}(k)\left\{C\left(\Delta_{j} t\right)\right\}^{k}\left[C\left(\Delta_{j} t\right)-E\left(\Delta_{j} t\right)\right] E\left(\left(n_{j}-1-k\right) \Delta_{j} t\right) u_{0}
+\end{aligned}
+\]
+
+The equality of the second and third members of this equation results from cancellation of all except the first and last terms of the third member, when written out in full. The norm of \(\psi_{j}\) can be estimated by use of inequality (11) with the help of the triangle inequality:
+
+\[
+\left\|\psi_{j}\right\|<K \sum_{\mathbf{0}}^{n_{j}-1} \varepsilon \Delta_{j} t=K \varepsilon n_{j} \Delta_{j} t<K \varepsilon T
+\]
+
+for sufficiently small \(\Delta_{i} t\), where \(K\) denotes the uniform bound of the set (8). Therefore, since \(\varepsilon\) was arbitrary,
+
+\[
+\left\|\psi_{j}\right\| \rightarrow 0 \text { as } \Delta_{j} t \rightarrow 0
+\]
+
+Now suppose that \(n_{j} \Delta_{j} t \rightarrow t\) as \(j \rightarrow \infty\), where \(t\) is a number in the interval \((0, T)\). The difference \(\left\{E\left(n_{j} \Delta_{j} t\right)-E(t)\right\} u_{0}\) may be written in either of two ways, depending on which of the two arguments \(n_{i} \Delta_{i} t\) and \(t\) is the larger, that is, as
+
+\[
+(E(s)-I) E\left(t^{\prime}\right) u_{0} \text { if } s=n_{j} \Delta_{j} t-t \geqq 0, \quad t^{\prime}=t
+\]
+
+or as
+
+\[
+-(E(\mathrm{~s})-I) E\left(t^{\prime}\right) u_{0} \text { if } s=t-n_{j} \Delta_{j} t>0, \quad t^{\prime}=n_{j} \Delta_{j} t
+\]
+
+(The reason for making the distinction is that the solution operator \(E(t)\)\\
+is generally defined only for non-negative arguments.) In either case,
+
+\[
+\left\|\left\{E\left(n_{j} \Delta_{j} t\right)-E(t)\right\} u_{0}\right\|<K_{E}\left\|(E(s)-I) u_{0}\right\|
+\]
+
+which goes to zero as \(s \rightarrow 0\) and therefore as \(j \rightarrow \infty\). Thus, combining this result with (12),
+
+\[
+\left\|\left[\left\{C\left(\Delta_{j} t\right)\right\}^{n_{j}}-E(t)\right] u_{0}\right\| \rightarrow 0 \text { as } j \rightarrow \infty
+\]
+
+for any \(u_{0}\) which can be the initial element of a genuine solution of the class \(U\). But these initial elements are dense in \(\mathscr{B}\), so that if \(u\) is any element of \(\mathscr{B}\) there is a sequence \(u_{1}, u_{2}, \cdots\) converging to \(u\), each \(u_{i}\) the initial element of a genuine solution for which (13) holds. Then\\
+\(\left[\left\{C\left(\Delta_{j} t\right)\right\}^{n_{j}}-E(t)\right] u=\left[\left\{C\left(\Delta_{j} t\right)\right\}^{n_{j}}-E(t)\right] u_{m}\)
+
+\[
++\left\{C\left(\Delta_{j} t\right)\right\}^{n_{j}}\left(u-u_{m}\right)+E(t)\left(u-u_{m}\right) .
+\]
+
+The last two terms on the right of this equation can be made as small as one pleases by choosing \(m\) sufficiently large, on account of uniform boundedness of the operators \(C^{n}\) and of \(E(t)\). Then the first term on the right can be made as small as one pleases by choosing \(\Delta_{j} t\) sufficiently small. Therefore the left member of the above equation goes to zero as \(j \rightarrow \infty\). Since \(u\) was arbitrary, it is now established that \(C(\Delta t)\) is a convergent approximation as defined in Section 6, and the equivalence theorem is established.
+
+The above sufficiency proof is an operator-theoretic analogue of Fritz John's result relating the uniform boundedness of the values of the approximate solution to convergence in the maximum norm.
+
+\section*{PART II}
+\section*{PARTIAL DIFFERENTIAL EQUATIONS WITH CONSTANT COEFFICIENTS}
+\section*{9. Introduction}
+Here the stability requirement as defined in Part I, and whose significance is indicated by the equivalence theorem, is applied to a special class of linear initial value problems - those of partial differential equations with constant coefficients and with auxiliary conditions permitting the use of Fourier series or integrals. If the space variables are restricted to a finite domain and the boundary conditions are of such a nature that they can be represented as a periodicity condition, Fourier series are used. If the domain is infinite, but the functions are quadratically integrable, Fourier integrals are used, via Plancherel's theorem. Combinations are also possible, in which\\
+some of the space variables have finite domain and others are unlimited. All these cases lead to exactly the same results, and our discussion will be based on Fourier series.
+
+We shall be dealing with the following Banach space \(\mathscr{B}\) : if \(p\) is the number of functions used to describe a state of the physical system, and \(d\) is the number of space variables, a point in \(\mathscr{B}\) represents a \(p\)-vector function defined in a \(d\)-dimensional unit cube (or rectangular parallelopiped). We suppose that these functions are in \(L^{2}\) over this cube and that the square of the Banach norm is given by equation (14).
+
+The advantage of this norm over, for example, the maximum norm is that the Parseval equation then shows that the Fourier transform establishes a norm-preserving isomorphism between \(\mathscr{B}\) and the space \(\mathscr{B}^{\prime}\) of the Fourier coefficients. The stability requirement takes on a particularly simple form in \(\mathscr{B}^{\prime}\) leading immediately to the Von Neumann condition as a necessary condition for stability.
+
+Of course, the choice of a norm is restricted by the nature of the problem; i.e., the solution operators \(E(t)\) have to be bounded with respect to the norm. In most problems of mathematical physics, the \(L^{2}\) norm can be used.
+
+We give several sufficient conditions for stability; these are mostly of the nature of an auxiliary condition under which the Von Neumann condition is also sufficient for stability.
+
+One may perhaps surmise that in all practical cases (including problems with variable coefficients, \({ }^{2}\) and even nonlinear problems) the Von Neumann condition is both necessary and sufficient for stability. Such a surmise has often been made (so far apparently without misfortune) by people who have to make actual calculations, and one can construct a good bit of heuristic evidence for it. But the purpose of the present discussion is to discuss only certain cases that can be treated rigorously. A few simple applications will be given.
+
+\section*{10. Notation; Fourier Series}
+Let \(\mathbf{x}=\left(x_{1}, x_{2}, \cdots, x_{d}\right)\) be a vector (vectors will be denoted by bold face type) whose components \(x_{1}, x_{2}, \cdots, x_{d}\) are the space variables of the problem. Suppose that the functions with which we deal are periodic with periods \(L_{1}, L_{2}, \cdots L_{d}\) in the space variables. Consider a series
+
+\[
+\sum_{(\mathbf{k})} c(\mathbf{k}) e^{i \mathbf{k} \cdot \mathbf{x}}
+\]
+
+\footnotetext{\({ }^{2}\) Fritz John has succeeded in proving in his important paper [13] that for parabolic equations a mildly strengthened form of Von Neumann's condition is sufficient for stability even for operators with variable coefficients. A similar result for a certain class of hyperbolic equations with variable coefficients has been obtained by Peter Lax [14].
+}
+where \(\mathbf{k}\) is a \(d\)-component vector whose components are \(2 \pi l_{1} / L_{1}, \cdots, 2 \pi l_{d} / L_{d}\) and where the summation is understood to be over all such vectors obtained by letting \(l_{1}, l_{2}, \cdots, l_{d}\) run independently over all positive and negative integers and where \(c(\mathbf{k})\) is a complex-valued function defined on the lattice of these vectors. This is a general trigonometrical series with the periodicity described above. In our applications there are \(p\) functions of the \(x\) 's; we treat them as the components of a \(p\)-component vector \(\mathbf{f}(\mathbf{x})\). For any vector \(\mathbf{y}\) we denote by \(|\mathbf{y}|\) the square root of the sum of the squares of the absolute values of the components. Therefore, if \(\mathbf{f}(\mathbf{x})\) can be expanded as
+\[
+\mathbf{f}(\mathbf{x})=\sum_{(k)} \mathbf{c}(\mathbf{k}) e^{i \mathbf{k} \cdot \mathbf{x}}
+\]
+the Parseval equation is
+\[
+\frac{1}{V} \int_{0}^{L_{1}} d x_{1} \cdots \int_{0}^{L_{d}} d x_{d}|\mathbf{f}(\mathbf{x})|^{2}=\sum_{(\mathbf{k})}|\mathbf{c}(\mathbf{k})|^{2}
+\]
+where \(V=L_{1} L_{2} \cdots L_{d}\).\\
+Any periodic \(\mathbf{f}(\mathbf{x})\) for which the left member of (14) exists will be called an element of \(\mathscr{B}\) and the square root of that member will be called its norm. Similarly, any set of coefficients for which the right member of (14) exists will be called an element of \(\mathscr{B}^{\prime}\) and the square root of that member will be called its norm. Then the Fischer-Riesz theorem says that \(\mathscr{B}\) is a complete space and the Riesz-Fischer theorem says that there is a one-to-one correspondence between elements of \(\mathscr{B}\) and of \(\mathscr{B}^{\prime}\), if we adopt the usual agreement that functions \(\mathbf{f}(\mathbf{x})\) which differ only on a set of measure zero are regarded as identical - this agreement is reasonable, because the corresponding states of the physical system would be physically indistinguishable. The Parseval equation (14) shows that the correspondence between \(\mathscr{B}\) and \(\mathscr{B}^{\prime}\) is norm-preserving. Statements of convergence, boundedness and the like can be taken over directly from \(\mathscr{B}\) to \(\mathscr{B}^{\prime}\) or from \(\mathscr{B}^{\prime}\) to \(\mathscr{B}\).
+
+\section*{11. Properly Posed Problems}
+The general linear differential operator with constant coefficients can be otained formally by taking a function \(D(\mathbf{k})\) or \(D\left(k_{1}, k_{2}, \cdots, k_{d}\right)\) which is a \(p \times p\) matrix whose elements are polynomials in \(k_{1}, k_{2}, \cdots, k_{d}\), and substituting \(\partial / \partial x_{1}\) for \(k_{1}, \partial / \partial x_{2}\) for \(k_{2}\), etc. If \(A\) is such an operator and we apply it to the element \(\mathbf{v} e^{i \mathbf{k} \cdot \mathbf{x}}\) where \(\mathbf{v}\) is a constant vector, the result is simply the product of this element and \(D(i \mathbf{k})\). Therefore the solution of the initial value problem
+
+\[
+\frac{\partial}{\partial t} \mathbf{u}(\mathbf{x}, t)=A \mathbf{u}(\mathbf{x}, t),
+\]
+
+\[
+\mathbf{u}(\mathbf{x}, 0)=\mathbf{u}_{0}(\mathbf{x})
+\]
+
+is
+
+\[
+\mathbf{u}(\mathbf{x}, t)=\sum_{(\mathbf{k})} e^{i \mathbf{k} \cdot \mathbf{x}} e^{t D(\mathbf{i k})} \mathbf{v}_{\mathbf{0}}(\mathbf{k})
+\]
+
+where
+
+\[
+\mathbf{v}_{0}(\mathbf{k})=\frac{1}{V} \int_{0}^{L_{1}} d x_{1} \cdots \int_{0}^{L_{d}} d x_{d} \mathbf{u}_{0}(\mathbf{x}) e^{-i \mathbf{k} \cdot \mathbf{x}}
+\]
+
+The first requirement for a properly posed problem (see Section 3), namely that the domain of the solution operator be dense in \(\mathscr{B}\), is automatically satisfied for the problems considered here, because the above solution (equations (17) and (18)) is certainly valid whenever the initial element \(\mathbf{u}_{0}(x)\) is a trigonometric polynomial and the trigonometric polynomials are dense in \(\mathscr{B}\).
+
+The second requirement for a properly posed problem takes the form that \(\left\|e^{t D(i \mathbf{k})}\right\|\) should be a bounded function of \(\mathbf{k}\) and that the bound should be uniform in \(t\). (It should be obvious to the reader that if \(M\) is a \(p \times p\) matrix and we write \(\|M\|\) we mean the bound of the transformation corresponding to \(M\) in a \(p\)-dimensional vector space with complex Euclidean norm.) Whether this condition is satisfied must usually be investigated separately in each case.
+
+\section*{12. Finite Difference Equations}
+Just as the differential operator \(A\) is represented, in the space \(\mathscr{B}^{\prime}\), by the matrix \(D(i \mathbf{k})\), the finite-difference operator \(B(\Delta t, \Delta \mathbf{x})\) will be represented in \(\mathscr{B}^{\prime}\) by a matrix \(G(\Delta t, \Delta \mathbf{x}, \mathbf{k})\) whose elements are functions of the components of \(\mathbf{k}\) as well as of the parameters \(\Delta t, \Delta \mathbf{x}\). One reason for making the Fourier transformation is that the elements of \(G(\Delta t, \Delta \mathbf{x}, \mathbf{k})\) can generally be found easily, even though \(B(\Delta t, \Delta \mathbf{x})\) represents an implicit system of difference equations.
+
+Each difference equation equates to zero a certain linear combination of the components of \(\mathbf{u}^{n}\) and of \(\mathbf{u}^{n+1}\) at a group of neighboring points of the net used for the numerical work. Specifially, let this group of points be referred to a particular point of the group with coordinates \(x_{1}, x_{2}, \cdots x_{d}\) so that a typical neighbor of this point in the group has coordinates \(x_{1}+\beta_{1} \Delta x_{1}, \cdots, x_{d}+\beta_{d} \Delta x_{d}\) where \(\beta_{1}, \cdots, \beta_{d}\) are integers. The difference equations can then be written in the form
+
+\[
+\begin{aligned}
+\sum_{\left(\beta_{1}, \cdots, \beta_{d}\right)} & {\left[A\left(\beta_{1}, \cdots, \beta_{d}\right) \mathbf{u}^{n+1}\left(x_{1}+\beta_{1} \Delta x_{1}, \cdots, x_{d}+\beta_{d} \Delta x_{d}\right)\right.} \\
+& \left.+B\left(\beta_{1}, \cdots, \beta_{d}\right) \mathbf{u}^{n}\left(x_{1}+\beta_{1} \Delta x_{1}, \cdots, x_{d}+\beta_{d} \Delta x_{d}\right)\right]=0
+\end{aligned}
+\]
+
+where \(A\) and \(B\) are \(p \times p\) matrices whose elements depend on the \(\beta_{i}\) and\\
+on \(\Delta t\) and the \(\Delta x_{i}\) but not on \(t\) (i.e. \(n\) ) or the \(x_{i}\) themselves. The summation is over a finite number of neighbors - that is over a finite number of sets of values of \(\beta_{1}, \cdots, \beta_{d}\).
+
+This system is in general implicit, because in the numerical work the unknowns are the values of the components of \(\mathbf{u}^{n+1}\) at the various net points, and each equation contains generally several of the unknowns. We assume, however, that the system is such that if \(\mathbf{u}^{n}(\mathbf{x})\) is given as any element of \(\mathscr{B}\), then \(\mathbf{u}^{n+1}(\mathbf{x})\) is uniquely determined by the difference equations (19) and the periodicity requirement.
+
+If the Fourier series
+
+\[
+\mathbf{u}^{n}(\mathbf{x})=\sum_{(\mathbf{k})} \mathbf{v}^{n}(\mathbf{k}) e^{i \mathbf{k} \cdot \mathbf{x}}
+\]
+
+and a similar one for \(\mathbf{u}^{n+1}(\mathbf{x})\) are substituted into (19), the typical term contains a factor
+
+\[
+\exp \left\{i\left[k_{1}\left(x_{1}+\beta_{1} \Delta x_{1}\right)+\cdots+k_{d}\left(x_{d}+\beta_{d} \Delta x_{d}\right)\right]\right\}
+\]
+
+from which we cancel out the common part \(e^{i \mathbf{k} \cdot \mathbf{x}}\) from all the terms of the equation. What is left can be written as
+
+\[
+H_{1} \mathbf{v}^{n+1}(\mathbf{k})+H_{2} \mathbf{v}^{n}(\mathbf{k})=0
+\]
+
+where \(H_{1}\) is an abbreviation for the matrix
+
+\[
+\sum_{\left(\beta_{1}, \cdots, \beta_{d}\right)} A\left(\beta_{1}, \cdots, \beta_{d}\right) \exp \left\{i\left[k_{1} \beta_{1} \Delta x_{1}+\cdots+k_{d} \beta_{d} \Delta x_{d}\right]\right\}
+\]
+
+and \(H_{2}\) is similar. The solvability assumption made in the preceding paragraph is tantamount to the assumption that \(H_{1}\) has an inverse. Therefore we can write
+
+\[
+\mathbf{v}^{n+1}(\mathbf{k})=G \mathbf{v}^{n}(\mathbf{k})
+\]
+
+where the matrix \(G\) is given by
+
+\[
+G=G(\Delta t, \Delta \mathbf{x}, \mathbf{k})=-H_{1}^{-1} H_{2}
+\]
+
+\(G\) will be called the amplification matrix: it is the representation in \(\mathscr{B}^{\prime}\) of the operator \(B(\Delta t, \Delta \mathbf{x})\). Therefore the stability requirement is that if the manner of refinement of the mesh is given by \(\Delta \mathbf{x}=\mathbf{g}(\Delta t)\), the set of matrices
+
+\[
+\left\{G\left(\Delta_{j} t, \mathbf{g}\left(\Delta_{j} t\right), \mathbf{k}\right)\right\}^{n}, \quad j=1,2, \cdots, ~ 0 \leqq n \Delta_{j} t \leqq T
+\]
+
+should be uniformly bounded for all \(\mathbf{k}\) with real components, the bound being uniform in \(\mathbf{k}\). As in Part I of this paper \(\Delta_{j} t\) is a sequence tending to zero as \(j \rightarrow \infty\) and corresponding to each \(j\) there is a net or grid of space points such that each \(g_{1}\left(\Delta_{j} t\right)=\Delta x_{1}, g_{2}\left(\Delta_{j} t\right)=\Delta x_{2}\), etc. also tends to zero.
+
+The problem of stability is thus reduced to that of finding estimates for the bounds of powers of the amplification matrix \(G\).
+
+\section*{13. The Von Neumann (Necessary) Condition for Stability}
+A lower limit for the bounds of the powers of \(G\) is easily given. Let the eigenvalues of \(G\) be \(\lambda^{(1)}, \lambda^{(2)}, \cdots, \lambda^{(p)}\) (not assumed real, not assumed distinct). The spectral radius of \(G\) is
+
+\[
+r_{1}=r_{1}(\Delta t, \Delta \mathbf{x}, \mathbf{k})=\operatorname{Max}_{(i)}\left|\lambda^{(i)}\right|
+\]
+
+Suppose the \(\lambda^{\prime}\) s so ordered that \(\left|\lambda^{(1)}\right|=r_{1}\) and let \(v^{(1)}\) be an eigenvector corresponding to eigenvalue \(\lambda^{(1)}\). Then
+
+\[
+\|G\|=\operatorname{Max}_{(\mathbf{v})} \frac{\|G \mathbf{v}\|^{\cdot}}{\|\mathbf{v}\|} \geqq \frac{\left\|G \mathbf{v}^{(1)}\right\|}{\left\|\mathbf{v}^{(1)}\right\|}=r_{1}
+\]
+
+or generally the spectral radius is a lower bound for the bound of a matrix. If \(G\) is raised to any power, each of its eigenvalues gets raised to the same power, and therefore the spectral radius \(G^{n}\) is \(r_{1}^{n}\). Therefore
+
+\[
+\left\|G^{n}\right\| \geqq r_{1}^{n}
+\]
+
+We call
+
+\[
+R_{1}=R_{1}(\Delta t)=\operatorname{Max}_{(\mathbf{k})} r_{1}(\Delta t, \mathbf{g}(\Delta t), \mathbf{k}),
+\]
+
+where the maximum is with respect to all \(\mathbf{k}\) with real components. The stability requirement of uniform boundedness of the set (23) implies that for some \(K\),
+
+\[
+\left\{R_{1}(\Delta t)\right\}^{n} \leqq K, \quad \begin{array}{ll}
+\Delta t>0 \\
+& 0 \leqq n \Delta t \leqq T
+\end{array}
+\]
+
+but this is equivalent to the condition
+
+\[
+R_{1}(\Delta t) \leqq 1+O(\Delta t)
+\]
+
+where \(O(\Delta t)\) denotes a quantity bounded by a constant times \(\Delta t\). This is the Von Neumann necessary condition for stability.
+
+\section*{14. A Sufficient Condition for Stability}
+Let the eigenvalues of \(G^{*} G\) be denoted by \(\mu^{(1)}, \cdots, \mu^{(2)}\). The bound of \(G\) is
+
+\[
+r_{2}=r_{2}(\Delta t, \Delta \mathbf{x}, \mathbf{k})=\|G\|=\operatorname{Max}_{(i)}\left|\mu^{(i)}\right|^{1 / 2} .
+\]
+
+Since \(\left\|G^{n}\right\| \leqq\|G\|^{n}\), if we call
+
+\[
+R_{2}=R_{2}(\Delta t)=\operatorname{Max}_{(\mathbf{k})} r_{2}(\Delta t, \mathbf{g}(\Delta t), \mathbf{k})
+\]
+
+the stability requirement is satisfied provided there is a \(K\) such that
+
+\[
+\left\{R_{2}(\Delta t)\right\}^{n} \leqq K, \quad \begin{array}{ll}
+\Delta t>0 \\
+& 0 \leqq n \Delta t \leqq T
+\end{array}
+\]
+
+but this is equivalent to the condition
+
+\[
+R_{2}(\Delta t) \leqq 1+O(\Delta t)
+\]
+
+Consequently, we have\\
+theorem 1. Condition (25) is sufficient for stability.\\
+If \(G\) is a normal matrix (i.e., one that commutes with its Hermitian conjugate), the eigenvalues of \(G^{*} G\) are just the squares of the absolute values of the eigenvalues of \(G\) (because \(G^{*}\) and \(G\) can be reduced to diagonal form by the same unitary transformation), so that \(R_{1}(\Delta t)=R_{2}(\Delta t)\). Therefore, we can state the\\
+corollary. If \(G\) is a normal matrix, the Von Neumann condition (24) is sufficient as well as necessary for stability.
+
+\section*{15. A Second Sufficient Condition for Stability}
+As noted in the corollary, the case in which \(G\) is a normal matrix is an important special case, and in that case there is a complete orthogonal set of eigenvectors of \(G\). Even if \(G\) is not normal, there may be a complete set of linearly independent eigenvectors (not generally orthogonal). A stability condition will now be given for such cases.
+
+Let \(\phi^{(1)}, \cdots, \phi^{(p)}\) denote a set of normalized, linearly independent eigenvectors of \(G\). Let \(T\) be the matrix having these eigenvectors as columns, so that \(T_{i j}=\phi_{j}{ }^{(i)}\); and let \(\Delta\) denote the determinant of \(T\). \(T\) provides a similarity transformation (not in general unitary) that diagonalizes \(G\). That is,
+
+\[
+G=T^{-1}\left(\begin{array}{llll}
+\lambda^{(1)} & & & 0 \\
+& & \ddots & \\
+0 & & \lambda^{(p)}
+\end{array}\right) T
+\]
+
+and therefore
+
+\[
+G^{n}=T^{-1}\left(\begin{array}{lll}
+\lambda^{(1)} & & \\
+& \ddots & \\
+0 & & \lambda^{(p)}
+\end{array}\right)^{n} T .
+\]
+
+The inverse of \(T\) has elements given by
+
+\[
+\left(T^{-1}\right)_{i j}=\frac{\text { algebraic cofactor of } T_{j i}}{\Delta} .
+\]
+
+If the columns (or rows) of any determinant are regarded as a set of vectors, the absolute value of the determinant does not exceed the product of the lengths of the vectors (corresponding to the interpretation of the determinant as the volume of a multidimensional parallelopiped of which the vectors\\
+form a set of coterminous edges). Each column of the cofactor mentioned above consists of \(p-1\) of the components of a normalized eigenvector of \(G\) and hence has length less than or equal to 1 . Consequently,
+
+\[
+\left|\left(T^{-1}\right)_{i j}\right| \leqq \frac{1}{|\Delta|}
+\]
+
+Clearly, the absolute value of an element of \(T\) cannot exceed 1 , so from (26),
+
+\[
+\left|\left(G^{n}\right)_{i j}\right| \leqq \frac{p^{2}}{|\Delta|} r_{1}^{n}
+\]
+
+where the factor \(p^{2}\) comes from the fact that there are \(p^{2}\) terms in the expansion of the matrix product (26). Since the bound of a \(p \times p\) matrix does not exceed \(p\) times its absolutely largest element,
+
+\[
+\left\|G^{n}\right\| \leqq \frac{p^{3}}{|\Delta|} r_{1}^{n}
+\]
+
+The determinant \(\Delta\) of course is a function of \(\Delta t\) and \(\mathbf{k}\), but if it is bounded away from zero, we can replace \(|\Delta|\) by its greatest lower bound in the above inequality and use the same reasoning that led to (25) in Section 14, to prove\\
+theorem 2. If there is a constant a such that \(|\Delta|>a>0\) for all real \(\mathbf{\mathrm { k }}\) and all sufficiently small \(\Delta t\), where \(\Delta\) is the determinant of the normalized eigenvectors of the amplification matrix \(G(\Delta t, \mathbf{g}(\Delta t), \mathbf{k})\), the Von Neumann condition (24) is sufficient as well as necessary for stability.
+
+\section*{16. A Third Sufficient Condition for Stability}
+In some cases of practical importance the determinant \(\Delta\) vanishes for certain values of \(\mathbf{k}\) so that a different criterion must be found. To find one, we start from Schur's theorem that any square matrix \(A\) can be reduced to triangular form by a unitary transformation
+
+\[
+B=U^{*} A U
+\]
+
+where \(B\) is the triangular matrix:
+
+\[
+B=\left(\begin{array}{lllll}
+\lambda^{(1)} & B_{12} & B_{13} & \cdots & B_{1 p} \\
+0 & \lambda^{(2)} & B_{23} & \cdots & B_{2 p} \\
+0 & 0 & \lambda^{(3)} & \cdots & B_{3 p} \\
+\cdot & \cdot & \cdot & & \cdot \\
+\cdot & \cdot & \cdot & \cdot & \cdot \\
+\cdot & \cdot & \cdot & & \cdot \\
+0 & 0 & 0 & \cdots & \lambda^{(p)}
+\end{array}\right)
+\]
+
+whose diagonal elements are the eigenvalues of \(A\) and such that \(B_{i j}=0\)\\
+for \(i>j\). Since no element of \(U\) can exceed 1 in absolute value
+
+\[
+\operatorname{Max}\left|B_{i j}\right| \leqq p^{2} \operatorname{Max}\left|A_{i j}\right| .
+\]
+
+The general element of the \(n\)-th power of \(B\) has the form
+
+\[
+\left(B^{n}\right)_{i j}=\sum B_{i k_{1}} B_{k_{1} k_{2}} \cdots B_{k_{n-1} j}
+\]
+
+summed over the indices \(k_{1}, k_{2}, \ldots, k_{n-1}\), arranged in every possible way, provided
+
+\[
+i \leqq k_{1} \leqq k_{2} \leqq \cdots \leqq k_{n-1} \leqq j
+\]
+
+No matter how large \(n\) is, at most \(j-i\) of the factors in the above product can be off-diagonal elements of \(B\). This will enable us to obtain a satisfactory bound for \(B^{n}\) by imposing restrictions on the diagonal elements only. We assume that
+
+\[
+\operatorname{Max}_{i>1}\left|\lambda^{(i)}\right|=\gamma<1
+\]
+
+and call
+
+\[
+\operatorname{Max}\left(\left|\lambda^{(1)}\right|, 1\right)=\lambda^{*}
+\]
+
+We focus our attention temporarily on those factors of the typical product in (28) which are off-diagonal elements of \(B\), disregarding the diagonal elements occurring in the product. The number of such factors can be \(r\) where \(0 \leqq r \leqq j-i\); let \(N_{r}^{j-i}\) be the number of distinct ways of choosing these \(r\) factors from among the off-diagonal elements of \(B\), taking into account the chain rule for subscripts in matrix multiplication. (Except for the trivial cases in which \(j-i=0\) or \(r=0, N_{r}^{j-i}\) is just the binomial coefficient \(\left.\binom{j-i-1}{r-1}\right)\).
+
+Having chosen the \(r\) off-diagonal elements, we consider the various ways in which they can be combined with diagonal elements to make the general typical product in (28) with the factors in the order shown there. One arrangement is with the off-diagonal elements crowded together at the right side of the product and preceded by a suitable power of \(\lambda^{(i)}\) on their left. Other arrangements can be obtained from this one by decreasing the power of \(\lambda^{(i)}\) and inserting suitable diagonal elements in positions to the right of the leftmost off-diagonal element. The first such factor can be inserted in any one of \(r\) positions, the next in any one of \(r+1\) positions, the next in any one of \(r+2\) positions, and so forth. But the order of insertion is irrelevant, so the number of distinct ways in which \(q\) such factors can be inserted is
+
+\[
+\frac{r(r+1)(r+2) \cdots(r+q-1)}{q!}
+\]
+
+The inserted factors are all eigenvalues with index greater than \(i\) (because of their positions in the product) hence with index greater than 1 . Therefore, by (29), the inserted factors, when multiplied together, are bounded by \(\gamma^{\alpha}\). Now the series
+
+\[
+\sum_{0}^{\infty}{ }_{(q)} \frac{r(r+1) \cdots(r+q-1)}{q!} \gamma^{q}
+\]
+
+being a hypergeometric series, is convergent to a finite limit because \(\gamma<1\). Let that limit be denoted by \(F_{r}(\gamma)\). The power of \(\lambda^{(i)}\) occurring in the product is in any case bounded by \(\left(\lambda^{*}\right)^{n}\), so, finally
+
+\[
+\left|\left(B^{n}\right)_{i j}\right| \leqq\left(\lambda^{*}\right)^{n} \sum_{1}^{j-1}(r) N_{r}^{j-1}\left(\operatorname{Max}_{s, t}\left|B_{s t}\right|\right)^{r} F_{r}(\gamma)
+\]
+
+This expansion is clearly maximized by taking \(j-1=p-1\). Then, since the bound of a matrix does not exceed \(p\) times the absolute value of its largest element, and using (27) and the fact that the bound is invariant under a unitary transformation, we find
+
+\[
+\left\|A^{n}\right\| \leqq\left(\lambda^{*}\right)^{n} p \sum_{1}^{p-1}(r) N_{r}^{p-1}\left(p^{2} \operatorname{Max}_{s, t}\left|A_{s t}\right|\right)^{r} F_{r}(\gamma) .
+\]
+
+To apply this result to the stability problem, we interpret \(A\) as the amplification matrix \(G(\Delta t, \Delta \mathbf{x}, \mathbf{k})\). The factor \(\left(\lambda^{*}\right)^{n}\) is then bounded for the set (23) if the Von Neumann condition is satisfied, and the other factors in the above expression are bounded if \(\gamma<1\) and the \(A_{s t}\) are bounded. The following theorem results:\\
+theorem 3. If the elements of the amplification matrix \(G(\Delta t, \mathbf{g}(\Delta t), \mathbf{k})\) are bounded functions of \(\mathbf{k}\) and Ut for all real \(\mathbf{k}\) and all sufficiently small positive \(\Delta t\), and if there is a constant \(\gamma\) such that
+
+\[
+\left|\gamma^{(i)}(\Delta t, \mathbf{g}(\Delta t), \mathbf{k})\right| \leqq \gamma<\mathbf{1}, \quad i=\mathbf{2}, \mathbf{3}, \cdots, p
+\]
+
+then the Von Neumann condition (24) is sufficient as well as necessary for stability.
+
+Roughly speaking, one eigenvalue is permitted to get up to 1 , or even \(1+\theta(\Delta t)\) provided the bound of the others is less than 1 .
+
+\section*{17. The Wave Equation}
+As a first example to illustrate the foregoing ideas we consider the wave equation
+
+\[
+\frac{\partial^{2} \psi}{\partial t^{2}}-c^{2} \frac{\partial^{2} \psi}{\partial x^{2}}=0
+\]
+
+A satisfactory formulation is obtained by making the further definition\\
+\(w=c \partial \psi / \partial x\), whereupon the equations become
+
+\[
+\begin{aligned}
+& \frac{\partial \phi}{\partial t}=c \frac{\partial w}{\partial x} \\
+& \frac{\partial w}{\partial t}=c \frac{\partial \phi}{\partial x}
+\end{aligned}
+\]
+
+and we now have a properly posed problem. In this case the square of the norm is the energy of the wave motion and by conservation of energy the solution operator is bounded with bound unity.
+
+The first choice of the finite difference equations that we wish to consider is
+
+\[
+\begin{aligned}
+\phi^{n+1}(x) & =\phi^{n}(x)+\frac{c \Delta t}{\Delta x}\left[w^{n}\left(x+\frac{\Delta x}{2}\right)-w^{n}\left(x-\frac{\Delta x}{2}\right)\right], \\
+w^{n+1}(x) & =w^{n}(x)+\frac{c \Delta t}{\Delta x}\left[\phi^{n}\left(x+\frac{\Delta x}{2}\right)-\phi^{n}\left(x-\frac{\Delta x}{2}\right)\right] .
+\end{aligned}
+\]
+
+The amplification matrix is
+
+\[
+G(\Delta t, \Delta x, k)=\left[\begin{array}{lc}
+1 & 2 i \frac{c \Delta t}{\Delta x} \sin \frac{k \Delta x}{2} \\
+2 i \frac{c \Delta t}{\Delta x} \sin \frac{k \Delta x}{2} & 1
+\end{array}\right]
+\]
+
+as found by substituting a Fourier term
+
+\[
+\binom{a^{n}}{b^{n}} e^{i k x}
+\]
+
+for \(\binom{\phi^{n}}{w^{n}}\) into (32) and solving for \(\binom{a^{n+1}}{b^{n+1}}\) in terms of \(\binom{a^{n}}{b^{n}}\) as
+
+\[
+\binom{a^{n+1}}{b^{n+1}}=G\binom{a^{n}}{b^{n}}
+\]
+
+The quantity \(R_{1}=R_{1}(\Delta t)\) defined in Section 13 and appearing in the Von Neumann condition, namely the maximum with respect to \(k\) of the spectral radius of \(G\), is
+
+\[
+R_{1}=\sqrt{1+4\left(\frac{c \Delta t}{\Delta x}\right)^{2}}
+\]
+
+and we reach the well known conclusion that the difference equations (32) are unstable, at least if \(c \Delta t / \Delta x\) is kept at any constant value as \(\Delta t\) and \(\Delta x \rightarrow 0\).
+
+In this example the Von Neumann condition could be satisfied by making \(\Delta t\) and \(\Delta x \rightarrow 0\) in such a way that \(\Delta t /(\Delta x)^{2}\) is constant, but there\\
+is not much point in pursuing this lead because we all know perfectly well that there is a much better difference scheme than (32).
+
+According to the scheme usual in fluid dynamical calculations, the differential equations (21) are approximated by
+
+\[
+\begin{aligned}
+\phi^{n+1}(x) & =\phi^{n}(x)+\frac{c \Delta t}{\Delta x}\left[w^{n}\left(x+\frac{\Delta x}{2}\right)-w^{n}\left(x-\frac{\Delta x}{2}\right)\right] \\
+w^{n+1}(x) & =w^{n}(x)+\frac{c \Delta t}{\Delta x}\left[\phi^{n+1}\left(x+\frac{\Delta x}{2}\right)-\phi^{n+1}\left(x-\frac{\Delta x}{2}\right)\right] .
+\end{aligned}
+\]
+
+This scheme differs from (32) only in the superscripts on \(\phi\) in the second equation. (The equations would have a more centered look if we had used the notation \(\phi^{n+1 / 2}\) and \(\phi^{n-1 / 2}\) in place of \(\phi^{n+1}\) and \(\phi^{n}\) ). The amplification matrix is
+
+\[
+G=\left(\begin{array}{lc}
+1 & i a \\
+i a & 1-a^{2}
+\end{array}\right)
+\]
+
+where \(a\) is an abbreviation for \(\frac{2 c \Delta t}{\Delta x} \sin \frac{k \Delta x}{2}\),\\
+and
+
+\[
+G^{*} G=\left(\begin{array}{ll}
+1+a^{2} & i a^{3} \\
+-i a^{3} & 1-a^{2}+a^{4}
+\end{array}\right)
+\]
+
+The characteristic equations of these matrices are
+
+\[
+\lambda^{2}-\left(2-a^{2}\right) \lambda+1=0
+\]
+
+and
+
+\[
+\mu^{2}-\left(2+a^{4}\right) \mu+1=0
+\]
+
+For each of these characteristic equations the product of the roots is 1 . In (35) the sum of the roots is \(2-a^{2}\); consequently the roots lie on the unit circle if \(a^{2} \leqq 4\). In (36) the roots are real. We find, for the quantities \(R_{1}(\Delta t)\) and \(R_{2}(\Delta t)\) introduced in Sections 13 and 14
+
+\[
+\begin{gathered}
+R_{1}(\Delta t)\left\{\begin{array}{l}
+=1 \text { if } \frac{c \Delta t}{\Delta x} \leqq 1 \\
+>1 \text { if } \frac{c \Delta t}{\Delta x}>1
+\end{array}\right. \\
+R_{2}(\Delta t)=\sqrt{1+8\left(\frac{c \Delta t}{\Delta x}\right)^{4}+4\left(\frac{c \Delta t}{\Delta x}\right)^{2} \sqrt{1+4\left(\frac{c \Delta t}{\Delta x}\right)^{4}}}
+\end{gathered}
+\]
+
+The Von Neumann condition is satisfied for \(c \Delta t / \Delta x \leqq 1\) but not for any other fixed value of \(c \Delta t / \Delta x\).
+
+The sufficient condition for stability given in Section 14, namely\\
+\(R_{2}(\Delta t) \leqq 1+O(\Delta t)\), requires \(\Delta t=O\left((\Delta x)^{2}\right)\) as \(\Delta t, \Delta x \rightarrow 0\), which is much more stringent than the Von Neumann condition. But the sufficient condition given in Section 15 gives what we want. The normalized eigenvectors of the matrix (34) are easily found, and their determinant has the absolute value
+
+\[
+|\Delta|=\sqrt{1-\left(\frac{c \Delta t}{\Delta x} \sin \frac{k \Delta x}{2}\right)^{2}}
+\]
+
+This is bounded away from zero if \(c \Delta t<\Delta x\). We arrive thus at the conclusion, first stated in the Courant-Friedrichs-Lewy paper, that equations (33) are stable if \(c \Delta t / \Delta x=\) constant \(<1\) but not if \(c \Delta t / \Delta x=\) constant \(>1\). The case \(c \Delta t / \Delta x=1\) (stable according to Courant, Friedrichs and Lewy) is not handled by our method.
+
+Lastly, we consider the implicit system
+
+\[
+\begin{aligned}
+\phi^{n+1}(x)= & \phi^{n}(x)+\frac{c \Delta t}{2 \Delta x}\left[w^{n}\left(x+\frac{\Delta x}{2}\right)\right. \\
++ & \left.w^{n+1}\left(x+\frac{\Delta x}{2}\right)-w^{n}\left(x-\frac{\Delta x}{2}\right)-w^{n+1}\left(x-\frac{\Delta x}{2}\right)\right] \\
+w^{n+1}(x)=w^{n}(x) & +\frac{c \Delta t}{2 \Delta x}\left[\phi^{n}\left(x+\frac{\Delta x}{2}\right)\right. \\
++ & \left.\phi^{n+1}\left(x+\frac{\Delta x}{2}\right)-\phi^{n}\left(x-\frac{\Delta x}{2}\right)-\phi^{n+1}\left(x-\frac{\Delta x}{2}\right)\right]
+\end{aligned}
+\]
+
+as approximation to the differential equations (31). (Equations of this type have been used, for example, by Arthur Carson of Los Alamos in studies of the dynamics of stellar interiors.) The amplification matrix is
+
+\[
+G=\left(\begin{array}{cc}
+\frac{1-a^{2} / 4}{1+a^{2} / 4} & \frac{i a}{1+a^{2} / 4} \\
+i a & 1-a^{2} / 4 \\
+\hdashline 1+a^{2} / 4 & 1+a^{2} / 4
+\end{array}\right)
+\]
+
+and \(G^{*} G\) is the unit matrix. The criterion of Section 14 is always satisfied and the equations (37) are stable as \(\boldsymbol{\Delta} \boldsymbol{t} \boldsymbol{\rightarrow} \boldsymbol{0}, \boldsymbol{\Delta} \boldsymbol{x} \rightarrow \boldsymbol{0}\), no matter what are the relative rates at which \(\Delta t\) and \(\Delta x\) approach zero.
+
+\section*{18. Diffusion Equation; Two Level Formulas}
+Consider the equation
+
+\[
+\frac{\partial u}{\partial t}=A \frac{\partial^{2} u}{\partial x^{2}}+2 B \frac{\partial^{2} u}{\partial x \partial y}+C \frac{\partial^{2} u}{\partial y^{2}}
+\]
+
+where the quadratic form ( \(\mathrm{A}, \mathrm{B}, \mathrm{C}\) ) is required to be positive definite; this makes the differential equation parabolic. In consequence of this requirement, the differential equation provides a properly posed initial value problem; for example in the space \(\mathscr{B}\) of functions \(u(x, y)\) in \(L^{2}\) over a rectangle in the \(x, y\)-plane.
+
+We consider in this section a certain class of difference equations in which \(u^{n}(x, y)\) and \(u^{n+1}(x, y)\) are connected directly. (In the two following sections we will consider some schemes in which \(u^{n}, u^{n+1}\) and \(u^{n-1}\) all appear in the same equation; these will be referred to as three-level formulas.)
+
+Introduce the following abbreviations:
+
+\[
+\begin{array}{ll}
+u_{i j}^{n} \quad \text { for } u^{n}(x, y) \\
+u_{i+1 ;}^{n} \text { for } u^{n}(x+\Delta x, y) \\
+u_{i j+1}^{n} & \text { for } u^{n}(x, y+\Delta y), \text { etc., }
+\end{array}
+\]
+
+and
+
+\[
+\begin{gathered}
+\Phi_{i j}^{n} \text { for }\left[A \frac{u_{i+1 j}^{n}-2 u_{i j}^{n}+u_{i-1 j}^{n}}{(\Delta x)^{2}}\right. \\
++2 B \frac{u_{i+1 j+1}^{n}-u_{i-1 j+1}^{n}-u_{i+1 j-1}^{n}+u_{i-1 j-1}^{n}}{4 \Delta x \Delta y} \\
+\left.+C \frac{\left.u_{i j+1}^{n}-2 u_{i j}^{n}+u_{i j-1}^{n}\right]}{(\Delta y)^{2}}\right] .
+\end{gathered}
+\]
+
+The class of finite difference equations we wish to consider is
+
+\[
+u_{i j}^{n+1}-u_{i j}^{n}=\Delta t\left[\theta \Phi_{i j}^{n+1}+(1-\theta) \Phi_{i j}^{n}\right]
+\]
+
+where \(\theta\) is a non-negative constant. The choice \(\theta=0\) gives the usual explicit system and the choices \(\theta=\frac{1}{2}, \theta=1\) give the two favorite implicit systems.\\
+(As is well known, if \(B=C=0\), so that the problem reduces to that of one space variable, the implicit equations can be readily solved by a simple algorithm. For two or more space variables it is wise to solve the implicit equations approximately by a relaxation technique; this is of course much more labor than required, per cycle, by the explicit equations, but it is nevertheless worthwhile, in some cases, to use the implicit equations provided the relaxation is done by some method like the extrapolated Liebmann method.)
+
+Since there is only one dependent variable, the amplification matrix has just one element:
+
+\[
+G\left(\Delta t, \Delta x, \Delta y, k_{x}, k_{y}\right)=\frac{1+(1-\theta) W}{1-\theta W}
+\]
+
+where\\
+\(W=\Delta t\left[\frac{2 A}{(\Delta x)^{2}}\left(\cos k_{x} \Delta x-1\right)-\frac{2 B}{\Delta x \Delta y} \sin k_{x} \Delta x \sin k_{y} \Delta y+\frac{2 C}{(\Delta y)^{2}}\left(\cos k_{y} \Delta y-1\right)\right]\).\\
+From the positive definite character of the quadratic form ( \(\mathrm{A}, \mathrm{B}, \mathrm{C}\) ), it follows, after a little calculation, that
+
+\[
+-4 \Delta t\left[\frac{A}{(\Delta x)^{2}}+\frac{C}{(\Delta y)^{2}}\right] \leqq W \leqq 0 .
+\]
+
+The expression \(\frac{1+(1-\theta) W}{1-\theta W}\) is an increasing function of \(W\) in the above interval and has the value 1 at \(W=0\). Therefore we will have \(|G| \leqq 1\) if this expression is \(\geqq-1\) when \(W\) has its most negative value. From this the Von Neumann condition is found to be:
+
+\begin{enumerate}
+  \item if \(\frac{1}{2} \leqq \theta\), no restriction on the way \(\Delta t, \Delta x, \Delta y\) go to zero,
+  \item if \(0 \leqq 0 \leqq \frac{1}{2}\) and if we suppose \(\Delta t /(\Delta x)^{2}\) and \(\Delta t /(\Delta y)^{2}\) kept constant as \(\Delta t, \Delta x, \Delta y \rightarrow 0\), then
+\end{enumerate}
+
+\[
+2 \Delta t\left[\frac{A}{(\Delta x)^{2}}+\frac{C}{(\Delta y)^{2}}\right] \leqq \frac{1}{1-2 \theta}
+\]
+
+Since the matrix \(G\) has only one element, \(G\) commutes with \(G^{*}\) (in this particular example \(G=G^{*}\) ), so that the Von Neumann condition is sufficient as well as necessary for stability.
+
+This example can be generalized in various ways. For example one may include lower order terms, \(D \frac{\partial u}{\partial x}+E \frac{\partial u}{\partial y}+F u\), where \(D, E, F\) are constants, in the differential equation (38), and investigate their influence on stability. This is easily done because \(G\) is still a one-element matrix, but we omit details. It is found that for any reasonable manner of treating these terms in the finite difference equation, the stability condition is the same as before, except that sometimes the sign \(\leqq\) in (40) has to be replaced by \(<\). We may note, however, that if \(F>0\) it is important to have the Von Neumann condition in the form \(R_{1}(\Delta t) \leqq 1+O(\Delta t)\) rather than merely \(R_{1}(\Delta t) \leqq 1\), because there are then generally true solutions of the differential equation which increase exponentially as \(t\) increases, and clearly we cannot expect (nor do we wish) to exclude such solutions from the numerical work.
+
+\section*{19. The Du Fort-Frankel Equations}
+Du Fort and Frankel [12] have approximated the diffusion equation
+
+\[
+\frac{\partial u}{\partial t}=\sigma \frac{\partial^{2} u}{\partial x^{2}} \quad(\sigma=\text { constant }>0)
+\]
+
+by the difference equation
+
+\[
+u^{n+1}(x)-u^{n-1}(x)=\frac{2 \sigma \Delta t}{(\Delta x)^{2}}\left[u^{n}(x+\Delta x)-u^{n+1}(x)-u^{n-1}(x)+u^{n}(x-\Delta x)\right]
+\]
+
+This system is of interest for two reasons, the first having to do with consistency and the second with stability. It is readily verified that the consistency condition of Section 5 is satisfied if and only if \(\Delta t / \Delta x \rightarrow 0\) as \(\Delta t, \Delta x \rightarrow 0\). In fact, if \(\Delta t / \Delta x \rightarrow \mu\) where \(\mu\) is a constant, it is clear that the difference equation (42) approximates the differential equation
+
+\[
+\frac{\partial u}{\partial t}=\sigma \frac{\partial^{2} u}{\partial x^{2}}-\mu^{2} \frac{\partial^{2} u}{\partial t^{2}}
+\]
+
+rather than (41). Just how large values of \(\Delta t / \Delta x\) can be tolerated in practice is of course not settled by our argument.
+
+To write (42) in the form required by our general theory, we must introduce another dependent variable, say \(\phi(x)\), as follows:\\
+\(u^{n+1}(x)=\phi^{n}(x)+\frac{2 \sigma \Delta t}{(\Delta x)^{2}}\left[u^{n}(x+\Delta x)-u^{n+1}(x)-\phi^{n}(x)+u^{n}(x-\Delta x)\right]\),\\
+\(\phi^{n+1}(x)=u^{n}(x)\).\\
+The amplification matrix is
+
+\[
+G(\Delta t, \Delta x, k)=\left(\begin{array}{cc}
+\frac{2 \gamma}{1+\gamma} \cos k \Delta x & \frac{1-\gamma}{1+\gamma} \\
+1 & 0
+\end{array}\right)
+\]
+
+where \(\gamma=\frac{2 \sigma \Delta t}{(\Delta x)^{2}}\). The characteristic values of \(G\) are
+
+\[
+\lambda=\frac{\gamma \cos k \Delta x \pm \sqrt{1-\gamma^{2} \sin ^{2} k \Delta x}}{1+\gamma} .
+\]
+
+and it is readily found that a) the Von Neumann condition is always satisfied, and in fact \(R_{1}(\Delta t)=1\), b) for any fixed value of \(y, R_{2}(\Delta t)=\) constant \(>1\) so that condition (25) of Section 14 is of no use, c) the determinant \(\Delta\) of the normalized eigenvectors of \(G\) vanishes when \(\gamma \sin k \Delta x=1\), so that the condition (Theorem 2) of Section 15 is of no use, d) the criterion of Section 16 is satisfied because the lesser of the roots (44) is always bounded, in absolute value, by \(\left|\frac{\gamma-1}{\gamma+1}\right|^{1 / 2}\), so that the Von Neumann condition is again sufficient as well as necessary for stability.
+
+Therefore, the Du Fort-Frankel equations are always stable, but the time increment must be limited on account of the consistency condition.
+
+\section*{20. Positive Operators}
+In this section we present a sufficient condition, due to Friedrichs [4], for the stability of certain difference schemes. The schemes considered are explicit two level schemes for vector-valued unknowns; i.e., the value of the approximate solution at time \(t+h\) and position \(x\) is expressed as a linear combination of its computed values at the time \(t\) :
+
+\[
+\mathbf{u}(t+\Delta t)=\sum_{r} c_{r} \mathbf{u}\left(\mathbf{x}+\Delta t \mathbf{d}_{r}\right)=C(\Delta t) \mathbf{u}
+\]
+
+In Friedrichs' theory the displacement vectors \(\mathbf{d}_{r}\) (finite in number) need not lie on a lattice. The coefficient matrices \(c_{r}\) are functions of \(\mathbf{x}\), and are required to satisfy the following conditions:\\
+i) \(\sum_{r} c_{r}(\mathbf{x})=I\) (the identity matrix),\\
+ii) \(c_{r}(\mathbf{x})\) is symmetric and positive definite,\\
+iii) \(c_{r}(\mathbf{x})\) is a Lipschitz continuous function of the vector variable \(\mathbf{x}\).
+
+Conclusion: The difference scheme (45) is stable.\\
+We reproduce Friedrichs' proof, and show that the norm of \(C(\Delta t)\) with respect to the \(L^{2}\) norm over the whole space, is bounded by
+
+\[
+|C(\Delta t)| \leqq 1+A \Delta t,
+\]
+
+where the constant \(A\) depends on the Lipschitz constant of the \(c_{r}\), and on the number of coefficients. Since stability means the uniform boundedness of \(\left|C^{n}(\Delta t)\right|, n \Delta t \leqq T\), and \(\left|C^{n}(\Delta t)\right| \leqq|C(\Delta t)|^{n}\), the estimate (46) implies stability.
+
+To estimate \(\|C\|\), Friedrichs uses this characterization of the norm of an operator:
+
+\[
+\begin{aligned}
+& \|C\|=\operatorname{Sup}(\mathbf{u}, C \mathbf{v}) \\
+& \|\mathbf{u}\|=\|\mathbf{v}\|=1
+\end{aligned}
+\]
+
+where the bracket denotes the \(L^{2}\) scalar product over the period parallelogram:
+
+\[
+(\mathbf{u}, C \mathbf{v})=\int \sum \mathbf{u}^{\prime}(\mathbf{x}) c_{r}(\mathbf{x}) \mathbf{v}\left(\mathbf{x}+\Delta t \mathbf{d}_{r}\right) d \mathbf{x}
+\]
+
+It follows from this characterization of the norm of \(C\) that any upper bound for ( \(\mathbf{u}, C \mathbf{v}\) ) valid for all vectors \(\mathbf{u}\) and \(\mathbf{v}\) of unit length is an upper bound for \(\|C\|\). We shall find an upper bound for ( \(\mathbf{u}, C \mathbf{v}\) ) from (47). Since the matrices \(c\) were assumed to be positive, we can apply the Schwarz inequality to the terms \(\mathbf{u}^{\prime} c \mathbf{v}\) in the integrand. We get, after throwing in the inequality about the arithmetic and the geometric mean,
+
+\[
+\mathbf{u}^{\prime} c \mathbf{v} \leqq \frac{1}{2} \mathbf{u}^{\prime} c \mathbf{u}+\frac{1}{2} \mathbf{v}^{\prime} c \mathbf{v} .
+\]
+
+Substituting this into the integrand in (47) we have the following inequality:
+
+\[
+(\mathbf{u}, C \mathbf{v}) \leqq \frac{1}{2} \sum \int \mathbf{u}^{\prime}(\mathbf{x}) c_{r}(\mathbf{x}) \mathbf{u}(\mathbf{x})+\frac{1}{2} \sum \int \mathbf{v}^{\prime}\left(\mathbf{x}+\Delta t \mathbf{d}_{r}\right) c_{r}(\mathbf{x}) \mathbf{v}^{\prime}\left(\mathbf{x}+\Delta t \mathbf{d}_{r}\right)
+\]
+
+The first term on the right in (48) is, on account of the requirement that \(\sum c_{r}(\mathbf{x})\) is the identity, just \(\frac{1}{2}(\mathbf{u}, \mathbf{u})\) which is \(\frac{1}{2}\), since \(\mathbf{u}\) has unit norm. In the second group of terms introduce \(\mathbf{x}^{\prime}=\mathbf{x}+\Delta t \mathbf{d}_{r}\) as new independent variable; we obtain
+
+\[
+\frac{1}{2} \sum \int \mathbf{v}^{\prime}\left(\mathbf{x}^{\prime}\right) c_{r}\left(\mathbf{x}^{\prime}-\Delta t \mathbf{d}_{r}\right) \mathbf{v}\left(\mathbf{x}^{\prime}\right) .
+\]
+
+If in the above expression we replace \(c_{r}\left(\mathbf{x}^{\prime}-\Delta t \mathbf{d}_{r}\right)\) by \(c_{r}\left(\mathbf{x}^{\prime}\right)\), the error committed is at most a constant times \(\Delta t\), on account of the assumed Lipschitz continuity of the coefficients \(c\). Imagine such a substitution performed, and treat the resulting group of terms the same way as the first group of terms. This way we find that the value of the second group of terms is at most \(1 / 2+\) const. \(\Delta t\), and have the desired \(1+\) const. \(\Delta t\) estimate for the whole expression (48).
+
+Such symmetric positive difference operators come up in difference approximations to solutions of symmetric hyperbolic systems, i.e., equations of the form
+
+\[
+\mathbf{u}_{t}+a_{k} \mathbf{u}_{x^{k}}+b \mathbf{u}=0,
+\]
+
+where the coefficients \(a_{k}\) are symmetric matrices. A majority of the equations of mathematical physics which describe reversible phenomena are of this form; the general theory of such equations has been developed by Friedrichs (loc. cit), where he gives a recipe for associating a positive symmetric operator to each symmetric hyperbolic operator. We give here such a recipe:
+
+Take for the displacement vectors \(\mathbf{d}_{\boldsymbol{r}}\) the \(2 d\) vectors
+
+\[
+\mathbf{d}_{r}= \pm\left(0,0, \cdots \lambda_{r}, 0, \cdots, 0\right), \quad r=1, \cdots, d .
+\]
+
+Here the \(\lambda_{r}\) are arbitrary constants, the side lengths of a rectangular lattice in \(\mathbf{x}\)-space. Replace the \(\mathbf{x}\)-space derivative \(\mathbf{u}_{x^{k}}\) in the differential equation (49) by centered difference quotients between \(\mathbf{x}+\Delta t \mathbf{d}_{k}\) and \(\mathbf{x}-\Delta t \mathbf{d}_{k}\), and the time derivative by the forward difference quotient \(\mathbf{u}(\mathbf{x}, t+\Delta t) -\overline{\mathbf{u}}(\mathbf{x}, t)\) where \(\overline{\mathbf{u}}\) is the weighted average \(\frac{\mathbf{1}}{\mathbf{2}} \alpha_{k} \mathbf{u}\left(\mathbf{x} \pm h \mathbf{d}_{k}, t\right)\), the sum of the weights \(\alpha\) being one. The resulting difference equation can be solved for \(\mathbf{u}(\mathbf{x}, t+\Delta t)\) :\\
+where \({ }^{3}\)
+
+\[
+\begin{gathered}
+u(x, t+\Delta t)=C u(x, t)=\sum c_{ \pm r} u\left(x \pm \lambda_{r} \Delta t\right), \\
+c_{ \pm r}=\frac{1}{2}\left\{\alpha_{r} I \mp \lambda_{r}^{-1} a_{r}\right\} .
+\end{gathered}
+\]
+
+\footnotetext{\({ }^{3}\) For the sake of simplicity we have taken \(b\), the coefficient of \(\mathbf{u}\) in (49), to be zero.
+}Clearly, if the \(\alpha_{r}\) are fixed positive constants, the coefficients \(c_{ \pm r}\) can be made positive definite by taking \(\lambda_{r}\) large enough. Of course in practice it is the space mesh that stays constant and \(\Delta t\) is made small enough.
+
+\section*{Bibliography}
+[1] Courant, R., Friedrichs, K. O., and Lewy, H., Uber die partiellen Differenzengleichungen der mathematischen Physik, Math. Ann., Vol. 100, 1928, pp. 32-74.\\[0pt]
+[2] Courant, R., Isaacson, E., and Rees, M., On the solution of nonlinear hyperbolic differential equations by finite differences, Comm. Pure Appl. Math., Vol. 5, 1952, pp. 243-255.\\[0pt]
+[3] Eddy, R. P., Stability in the numerical solution of initial value problems in partial differential equations, Naval Ordnance Laboratory Memorandum 10232.\\[0pt]
+[4] Friedrichs, K. O., Symmetric hyperbolic linear differential equations, Comm. Pure Appl. Math., Vol. 7, 1954, pp. 345-392.\\[0pt]
+[5] Kantorovitch, L. V., Functional analysis and applied mathematics, Uspehi Matem. Nauk, Vol. 3, 1948, p. 89; Bureau of Standards Report 1509, 1952.\\[0pt]
+[6] Keller, J. B., and Lax, P. D., The initial and mixed initial and boundary value problems for hyperbolic systems, Los Alamos Report No. 1210, 1951.\\[0pt]
+[7] Laasonen, Über eine Methode zur Lösung der Wärmeleitungsgleichung, Acta Math.,Vol. 81, 1949, pp. 309-317.\\[0pt]
+[8] O'Brien, G. G., Hyman, M. A., and Kaplan, S., A study of the numerical solution of partial differential equations, J. Math. Physics, Vol. 29, 1951, pp. 223-251.\\[0pt]
+[9] Lewy, H., On the convergence of solutions of difference equations, in Studies and Essays, Courant Anniversary Volume, Interscience Publishers, New York, 1948, pp.211-214.\\[0pt]
+[10] Von Neumann, J., and Richtmyer, R. D., A method for the numerical calculation of hydrodynamic shocks, J. Appl. Physics, Vol. 21, 1950, pp. 232-237.\\[0pt]
+[11] Thomas, L. H., Stability of partial differential equations, Symposium on Theoretical Compressible Flow, U. S. Naval Ordnance Laboratory, 1949, NOLR 1132, 1950.\\[0pt]
+[12] Du Fort, E. C., and Frankel, S. P., Stability conditions in the numerical treatment of parabolic differential equations, Math. Tables and Other Aids to Computation, Vol. 7, 1953, pp. 135-152.\\[0pt]
+[13] John, F., On integration of parabolic equations by difference methods, Comm. Pure Appl. Math., Vol. 5, 1952, pp. 155-211.\\[0pt]
+[14] Lax, P. D., Difference approximation to solutions of linear differential equations - an operator theoretical approach, Symposium on Partial Differential Equations, Berkeley, Summer 1955; Report of the University of Kansas Mathematics Department (to appear).
+
+Received October, 1955.
+
+
+\end{document}

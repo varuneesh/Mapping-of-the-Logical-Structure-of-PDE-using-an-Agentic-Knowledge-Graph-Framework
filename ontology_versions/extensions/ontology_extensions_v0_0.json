@@ -1,0 +1,13 @@
+{
+  "extension_metadata": {
+    "extension_version": "0.0",
+    "parent_core_version": "0.0",
+    "description": "Extension layer for ontology refinements and subclass additions."
+  },
+
+  "subclasses": {
+  },
+
+  "relation_extensions": {
+  }
+}

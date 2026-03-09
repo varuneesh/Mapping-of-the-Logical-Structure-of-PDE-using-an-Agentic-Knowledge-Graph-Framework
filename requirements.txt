@@ -1,0 +1,8 @@
+requests
+pathlib
+python-dotenv
+langchain
+langchain_core
+langchain_groq
+openai
+scikit-learn
