@@ -3,6 +3,7 @@ from pathlib import Path
 
 
 class OntologyLoader:
+
     def __init__(self, core_path: str, extension_path: str):
         self.core_path = Path(core_path)
         self.extension_path = Path(extension_path)
@@ -20,11 +21,9 @@ class OntologyLoader:
     def _merge_classes(self):
         merged = {}
 
-        # Core classes
         for name, data in self.core["core_classes"].items():
             merged[name] = data
 
-        # Extension subclasses
         for name, data in self.extensions["subclasses"].items():
             merged[name] = data
 
@@ -33,11 +32,9 @@ class OntologyLoader:
     def _merge_relations(self):
         merged = {}
 
-        # Core relations
         for name, data in self.core["core_relations"].items():
             merged[name] = data
 
-        # Extension relations
         for name, data in self.extensions["relation_extensions"].items():
             merged[name] = data
 
@@ -55,18 +52,56 @@ class OntologyLoader:
     def relation_exists(self, relation_name: str) -> bool:
         return relation_name in self.relations
 
-    def validate_domain_range(self, relation: str, source_type: str, target_type: str) -> bool:
+    def _get_ancestors(self, class_name: str) -> set:
+        """
+        Walk the parent chain and return all ancestor class names
+        (inclusive of class_name itself).
+
+        e.g. ComputationalStructure → MathematicalObject → (root)
+             returns {'ComputationalStructure', 'MathematicalObject'}
+        """
+        ancestors = set()
+        current = class_name
+
+        while current:
+            ancestors.add(current)
+            parent = self.classes.get(current, {}).get("parent")
+            if parent and parent != current:
+                current = parent
+            else:
+                break
+
+        return ancestors
+
+    def validate_domain_range(
+        self, relation: str, source_type: str, target_type: str
+    ) -> bool:
+        """
+        Return True if source_type satisfies the relation's domain
+        AND target_type satisfies the relation's range.
+
+        A type satisfies a constraint if it IS that type or any subclass of it
+        (i.e. the constraint type appears anywhere in its ancestor chain).
+
+        Examples that now pass correctly:
+          uses(NumericalMethod, ComputationalStructure)
+            domain=NumericalMethod  ✓ (exact match)
+            range=MathematicalObject ✓ (ComputationalStructure's ancestor)
+
+          has_property(NumericalMethod, TheoreticalProperty)
+            domain=NumericalMethod  ✓
+            range=TheoreticalProperty ✓
+        """
         if relation not in self.relations:
             return False
 
-        domain = self.relations[relation]["domain"]
-        range_ = self.relations[relation]["range"]
-        
-        if source_type == domain and target_type == range_:
-            return True
+        required_domain = self.relations[relation]["domain"]
+        required_range = self.relations[relation]["range"]
 
-        # allow subclass relationships
-        source_parent = self.classes.get(source_type, {}).get("parent")
-        target_parent = self.classes.get(target_type, {}).get("parent")
+        source_ancestors = self._get_ancestors(source_type)
+        target_ancestors = self._get_ancestors(target_type)
 
-        return source_parent == domain and target_parent == range_
+        domain_ok = required_domain in source_ancestors
+        range_ok = required_range in target_ancestors
+
+        return domain_ok and range_ok

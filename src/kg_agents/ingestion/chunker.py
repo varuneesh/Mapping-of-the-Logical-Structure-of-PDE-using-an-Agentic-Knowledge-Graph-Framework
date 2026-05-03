@@ -20,25 +20,22 @@ def split_by_section(text: str) -> List[Dict]:
     Sequentially split LaTeX document by \\section.
     Each block keeps nearest section heading.
     """
-
     section_pattern = r"(\\section\*?{.*?})"
-
     parts = re.split(section_pattern, text)
 
     chunks = []
     current_heading = "Unknown"
 
     for part in parts:
-        # if not part.strip():
-        #     continue
-
         if part.startswith("\\section"):
-            # Extract heading title
             title_match = re.search(r"{(.*?)}", part)
             if title_match:
                 current_heading = title_match.group(1).strip()
         else:
-            chunks.append({"heading": current_heading, "content": part.strip()})
+            stripped = part.strip()
+            # Skip truly empty blocks — avoids IndexError downstream
+            if stripped:
+                chunks.append({"heading": current_heading, "content": stripped})
 
     return chunks
 
@@ -48,7 +45,6 @@ def paragraph_split(content: str, max_chars: int = 4000) -> List[str]:
     Split content into size-controlled chunks
     without breaking equations (paragraph-based splitting).
     """
-
     paragraphs = content.split("\n\n")
 
     final_chunks = []
@@ -58,7 +54,8 @@ def paragraph_split(content: str, max_chars: int = 4000) -> List[str]:
         if len(buffer) + len(para) < max_chars:
             buffer += para + "\n\n"
         else:
-            final_chunks.append(buffer.strip())
+            if buffer.strip():
+                final_chunks.append(buffer.strip())
             buffer = para + "\n\n"
 
     if buffer.strip():
@@ -81,48 +78,37 @@ def chunk_latex_document(
 
     latex_text = extract_document_body(latex_text)
 
-    # Step 1: Split by section
+    # Step 1: Split by section (empty blocks already filtered)
     section_blocks = split_by_section(latex_text)
 
     all_chunks = []
     doc_name = Path(latex_path).parent.parent.name
-
-    # Step 2: Split large blocks paragraph-wise
     primary_counter = 0
 
     for block in section_blocks:
+
         sub_chunks = paragraph_split(block["content"], max_chars=max_chars)
 
-        # If only one chunk, keep clean numbering
-        if len(sub_chunks) == 0:
-            all_chunks.append(
-                {
-                    "chunk_id": f"{doc_name}_chunk_{primary_counter}",
-                    "doc_id": doc_name,
-                    "heading": block["heading"],
-                    "content": sub_chunks[0].strip() if sub_chunks else "",
-                }
-            )
-        elif len(sub_chunks) == 1:
-            all_chunks.append(
-                {
-                    "chunk_id": f"{doc_name}_chunk_{primary_counter}",
-                    "doc_id": doc_name,
-                    "heading": block["heading"],
-                    "content": sub_chunks[0].strip(),
-                }
-            )
+        # Guard: skip if paragraph_split returns nothing
+        if not sub_chunks:
+            primary_counter += 1
+            continue
+
+        if len(sub_chunks) == 1:
+            all_chunks.append({
+                "chunk_id": f"{doc_name}_chunk_{primary_counter}",
+                "doc_id": doc_name,
+                "heading": block["heading"],
+                "content": sub_chunks[0].strip(),
+            })
         else:
-            # Multiple splits → use 3.1, 3.2 style
             for sub_index, sub_chunk in enumerate(sub_chunks, start=1):
-                all_chunks.append(
-                    {
-                        "chunk_id": f"{doc_name}_chunk_{primary_counter}.{sub_index}",
-                        "doc_id": doc_name,
-                        "heading": block["heading"],
-                        "content": sub_chunk.strip(),
-                    }
-                )
+                all_chunks.append({
+                    "chunk_id": f"{doc_name}_chunk_{primary_counter}.{sub_index}",
+                    "doc_id": doc_name,
+                    "heading": block["heading"],
+                    "content": sub_chunk.strip(),
+                })
 
         primary_counter += 1
 
@@ -132,6 +118,6 @@ def chunk_latex_document(
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(all_chunks, f, indent=2, ensure_ascii=False)
 
-    print(f"Chunks saved to {output_path}")
+    print(f"Chunks saved to {output_path} ({len(all_chunks)} chunks)")
 
     return all_chunks

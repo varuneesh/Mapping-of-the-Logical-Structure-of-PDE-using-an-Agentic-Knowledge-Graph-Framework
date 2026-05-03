@@ -67,7 +67,7 @@
     },
 
     "applies_to": {
-      "domain": "NumericalMethod",
+      "domain": "MathematicalObject",
       "range": "ProblemType",
       "description": "Indicates which problem type a method applies to."
     },
@@ -79,15 +79,21 @@
     },
 
     "has_property": {
-      "domain": "NumericalMethod",
+      "domain": "MathematicalObject",
       "range": "TheoreticalProperty",
       "description": "Indicates analytical property of a method."
     },
 
-    "analyzes": {
-      "domain": "ErrorConcept",
-      "range": "NumericalMethod",
-      "description": "Indicates error analysis applied to a method."
+    "has_error_analysis": {
+    "domain": "NumericalMethod",
+    "range": "ErrorConcept",
+    "description": "A method has a formally defined error measure."
+    },
+    
+    "quantifies": {
+        "domain": "ErrorConcept", 
+        "range": "NumericalMethod",
+        "description": "An error concept quantifies the deviation of a method."
     },
 
     "uses": {
@@ -104,8 +110,8 @@
 
     "approximates": {
       "domain": "NumericalMethod",
-      "range": "MathematicalStructure",
-      "description": "Indicates what mathematical structure is approximated."
+      "range": "MathematicalObject",
+      "description": "A numerical method approximates a mathematical object (function, operator, derivative). Source is always the NumericalMethod, target is always the MathematicalObject being approximated."
     },
 
     "requires": {

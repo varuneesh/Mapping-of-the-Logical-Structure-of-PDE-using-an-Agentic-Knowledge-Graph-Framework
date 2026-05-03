@@ -1,10 +1,5117 @@
 {
   "metadata": {
-    "created_at": "2026-03-03T00:00:00",
-    "last_updated": "2026-03-03T00:00:00"
+    "description": "Candidate types and relations for Ontology Proposer."
   },
-
-  "candidate_types": {},
-
-  "candidate_relations": {}
+  "candidate_types": {
+    "root": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept",
+        "mathematical concept",
+        "Concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_69",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_70",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.3"
+      ]
+    },
+    "Lipschitz continuous derivative": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Property"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.3"
+      ]
+    },
+    "quadratic convergence": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "iterative formula"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.6"
+      ]
+    },
+    "minimization": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "optimization concept",
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.6",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_91",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.4"
+      ]
+    },
+    "range": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_81.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_81.2"
+      ]
+    },
+    "illconditioned": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_82"
+      ]
+    },
+    "conjugate pairs": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "ComplexConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_85"
+      ]
+    },
+    "spectrum": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Concept",
+        "MathematicalConcept",
+        "MathematicalProperty"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_86.2",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_172",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_173"
+      ]
+    },
+    "induced matrix norms": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Matrix Norm",
+        "mathematical concept",
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_88",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_89",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.7"
+      ]
+    },
+    "gradient": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_91",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_248.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+      ]
+    },
+    "projector": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "matrix type"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.8"
+      ]
+    },
+    "H. Huang": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "author reference"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.9"
+      ]
+    },
+    "basic linear algebra subroutines (BLAS)": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "algorithm"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_115"
+      ]
+    },
+    "SAXPY": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "operation"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_115"
+      ]
+    },
+    "triplet form": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MatrixRepresentation"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_120"
+      ]
+    },
+    "compressed sparse row form": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MatrixRepresentation"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_120"
+      ]
+    },
+    "compressed sparse column form": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MatrixRepresentation"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_120"
+      ]
+    },
+    "backward error analysis": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Error Concept",
+        "Error Analysis Concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_131.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_131.2"
+      ]
+    },
+    "Quadratic equation": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Property"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_140"
+      ]
+    },
+    "Least Squares Theorem": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_148",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_228"
+      ]
+    },
+    "reflector": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_159"
+      ]
+    },
+    "warm start": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_164.2"
+      ]
+    },
+    "pseudo-inverse": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_168"
+      ]
+    },
+    "drop tolerance": {
+      "count": 4,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "parameter",
+        "Specific defined concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_187.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_187.2",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_188",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_239.4"
+      ]
+    },
+    "relative residual norm": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "parameter"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_187.1"
+      ]
+    },
+    "maximal allowed number of iterations": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "parameter",
+        "Specific defined concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_187.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_188"
+      ]
+    },
+    "min-max property": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalProperty",
+        "Property",
+        "Named property"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_203",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_355",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_357.1"
+      ]
+    },
+    "splitting": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept",
+        "AlgorithmConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_213.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_384.1"
+      ]
+    },
+    "preconditioning": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_213.1"
+      ]
+    },
+    "Elman, Silvester, and Wathen": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Authors"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_213.8"
+      ]
+    },
+    "Algorithms": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "algorithm type"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_215.1"
+      ]
+    },
+    "damping factor": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "parameter"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_217.3",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_217.4"
+      ]
+    },
+    "terminal strong component": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "graph concept",
+        "graph property"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_217.3",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_217.4"
+      ]
+    },
+    "convex": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "mathematical operation"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_217.3"
+      ]
+    },
+    "defective matrices": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "matrix property"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_218"
+      ]
+    },
+    "latent semantic analysis": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept",
+        "Concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_226.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_226.2"
+      ]
+    },
+    "Best Lower Rank Approximation Theorem": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_226.2"
+      ]
+    },
+    "orthogonal matrices": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "transformation",
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_233",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_239.1"
+      ]
+    },
+    "sufficient condition": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Condition"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_239.3"
+      ]
+    },
+    "rate of convergence": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_239.4"
+      ]
+    },
+    "computational work": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_239.4"
+      ]
+    },
+    "Hessian matrix": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept",
+        "Matrix property",
+        "mathematical object"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_248.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_252",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_269"
+      ]
+    },
+    "steepest descent": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_253.1"
+      ]
+    },
+    "active set": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept",
+        "method"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_266",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_282.1"
+      ]
+    },
+    "Lagrange multiplier": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept",
+        "mathematical concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_269"
+      ]
+    },
+    "first order necessary conditions": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+      ]
+    },
+    "second order necessary and sufficient conditions": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+      ]
+    },
+    "feasible region": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+      ]
+    },
+    "tangent direction": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+      ]
+    },
+    "full column rank": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "mathematical property"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_268"
+      ]
+    },
+    "Augmented Lagrangian": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_275"
+      ]
+    },
+    "corrected direction": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Direction Concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_279"
+      ]
+    },
+    "centering parameter": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Parameter Concept",
+        "parameter"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_279",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.2"
+      ]
+    },
+    "sparse matrices": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "sparse solution concept",
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.3",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.4"
+      ]
+    },
+    "piecewise polynomial interpolation": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_289.1"
+      ]
+    },
+    "interpolating polynomial of degree 32": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "PolynomialConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_312"
+      ]
+    },
+    "backward difference operator": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Operator"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_314.3"
+      ]
+    },
+    "natural conditions": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Boundary Condition",
+        "Specific defined mathematical concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_327",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_329"
+      ]
+    },
+    "Delaunay triangulation": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "triangulation method",
+        "TriangulationMethod"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_338.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_338.2"
+      ]
+    },
+    "orthonormal vectors": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "BasisProperty"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_347"
+      ]
+    },
+    "low pass filter": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_373"
+      ]
+    },
+    "mp3": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "CompressionScheme"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_383.2"
+      ]
+    },
+    "jpeg": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "CompressionScheme"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_383.2"
+      ]
+    },
+    "Mallat": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "reference"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_384.3"
+      ]
+    },
+    "Daubechies": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "reference"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_384.3"
+      ]
+    },
+    "staggered mesh": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MeshConcept",
+        "Mesh Concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_403",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_404"
+      ]
+    },
+    "MATLAB": {
+      "count": 5,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "ProgrammingLanguage",
+        "Programming Language",
+        "Software",
+        "software"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_408.2",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_408.3",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_409.3",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_434.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_457.1"
+      ]
+    },
+    "Newton divided difference interpolation formula": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_425"
+      ]
+    },
+    "safety factor": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_434.1"
+      ]
+    },
+    "recursive procedure": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_434.1"
+      ]
+    },
+    "integrating a function": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "integral concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_440"
+      ]
+    },
+    "definite integrals": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "integral concept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_440"
+      ]
+    },
+    "trajectory": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept",
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_444",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_445.2"
+      ]
+    },
+    "explicit methods": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "method type"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450"
+      ]
+    },
+    "implicit methods": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "method type"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450"
+      ]
+    },
+    "stiff": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Property"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.2"
+      ]
+    },
+    "predator-prey model": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalModel"
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_457.2"
+      ]
+    }
+  },
+  "candidate_relations": [
+    {
+      "source": "roundoff error",
+      "relation": "quantifies",
+      "target": "Algorithms",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_34.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Discretization errors",
+      "relation": "quantifies",
+      "target": "Algorithms",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_34.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "IEEE standard for floating point arithmetic",
+      "relation": "NEW_RELATION",
+      "target": "rounding unit",
+      "count": 2,
+      "confidence_scores": [
+        0.75,
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_38",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_44"
+      ],
+      "suggested_relations": [
+        "defines"
+      ]
+    },
+    {
+      "source": "roundoff error",
+      "relation": "depends_on",
+      "target": "IEEE standard for floating point arithmetic",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_39",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_40.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "roundoff error",
+      "relation": "depends_on",
+      "target": "rounding unit",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_40.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "rounding unit",
+      "relation": "defined_by",
+      "target": "IEEE standard for floating point arithmetic",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_40.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_52.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "rounding unit",
+      "relation": "has_property",
+      "target": "relative error",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_42",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_43"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "relative error",
+      "relation": "depends_on",
+      "target": "roundoff error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_42"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "rounding unit",
+      "relation": "defined_by",
+      "target": "roundoff error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_45"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "IEEE standard for floating point arithmetic",
+      "relation": "has_property",
+      "target": "rounding unit",
+      "count": 2,
+      "confidence_scores": [
+        0.75,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_46",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_52.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "rounding unit",
+      "relation": "NEW_RELATION",
+      "target": "chopping",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_46"
+      ],
+      "suggested_relations": [
+        "defines"
+      ]
+    },
+    {
+      "source": "rounding unit",
+      "relation": "quantifies",
+      "target": "relative error",
+      "count": 2,
+      "confidence_scores": [
+        0.75,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_46",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_52.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "IEEE standard for floating point arithmetic",
+      "relation": "has_property",
+      "target": "Cancellation error",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_48.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "chopping",
+      "relation": "defined_by",
+      "target": "IEEE standard for floating point arithmetic",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_52.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "rounding unit",
+      "relation": "has_error_analysis",
+      "target": "IEEE standard for floating point arithmetic",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_52.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "rounding unit",
+      "relation": "has_property",
+      "target": "truncation error",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_52.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "roundoff error",
+      "relation": "NEW_RELATION",
+      "target": "Convergence errors",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_72"
+      ],
+      "suggested_relations": [
+        "accumulates"
+      ]
+    },
+    {
+      "source": "root",
+      "relation": "NEW_RELATION",
+      "target": "Convergence errors",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_72"
+      ],
+      "suggested_relations": [
+        "affects"
+      ]
+    },
+    {
+      "source": "objective function",
+      "relation": "NEW_RELATION",
+      "target": "minimization",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_72"
+      ],
+      "suggested_relations": [
+        "is_minimized_by"
+      ]
+    },
+    {
+      "source": "quadratic convergence",
+      "relation": "NEW_RELATION",
+      "target": "roundoff error",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_72"
+      ],
+      "suggested_relations": [
+        "is_affected_by"
+      ]
+    },
+    {
+      "source": "Newton's method",
+      "relation": "requires",
+      "target": "Lipschitz continuous derivative",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "quadratic convergence",
+      "relation": "NEW_RELATION",
+      "target": "root",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.6"
+      ],
+      "suggested_relations": [
+        "defines"
+      ]
+    },
+    {
+      "source": "sinc function",
+      "relation": "NEW_RELATION",
+      "target": "minimization",
+      "count": 2,
+      "confidence_scores": [
+        0.75,
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.6",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.6"
+      ],
+      "suggested_relations": [
+        "is_related_to"
+      ]
+    },
+    {
+      "source": "golden section search",
+      "relation": "NEW_RELATION",
+      "target": "bisection method",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.7"
+      ],
+      "suggested_relations": [
+        "is_analogue_of"
+      ]
+    },
+    {
+      "source": "range",
+      "relation": "depends_on",
+      "target": "linear systems",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_81.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "singular",
+      "relation": "implies",
+      "target": "range",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_81.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "range",
+      "relation": "implies",
+      "target": "linear independence",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_81.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "singular",
+      "relation": "implies",
+      "target": "illconditioned",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_82",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_82"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "nonsingular",
+      "relation": "implies",
+      "target": "unique solution",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_82"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "eigenvalue problems",
+      "relation": "NEW_RELATION",
+      "target": "spectrum",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_83"
+      ],
+      "suggested_relations": [
+        "forms"
+      ]
+    },
+    {
+      "source": "eigenvalue problems",
+      "relation": "depends_on",
+      "target": "conjugate pairs",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_85"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Euler identity",
+      "relation": "NEW_RELATION",
+      "target": "eigenvalue problems",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_85"
+      ],
+      "suggested_relations": [
+        "defines"
+      ]
+    },
+    {
+      "source": "algebraic multiplicity",
+      "relation": "has_property",
+      "target": "defective matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_86.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "geometric multiplicity",
+      "relation": "has_property",
+      "target": "defective matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_86.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "diagonalizable",
+      "relation": "has_property",
+      "target": "spectrum",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_86.2",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.7"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "induced matrix norms",
+      "relation": "uses",
+      "target": "1-norm",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_88"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "induced matrix norms",
+      "relation": "uses",
+      "target": "Euclidean norm",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_88"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "induced matrix norms",
+      "relation": "uses",
+      "target": "infinity-norm",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_88"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "induced matrix norms",
+      "relation": "defined_by",
+      "target": "1-norm",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_89"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "induced matrix norms",
+      "relation": "defined_by",
+      "target": "infinity-norm",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_89"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "symmetric positive definite matrices",
+      "relation": "has_property",
+      "target": "Euclidean norm",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_90"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "orthogonal matrices",
+      "relation": "has_property",
+      "target": "Euclidean norm",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_90"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "orthogonal matrices",
+      "relation": "uses",
+      "target": "singular value decomposition",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_93"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "linear data fitting",
+      "relation": "solves",
+      "target": "unique solution",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Vandermonde",
+      "relation": "requires",
+      "target": "unique solution",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "linear data fitting",
+      "relation": "applies_to",
+      "target": "Vandermonde",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "symmetric positive definite matrices",
+      "relation": "has_property",
+      "target": "linear systems",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "skew-symmetric matrix",
+      "relation": "has_property",
+      "target": "spectrum",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.7"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "energy norm",
+      "relation": "has_property",
+      "target": "induced matrix norms",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.7"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "orthogonal matrices",
+      "relation": "has_property",
+      "target": "eigenvalue problems",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.8"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "projector",
+      "relation": "has_property",
+      "target": "eigenvalue problems",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.8"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "condition number",
+      "relation": "quantifies",
+      "target": "eigenvalue problems",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.8"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "skew-symmetric matrix",
+      "relation": "has_property",
+      "target": "singular value decomposition",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.8"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "condition number",
+      "relation": "has_property",
+      "target": "Gaussian elimination",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_96"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Gaussian elimination",
+      "relation": "uses",
+      "target": "basic linear algebra subroutines (BLAS)",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_115"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "backward substitution",
+      "relation": "uses",
+      "target": "basic linear algebra subroutines (BLAS)",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_115",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_115"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "LU decomposition",
+      "relation": "uses",
+      "target": "basic linear algebra subroutines (BLAS)",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_115"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "matrix-vector multiplication",
+      "relation": "depends_on",
+      "target": "basic linear algebra subroutines (BLAS)",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_115"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "matrix-matrix multiplication",
+      "relation": "depends_on",
+      "target": "basic linear algebra subroutines (BLAS)",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_115"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "SAXPY",
+      "relation": "depends_on",
+      "target": "basic linear algebra subroutines (BLAS)",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_115"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "LU decomposition",
+      "relation": "NEW_RELATION",
+      "target": "Cholesky decomposition",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_118"
+      ],
+      "suggested_relations": [
+        "defines"
+      ]
+    },
+    {
+      "source": "Cholesky decomposition",
+      "relation": "solves",
+      "target": "symmetric positive definite matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_119.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "condition number",
+      "relation": "has_property",
+      "target": "relative error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_130.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "condition number",
+      "relation": "NEW_RELATION",
+      "target": "relative error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_130.2"
+      ],
+      "suggested_relations": [
+        "bounds"
+      ]
+    },
+    {
+      "source": "condition number",
+      "relation": "quantifies",
+      "target": "LU decomposition",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_131.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "condition number",
+      "relation": "quantifies",
+      "target": "Cholesky decomposition",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_131.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Gaussian elimination",
+      "relation": "has_error_analysis",
+      "target": "backward error analysis",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_131.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "orthogonal matrices",
+      "relation": "has_property",
+      "target": "condition number",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_133",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_134"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "symmetric positive definite matrices",
+      "relation": "has_property",
+      "target": "condition number",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_134"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "symmetric positive definite matrices",
+      "relation": "has_property",
+      "target": "Quadratic equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_140"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Least Squares Theorem",
+      "relation": "quantifies",
+      "target": "condition number",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_148"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "condition number",
+      "relation": "implies",
+      "target": "relative error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_149"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Householder reflections",
+      "relation": "uses",
+      "target": "reflector",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_159"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "orthogonal matrices",
+      "relation": "depends_on",
+      "target": "reflector",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_159"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "warm start",
+      "relation": "NEW_RELATION",
+      "target": "Gaussian elimination",
+      "count": 1,
+      "confidence_scores": [
+        0.75
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_164.2"
+      ],
+      "suggested_relations": [
+        "initial_guess_for"
+      ]
+    },
+    {
+      "source": "iteration matrix",
+      "relation": "has_property",
+      "target": "spectrum",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_173"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "conjugate gradient method",
+      "relation": "approximates",
+      "target": "unique solution",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_180.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "conjugate gradient method",
+      "relation": "approximates",
+      "target": "energy norm",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_181"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "energy norm",
+      "relation": "defined_by",
+      "target": "symmetric positive definite matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_182"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "symmetric positive definite matrices",
+      "relation": "implies",
+      "target": "energy norm",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_182"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "conjugate gradient method",
+      "relation": "has_error_analysis",
+      "target": "energy norm",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_183"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "steepest descent",
+      "relation": "uses",
+      "target": "energy norm",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_183"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "energy norm",
+      "relation": "has_property",
+      "target": "convergence",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_183",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_213.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "conjugate gradient method",
+      "relation": "solves",
+      "target": "convergence",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_184"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "symmetric positive definite matrices",
+      "relation": "has_property",
+      "target": "conjugate gradient method",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_185"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "IC(0)",
+      "relation": "has_error_analysis",
+      "target": "maximal allowed number of iterations",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_187.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "drop tolerance",
+      "relation": "depends_on",
+      "target": "IC(0)",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_187.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "drop tolerance",
+      "relation": "is_instance_of",
+      "target": "Cholesky decomposition",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_187.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "preconditioning",
+      "relation": "requires",
+      "target": "drop tolerance",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_188"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "preconditioning",
+      "relation": "requires",
+      "target": "maximal allowed number of iterations",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_188"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "conjugate gradient method",
+      "relation": "applies_to",
+      "target": "Krylov Subspace",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_191"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Krylov Subspace",
+      "relation": "solves",
+      "target": "conjugate gradient method",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_191"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Arnoldi process",
+      "relation": "applies_to",
+      "target": "Krylov Subspace",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_194"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lanczos method",
+      "relation": "solves",
+      "target": "Krylov Subspace",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_195"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Arnoldi process",
+      "relation": "solves",
+      "target": "Krylov Subspace",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_195"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "orthonormal vectors",
+      "relation": "uses",
+      "target": "Krylov Subspace",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_198"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "MINRES",
+      "relation": "applies_to",
+      "target": "indefinite",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_201"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "MINRES",
+      "relation": "has_property",
+      "target": "energy norm",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_201"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Krylov Subspace",
+      "relation": "has_property",
+      "target": "min-max property",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_203"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "energy norm",
+      "relation": "has_property",
+      "target": "symmetric positive definite matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_213.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "skew-symmetric matrix",
+      "relation": "has_property",
+      "target": "energy norm",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_213.5"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Elman, Silvester, and Wathen",
+      "relation": "has_property",
+      "target": "preconditioning",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_213.8"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "PageRank",
+      "relation": "uses",
+      "target": "damping factor",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_217.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "PageRank",
+      "relation": "uses",
+      "target": "terminal strong component",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_217.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "power method",
+      "relation": "solves",
+      "target": "terminal strong component",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_217.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "power method",
+      "relation": "uses",
+      "target": "damping factor",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_217.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "shift and invert",
+      "relation": "NEW_RELATION",
+      "target": "inverse iteration",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_220"
+      ],
+      "suggested_relations": [
+        "improves"
+      ]
+    },
+    {
+      "source": "power method",
+      "relation": "NEW_RELATION",
+      "target": "inverse iteration",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_220"
+      ],
+      "suggested_relations": [
+        "compares_to"
+      ]
+    },
+    {
+      "source": "Rayleigh quotient",
+      "relation": "solves",
+      "target": "eigenvalue problems",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_222"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "latent semantic analysis",
+      "relation": "uses",
+      "target": "term-document matrix",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_226.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Best Lower Rank Approximation Theorem",
+      "relation": "defined_by",
+      "target": "SVD",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_226.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Least Squares Theorem",
+      "relation": "has_property",
+      "target": "unique solution",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_227"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Least Squares Theorem",
+      "relation": "defined_by",
+      "target": "pseudo-inverse",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_228"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "singular value decomposition",
+      "relation": "solves",
+      "target": "Least Squares Theorem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_228"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Least Squares Theorem",
+      "relation": "solves",
+      "target": "linear systems",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_229"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "upper Hessenberg matrix",
+      "relation": "defined_by",
+      "target": "orthogonal matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_233"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Krylov Subspace",
+      "relation": "NEW_RELATION",
+      "target": "orthogonal iteration",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_234"
+      ],
+      "suggested_relations": [
+        "is_equivalent_to"
+      ]
+    },
+    {
+      "source": "Krylov Subspace",
+      "relation": "NEW_RELATION",
+      "target": "simultaneous iteration",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_234"
+      ],
+      "suggested_relations": [
+        "is_equivalent_to"
+      ]
+    },
+    {
+      "source": "upper triangular matrix",
+      "relation": "NEW_RELATION",
+      "target": "Krylov Subspace",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_234"
+      ],
+      "suggested_relations": [
+        "is_produced_by"
+      ]
+    },
+    {
+      "source": "upper Hessenberg matrix",
+      "relation": "NEW_RELATION",
+      "target": "upper triangular matrix",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_234"
+      ],
+      "suggested_relations": [
+        "is_transformed_to"
+      ]
+    },
+    {
+      "source": "upper Hessenberg matrix",
+      "relation": "NEW_RELATION",
+      "target": "QR decomposition",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_234"
+      ],
+      "suggested_relations": [
+        "is_required_for"
+      ]
+    },
+    {
+      "source": "eigenvalue problems",
+      "relation": "NEW_RELATION",
+      "target": "Krylov Subspace",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_234"
+      ],
+      "suggested_relations": [
+        "are_produced_by"
+      ]
+    },
+    {
+      "source": "power method",
+      "relation": "has_error_analysis",
+      "target": "convergence",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_236"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "sufficient condition",
+      "relation": "requires",
+      "target": "regularization",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_239.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "matrix of Exercise 3",
+      "relation": "requires",
+      "target": "drop tolerance",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_239.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "drop tolerance",
+      "relation": "NEW_RELATION",
+      "target": "rate of convergence",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_239.4"
+      ],
+      "suggested_relations": [
+        "affects"
+      ]
+    },
+    {
+      "source": "drop tolerance",
+      "relation": "NEW_RELATION",
+      "target": "computational work",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_239.4"
+      ],
+      "suggested_relations": [
+        "affects"
+      ]
+    },
+    {
+      "source": "Hessian matrix",
+      "relation": "requires",
+      "target": "critical point",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_248.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "critical point",
+      "relation": "has_property",
+      "target": "symmetric positive definite matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_248.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "critical point",
+      "relation": "requires",
+      "target": "Hessian matrix",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_248.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "critical point",
+      "relation": "requires",
+      "target": "Taylor Series",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_248.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "critical point",
+      "relation": "has_property",
+      "target": "positive semidefinite",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_249"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Hessian matrix",
+      "relation": "has_property",
+      "target": "positive semidefinite",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_249"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Newton's method",
+      "relation": "solves",
+      "target": "critical point",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_250",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_252"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Hessian matrix",
+      "relation": "has_property",
+      "target": "symmetric positive definite matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_250"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Hessian matrix",
+      "relation": "depends_on",
+      "target": "critical point",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_250"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Newton's method",
+      "relation": "requires",
+      "target": "critical point",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_251"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Hessian matrix",
+      "relation": "has_property",
+      "target": "critical point",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_252"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Newton's method",
+      "relation": "uses",
+      "target": "directional derivative",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_253.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "steepest descent",
+      "relation": "has_property",
+      "target": "directional derivative",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_253.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "unconstrained optimization",
+      "relation": "requires",
+      "target": "equality constraints",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_265"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "unconstrained optimization",
+      "relation": "requires",
+      "target": "inequality constraints",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_265"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "equality constraints",
+      "relation": "implies",
+      "target": "feasible solution",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_265"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "inequality constraints",
+      "relation": "implies",
+      "target": "feasible solution",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_265"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "active set",
+      "relation": "requires",
+      "target": "feasible solution",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_266"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lagrange multiplier",
+      "relation": "requires",
+      "target": "equality constraints",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lagrange multiplier",
+      "relation": "requires",
+      "target": "inequality constraints",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "first order necessary conditions",
+      "relation": "implies",
+      "target": "critical point",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "feasible region",
+      "relation": "requires",
+      "target": "inequality constraints",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "gradient",
+      "relation": "depends_on",
+      "target": "tangent direction",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "critical point",
+      "relation": "depends_on",
+      "target": "gradient",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Karush-Kuhn-Tucker (KKT) conditions",
+      "relation": "requires",
+      "target": "constraint qualification",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_268"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "constraint qualification",
+      "relation": "implies",
+      "target": "full column rank",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_268"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lagrangian",
+      "relation": "depends_on",
+      "target": "active constraints",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_268"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "critical point",
+      "relation": "has_property",
+      "target": "first order necessary conditions",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_268"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "active constraints",
+      "relation": "requires",
+      "target": "full column rank",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_268"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lagrange multiplier",
+      "relation": "requires",
+      "target": "constraint qualification",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_269"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Karush-Kuhn-Tucker (KKT) conditions",
+      "relation": "requires",
+      "target": "Lagrange multiplier",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_269"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "quadratic programming problem",
+      "relation": "applies_to",
+      "target": "Lagrange multiplier",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_269"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Hessian matrix",
+      "relation": "depends_on",
+      "target": "Lagrange multiplier",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_269"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Augmented Lagrangian",
+      "relation": "approximates",
+      "target": "Lagrangian",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_275"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "duality gap",
+      "relation": "requires",
+      "target": "active set",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "duality gap",
+      "relation": "has_property",
+      "target": "centering parameter",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Least Squares Theorem",
+      "relation": "NEW_RELATION",
+      "target": "unconstrained optimization",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.3"
+      ],
+      "suggested_relations": [
+        "solves"
+      ]
+    },
+    {
+      "source": "Euclidean norm",
+      "relation": "NEW_RELATION",
+      "target": "unconstrained optimization",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.3"
+      ],
+      "suggested_relations": [
+        "solves"
+      ]
+    },
+    {
+      "source": "sparse matrices",
+      "relation": "NEW_RELATION",
+      "target": "unconstrained optimization",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.3"
+      ],
+      "suggested_relations": [
+        "solves"
+      ]
+    },
+    {
+      "source": "1-norm",
+      "relation": "NEW_RELATION",
+      "target": "unconstrained optimization",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.3"
+      ],
+      "suggested_relations": [
+        "solves"
+      ]
+    },
+    {
+      "source": "linear programming",
+      "relation": "solves",
+      "target": "minimization",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "nonlinear least squares problems",
+      "relation": "solves",
+      "target": "sparse matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "minimization",
+      "relation": "has_property",
+      "target": "sparse matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "active set",
+      "relation": "solves",
+      "target": "unconstrained optimization",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_282.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Jacobian matrix",
+      "relation": "has_property",
+      "target": "symmetric positive definite matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_282.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "interpolating polynomial of degree 32",
+      "relation": "is_instance_of",
+      "target": "piecewise polynomial interpolation",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_288"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "piecewise polynomial interpolation",
+      "relation": "is_instance_of",
+      "target": "trigonometric interpolation",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_288"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "interpolating polynomial of degree 32",
+      "relation": "has_property",
+      "target": "piecewise polynomial interpolation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_289.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Newton's method",
+      "relation": "solves",
+      "target": "unique solution",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_298"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Gaussian elimination",
+      "relation": "solves",
+      "target": "unique solution",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_298"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Newton divided difference interpolation formula",
+      "relation": "approximates",
+      "target": "k th derivative",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_303"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "interpolating polynomial of degree 32",
+      "relation": "solves",
+      "target": "Newton divided difference interpolation formula",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_312"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Newton divided difference interpolation formula",
+      "relation": "has_error_analysis",
+      "target": "Polynomial Interpolation Error Theorem",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_313.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Newton backward difference formula",
+      "relation": "uses",
+      "target": "backward difference operator",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_314.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lagrange interpolation",
+      "relation": "applies_to",
+      "target": "Polynomial Interpolation Error Theorem",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_314.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Polynomial Interpolation Error Theorem",
+      "relation": "applies_to",
+      "target": "Lagrange interpolation",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_314.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Newton backward difference formula",
+      "relation": "applies_to",
+      "target": "Polynomial Interpolation Error Theorem",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_314.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Polynomial Interpolation Error Theorem",
+      "relation": "applies_to",
+      "target": "Newton backward difference formula",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_314.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "piecewise polynomial interpolation",
+      "relation": "has_error_analysis",
+      "target": "Polynomial Interpolation Error Theorem",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_317"
+      ],
+      "suggested_relations": [
+        "NEW_RELATION"
+      ]
+    },
+    {
+      "source": "interpolating cubic spline",
+      "relation": "requires",
+      "target": "natural conditions",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_327"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "interpolating cubic spline",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_328",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_328"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "natural conditions",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_328"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "not-a-knot",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_328"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "tridiagonal systems of equations",
+      "relation": "requires",
+      "target": "natural conditions",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_329"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "natural conditions",
+      "relation": "implies",
+      "target": "interpolating cubic spline",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_329"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "piecewise polynomial interpolation",
+      "relation": "has_error_analysis",
+      "target": "truncation error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_331"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Chebyshev points",
+      "relation": "has_error_analysis",
+      "target": "truncation error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_331"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "bilinear interpolation",
+      "relation": "applies_to",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_337.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "bicubic spline",
+      "relation": "applies_to",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_337.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Delaunay triangulation",
+      "relation": "uses",
+      "target": "piecewise polynomial interpolation",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_338.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_338.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "triscatteredinterp",
+      "relation": "uses",
+      "target": "Delaunay triangulation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_338.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "orthonormal vectors",
+      "relation": "requires",
+      "target": "normal equations",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_347"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Hilbert matrix",
+      "relation": "has_property",
+      "target": "orthonormal vectors",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_347"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Chebyshev points",
+      "relation": "has_property",
+      "target": "min-max property",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_355",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_355"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Least Squares Theorem",
+      "relation": "applies_to",
+      "target": "least squares polynomial approximations",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_362"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Chebyshev points",
+      "relation": "has_property",
+      "target": "low pass filter",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_373"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Fourier basis functions",
+      "relation": "has_property",
+      "target": "low pass filter",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_373"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "discrete cosine transform",
+      "relation": "solves",
+      "target": "jpeg",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_383.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "discrete cosine transform",
+      "relation": "solves",
+      "target": "mp3",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_383.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "splitting",
+      "relation": "uses",
+      "target": "fast Fourier transform (FFT)",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_384.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Mallat",
+      "relation": "defined_by",
+      "target": "wavelets",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_384.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Daubechies",
+      "relation": "defined_by",
+      "target": "wavelets",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_384.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Taylor Series",
+      "relation": "approximates",
+      "target": "first derivative",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_387",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_388"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Newton divided difference interpolation formula",
+      "relation": "approximates",
+      "target": "first derivative",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_388"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "three-point formula",
+      "relation": "approximates",
+      "target": "first derivative",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_389"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "higher order one-sided formula",
+      "relation": "approximates",
+      "target": "first derivative",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_389"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "three-point formula",
+      "relation": "has_error_analysis",
+      "target": "truncation error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_389"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "higher order one-sided formula",
+      "relation": "has_error_analysis",
+      "target": "truncation error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_389"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "three-point formula",
+      "relation": "approximates",
+      "target": "f^{(i v)}",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_391.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "three-point formula",
+      "relation": "approximates",
+      "target": "f^{(v i)}",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_391.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lagrange interpolation",
+      "relation": "approximates",
+      "target": "first derivative",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_395"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lagrange interpolation",
+      "relation": "uses",
+      "target": "Lagrange polynomials",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_395"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "finite difference approximation",
+      "relation": "approximates",
+      "target": "first derivative",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_395"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lagrange interpolation",
+      "relation": "approximates",
+      "target": "k th derivative",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_398"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "second order formula",
+      "relation": "approximates",
+      "target": "first derivative",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_398"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "second order formula",
+      "relation": "requires",
+      "target": "staggered mesh",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_403"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "noncompact long difference",
+      "relation": "requires",
+      "target": "staggered mesh",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_404"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "staggered mesh",
+      "relation": "has_property",
+      "target": "finite difference approximation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_404"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "splitting",
+      "relation": "uses",
+      "target": "MATLAB",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_408.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "initial value profile",
+      "relation": "uses",
+      "target": "MATLAB",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_408.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "MATLAB",
+      "relation": "uses",
+      "target": "second order formula",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_409.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "trapezoidal rule",
+      "relation": "solves",
+      "target": "definite integrals",
+      "count": 5,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9,
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_412",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_418",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_418",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_434.4",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Simpson rule",
+      "relation": "solves",
+      "target": "definite integrals",
+      "count": 4,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_412",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_434.4",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.2",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "midpoint rule",
+      "relation": "solves",
+      "target": "definite integrals",
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_412",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_418",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Gaussian quadrature",
+      "relation": "solves",
+      "target": "definite integrals",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_412",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_424"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Romberg integration",
+      "relation": "solves",
+      "target": "definite integrals",
+      "count": 6,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9,
+        0.9,
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_412",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_434.4",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_436",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_437",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.2",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "trapezoidal rule",
+      "relation": "has_error_analysis",
+      "target": "truncation error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_418"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "midpoint rule",
+      "relation": "has_error_analysis",
+      "target": "quadrature error",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_422",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_423"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "trapezoidal rule",
+      "relation": "has_error_analysis",
+      "target": "quadrature error",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_422",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_423"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Simpson rule",
+      "relation": "has_error_analysis",
+      "target": "quadrature error",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_422",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_423"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "trapezoidal rule",
+      "relation": "approximates",
+      "target": "Newton divided difference interpolation formula",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_425"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Gauss-Radau quadrature",
+      "relation": "NEW_RELATION",
+      "target": "Gaussian quadrature",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_432"
+      ],
+      "suggested_relations": [
+        "compares_to"
+      ]
+    },
+    {
+      "source": "adaptive quadrature",
+      "relation": "uses",
+      "target": "MATLAB",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_434.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "adaptive quadrature",
+      "relation": "requires",
+      "target": "safety factor",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_434.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "adaptive quadrature",
+      "relation": "depends_on",
+      "target": "recursive procedure",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_434.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "adaptive quadrature",
+      "relation": "solves",
+      "target": "definite integrals",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_434.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Richardson extrapolation",
+      "relation": "NEW_RELATION",
+      "target": "Romberg integration",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_436"
+      ],
+      "suggested_relations": [
+        "generalizes"
+      ]
+    },
+    {
+      "source": "Gaussian quadrature",
+      "relation": "approximates",
+      "target": "integrating a function",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_440"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Simpson rule",
+      "relation": "approximates",
+      "target": "integrating a function",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_440"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "trapezoidal rule",
+      "relation": "approximates",
+      "target": "integrating a function",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_440"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "composite formulas",
+      "relation": "approximates",
+      "target": "integrating a function",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_440"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "area of the unit circle",
+      "relation": "approximates",
+      "target": "integrating a function",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_440"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "trapezoidal rule",
+      "relation": "approximates",
+      "target": "definite integrals",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "midpoint rule",
+      "relation": "approximates",
+      "target": "definite integrals",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Gaussian quadrature",
+      "relation": "approximates",
+      "target": "definite integrals",
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Simpson rule",
+      "relation": "approximates",
+      "target": "definite integrals",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "trapezoidal rule",
+      "relation": "has_error_analysis",
+      "target": "error in the obtained composite Gaussian rule",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.3",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_442.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "differential equation",
+      "relation": "has_property",
+      "target": "trajectory",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_444",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_445.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "trajectory",
+      "relation": "depends_on",
+      "target": "initial value problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_445.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Forward Euler method",
+      "relation": "has_error_analysis",
+      "target": "truncation error",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_448",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_453.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "initial value ODE",
+      "relation": "defined_by",
+      "target": "exact solution",
+      "count": 1,
+      "confidence_scores": [
+        0.0
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_449.1"
+      ],
+      "suggested_relations": [
+        "NEW_RELATION"
+      ]
+    },
+    {
+      "source": "Forward Euler method",
+      "relation": "is_instance_of",
+      "target": "explicit methods",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Forward Euler method",
+      "relation": "is_instance_of",
+      "target": "implicit methods",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Forward Euler method",
+      "relation": "solves",
+      "target": "initial value problem",
+      "count": 4,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_453.2",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_460.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Forward Euler method",
+      "relation": "has_error_analysis",
+      "target": "roundoff error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_453.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Forward Euler method",
+      "relation": "has_property",
+      "target": "stability",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_453.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "global error",
+      "relation": "quantifies",
+      "target": "Forward Euler method",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_453.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Forward Euler method",
+      "relation": "has_error_analysis",
+      "target": "absolute error",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.1",
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "initial value problem",
+      "relation": "has_property",
+      "target": "stiff",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Forward Euler method",
+      "relation": "solves",
+      "target": "stiff",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Runge-Kutta method",
+      "relation": "solves",
+      "target": "stiff",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Runge-Kutta method",
+      "relation": "solves",
+      "target": "initial value problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_456"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Runge-Kutta method",
+      "relation": "uses",
+      "target": "MATLAB",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_457.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Runge-Kutta method",
+      "relation": "has_error_analysis",
+      "target": "roundoff error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_457.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Runge-Kutta method",
+      "relation": "approximates",
+      "target": "predator-prey model",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_457.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Adams-Bashforth method",
+      "relation": "solves",
+      "target": "initial value problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_460.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Adams-Moulton method",
+      "relation": "solves",
+      "target": "initial value problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_460.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "trapezoidal rule",
+      "relation": "solves",
+      "target": "initial value problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_460.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "two-step formula",
+      "relation": "solves",
+      "target": "initial value problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_460.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Adams-Bashforth method",
+      "relation": "has_error_analysis",
+      "target": "absolute error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_460.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Adams-Moulton method",
+      "relation": "has_error_analysis",
+      "target": "absolute error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_460.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Runge-Kutta method",
+      "relation": "has_error_analysis",
+      "target": "absolute error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_460.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Forward Euler method",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_469.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Newton's method",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_469.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "implicit methods",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_469.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "autonomous ODE system",
+      "relation": "has_error_analysis",
+      "target": "relative error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_473.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "RK4",
+      "relation": "has_error_analysis",
+      "target": "relative error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_473.2"
+      ],
+      "suggested_relations": []
+    }
+  ]
 }
