@@ -1,0 +1,128 @@
+{
+  "metadata": {
+    "created_at": "2026-05-02T04:07:35.035651",
+    "proposals_version": 18,
+    "parent_ontology": "0.0",
+    "status": "applied",
+    "applied_at": "2026-05-02T04:07:35.067648",
+    "extension_version": "0.7"
+  },
+  "entity_proposals": [
+    {
+      "proposed_class_name": "CriticalPointConcept",
+      "parent_class": "MathematicalConcept",
+      "description": "A class representing the concept of critical points in mathematical analysis and numerical methods, encompassing various types and properties of critical points.",
+      "justification": "This new class is necessary to encapsulate the specific mathematical and numerical significance of critical points, which is not adequately covered by existing classes, ensuring it can accommodate future related concepts.",
+      "candidate": {
+        "members": [
+          {
+            "name": "critical point",
+            "count": 7,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "MathematicalConcept",
+            "suggested_types": [
+              "MathematicalConcept",
+              "Mathematical concept",
+              "mathematical concept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_248.1",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_248.2",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_249",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_250",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_252"
+            ]
+          }
+        ],
+        "cluster_size": 1,
+        "cluster_total_count": 7,
+        "cluster_avg_confidence": 0.9
+      },
+      "proposal_id": "7a0dfac8-7fd6-4b47-9375-769bbac2a983",
+      "proposal_type": "entity_class",
+      "status": "accepted",
+      "cluster_members": [
+        "critical point"
+      ],
+      "reviewed_at": "2026-05-02T04:07:35.054648",
+      "auto_accepted": true
+    },
+    {
+      "proposed_class_name": "ConstraintConcept",
+      "parent_class": "MathematicalConcept",
+      "description": "A class representing various types of constraints used in numerical methods, including equality and inequality constraints, as well as related concepts like constraint qualification and active constraints.",
+      "justification": "This new class is necessary to encapsulate the specific family of constraint-related concepts that are not adequately covered by existing classes, ensuring clarity and coherence in the ontology related to numerical methods.",
+      "candidate": {
+        "members": [
+          {
+            "name": "equality constraints",
+            "count": 2,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "ConstraintType",
+            "suggested_types": [
+              "ConstraintType",
+              "MathematicalConcept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_265",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+            ]
+          },
+          {
+            "name": "inequality constraints",
+            "count": 2,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "ConstraintType",
+            "suggested_types": [
+              "ConstraintType",
+              "MathematicalConcept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_265",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
+            ]
+          },
+          {
+            "name": "constraint qualification",
+            "count": 1,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "mathematical concept",
+            "suggested_types": [
+              "mathematical concept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_268"
+            ]
+          },
+          {
+            "name": "active constraints",
+            "count": 1,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "mathematical concept",
+            "suggested_types": [
+              "mathematical concept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_268"
+            ]
+          }
+        ],
+        "cluster_size": 4,
+        "cluster_total_count": 6,
+        "cluster_avg_confidence": 0.9
+      },
+      "proposal_id": "5139c011-ef25-4a05-845c-5b583eeff6dc",
+      "proposal_type": "entity_class",
+      "status": "accepted",
+      "cluster_members": [
+        "equality constraints",
+        "inequality constraints",
+        "constraint qualification",
+        "active constraints"
+      ],
+      "reviewed_at": "2026-05-02T04:07:35.054648",
+      "auto_accepted": true
+    }
+  ],
+  "relation_proposals": []
+}

@@ -1,0 +1,148 @@
+{
+  "metadata": {
+    "created_at": "2026-05-02T01:55:25.114899",
+    "proposals_version": 2,
+    "parent_ontology": "0.0",
+    "status": "applied",
+    "applied_at": "2026-05-02T01:55:25.168471",
+    "extension_version": "0.1"
+  },
+  "entity_proposals": [
+    {
+      "proposed_class_name": "FloatingPointStandard",
+      "parent_class": "TheoreticalProperty",
+      "description": "A class representing standards and concepts related to floating point arithmetic in numerical methods.",
+      "justification": "This new class is necessary to encapsulate the specific standards and properties of floating point arithmetic, which are distinct from general theoretical properties and require a dedicated classification to accommodate future related standards and concepts.",
+      "candidate": {
+        "members": [
+          {
+            "name": "IEEE standard for floating point arithmetic",
+            "count": 13,
+            "avg_confidence": 0.773,
+            "dominant_suggestion": "Standard",
+            "suggested_types": [
+              "Standard",
+              "standard",
+              "concept",
+              "precision type",
+              "floating point standard"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_36",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_37",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_38",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_39",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_40.1"
+            ]
+          }
+        ],
+        "cluster_size": 1,
+        "cluster_total_count": 13,
+        "cluster_avg_confidence": 0.773
+      },
+      "proposal_id": "1609aa71-b899-4928-a74d-cec403f01e92",
+      "proposal_type": "entity_class",
+      "status": "accepted",
+      "cluster_members": [
+        "IEEE standard for floating point arithmetic"
+      ],
+      "reviewed_at": "2026-05-02T01:55:25.154596",
+      "auto_accepted": true
+    },
+    {
+      "proposed_class_name": "NumericalConcept",
+      "parent_class": "MathematicalObject",
+      "description": "A class representing fundamental concepts in numerical methods, including various types of numerical representations and their properties.",
+      "justification": "This new class is necessary to encapsulate the broad range of numerical concepts, such as rounding units, that are not adequately covered by existing classes, ensuring that future related entities can be included without being overly specific or generic.",
+      "candidate": {
+        "members": [
+          {
+            "name": "rounding unit",
+            "count": 13,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "NumericalConcept",
+            "suggested_types": [
+              "Concept",
+              "concept",
+              "MathematicalConcept",
+              "NumericalConcept",
+              "numerical concept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_38",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_39",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_40.1",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_42",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_43"
+            ]
+          }
+        ],
+        "cluster_size": 1,
+        "cluster_total_count": 13,
+        "cluster_avg_confidence": 0.9
+      },
+      "proposal_id": "f27bfb3e-3da1-47c2-83c3-bbe176489121",
+      "proposal_type": "entity_class",
+      "status": "accepted",
+      "cluster_members": [
+        "rounding unit"
+      ],
+      "reviewed_at": "2026-05-02T01:55:25.154596",
+      "auto_accepted": true
+    },
+    {
+      "proposed_class_name": "ErrorConcept",
+      "parent_class": "ErrorConcept",
+      "description": "A class representing various types of errors encountered in numerical methods, including roundoff error and relative error.",
+      "justification": "This new class is necessary to encompass the specific types of errors related to numerical computations, which are not adequately covered by existing classes, ensuring a clear distinction and organization within the numerical methods ontology.",
+      "candidate": {
+        "members": [
+          {
+            "name": "roundoff error",
+            "count": 1,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "error concept",
+            "suggested_types": [
+              "error concept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_42"
+            ]
+          },
+          {
+            "name": "relative error",
+            "count": 5,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "concept",
+            "suggested_types": [
+              "error concept",
+              "MathematicalConcept",
+              "concept",
+              "Concept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_42",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_43",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_45",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_46",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_52.4"
+            ]
+          }
+        ],
+        "cluster_size": 2,
+        "cluster_total_count": 6,
+        "cluster_avg_confidence": 0.9
+      },
+      "proposal_id": "ae20c639-e434-44f6-b71a-4b51d6ad3491",
+      "proposal_type": "entity_class",
+      "status": "accepted",
+      "cluster_members": [
+        "roundoff error",
+        "relative error"
+      ],
+      "reviewed_at": "2026-05-02T01:55:25.154596",
+      "auto_accepted": true
+    }
+  ],
+  "relation_proposals": []
+}

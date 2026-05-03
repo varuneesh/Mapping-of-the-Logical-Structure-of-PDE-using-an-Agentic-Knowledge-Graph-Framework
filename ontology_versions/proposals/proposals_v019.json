@@ -1,0 +1,67 @@
+{
+  "metadata": {
+    "created_at": "2026-05-02T04:44:24.425512",
+    "proposals_version": 19,
+    "parent_ontology": "0.0",
+    "status": "applied",
+    "applied_at": "2026-05-02T04:44:24.454207",
+    "extension_version": "0.8"
+  },
+  "entity_proposals": [
+    {
+      "proposed_class_name": "SolutionProperty",
+      "parent_class": "MathematicalProperty",
+      "description": "This class encompasses properties related to the existence and uniqueness of solutions in numerical methods.",
+      "justification": "A new class is needed to specifically address the properties of solutions, such as feasibility and uniqueness, which are not adequately covered by existing classes that focus on broader mathematical concepts.",
+      "candidate": {
+        "members": [
+          {
+            "name": "feasible solution",
+            "count": 1,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "SolutionType",
+            "suggested_types": [
+              "SolutionType"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_265"
+            ]
+          },
+          {
+            "name": "unique solution",
+            "count": 5,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "MathematicalConcept",
+            "suggested_types": [
+              "Concept",
+              "solution property",
+              "SolutionType",
+              "MathematicalConcept",
+              "MathematicalProperty"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_82",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.2",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_180.1",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_227",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_298"
+            ]
+          }
+        ],
+        "cluster_size": 2,
+        "cluster_total_count": 6,
+        "cluster_avg_confidence": 0.9
+      },
+      "proposal_id": "a98d38e5-693c-40d9-82b0-2a0f537ef7c6",
+      "proposal_type": "entity_class",
+      "status": "accepted",
+      "cluster_members": [
+        "feasible solution",
+        "unique solution"
+      ],
+      "reviewed_at": "2026-05-02T04:44:24.438557",
+      "auto_accepted": true
+    }
+  ],
+  "relation_proposals": []
+}

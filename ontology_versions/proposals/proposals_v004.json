@@ -1,0 +1,53 @@
+{
+  "metadata": {
+    "created_at": "2026-05-02T02:48:37.543532",
+    "proposals_version": 4,
+    "parent_ontology": "0.0",
+    "status": "applied",
+    "applied_at": "2026-05-02T02:48:37.604443",
+    "extension_version": "0.3"
+  },
+  "entity_proposals": [
+    {
+      "proposed_class_name": "MatrixConditionConcept",
+      "parent_class": "NumericalConcept",
+      "description": "A class representing properties related to the condition number of matrices, which is a crucial aspect in numerical analysis and stability of algorithms.",
+      "justification": "This new class is necessary to encapsulate the specific properties and concepts related to condition numbers, which are not adequately covered by existing classes like 'NumericalConcept' or 'MatrixConcept', allowing for future expansion into related matrix properties.",
+      "candidate": {
+        "members": [
+          {
+            "name": "condition number",
+            "count": 9,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "MathematicalConcept",
+            "suggested_types": [
+              "numerical concept",
+              "Matrix Property",
+              "MathematicalConcept",
+              "Mathematical Concept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.8",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_96",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_130.1",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_130.2",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_131.1"
+            ]
+          }
+        ],
+        "cluster_size": 1,
+        "cluster_total_count": 9,
+        "cluster_avg_confidence": 0.9
+      },
+      "proposal_id": "75b21277-e087-4ed0-a19a-2fb90f032120",
+      "proposal_type": "entity_class",
+      "status": "accepted",
+      "cluster_members": [
+        "condition number"
+      ],
+      "reviewed_at": "2026-05-02T02:48:37.577710",
+      "auto_accepted": true
+    }
+  ],
+  "relation_proposals": []
+}

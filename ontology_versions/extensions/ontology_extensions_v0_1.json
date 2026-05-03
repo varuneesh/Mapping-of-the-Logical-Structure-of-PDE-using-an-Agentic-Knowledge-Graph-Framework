@@ -1,0 +1,35 @@
+{
+  "extension_metadata": {
+    "extension_version": "0.1",
+    "parent_core_version": "0.0",
+    "description": "Extensions added by OntologyProposer from proposals_v002",
+    "created_at": "2026-05-02T01:55:25.167093"
+  },
+  "subclasses": {
+    "FloatingPointStandard": {
+      "parent": "TheoreticalProperty",
+      "description": "A class representing standards and concepts related to floating point arithmetic in numerical methods.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T01:55:25.154596",
+      "evidence_count": 13,
+      "proposal_id": "1609aa71-b899-4928-a74d-cec403f01e92"
+    },
+    "NumericalConcept": {
+      "parent": "MathematicalObject",
+      "description": "A class representing fundamental concepts in numerical methods, including various types of numerical representations and their properties.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T01:55:25.154596",
+      "evidence_count": 13,
+      "proposal_id": "f27bfb3e-3da1-47c2-83c3-bbe176489121"
+    },
+    "ErrorConcept": {
+      "parent": "ErrorConcept",
+      "description": "A class representing various types of errors encountered in numerical methods, including roundoff error and relative error.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T01:55:25.154596",
+      "evidence_count": 6,
+      "proposal_id": "ae20c639-e434-44f6-b71a-4b51d6ad3491"
+    }
+  },
+  "relation_extensions": {}
+}

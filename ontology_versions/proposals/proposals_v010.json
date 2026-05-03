@@ -1,0 +1,86 @@
+{
+  "metadata": {
+    "created_at": "2026-05-02T03:18:50.477585",
+    "proposals_version": 10,
+    "parent_ontology": "0.0",
+    "status": "applied",
+    "applied_at": "2026-05-02T03:18:50.533086",
+    "extension_version": "0.5"
+  },
+  "entity_proposals": [
+    {
+      "proposed_class_name": "MatrixOperationConcept",
+      "parent_class": "NumericalConcept",
+      "description": "A class representing various operations and concepts related to matrix manipulations in numerical methods.",
+      "justification": "This new class is necessary to encompass the specific operations and concepts related to matrices, such as multiplication and iteration, which are not adequately covered by existing classes like 'MatrixConcept' or 'NumericalConcept', allowing for future expansions in matrix-related operations.",
+      "candidate": {
+        "members": [
+          {
+            "name": "iteration matrix",
+            "count": 2,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "MathematicalConcept",
+            "suggested_types": [
+              "MathematicalConcept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_172",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_213.1"
+            ]
+          },
+          {
+            "name": "matrix-matrix multiplication",
+            "count": 1,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "operation",
+            "suggested_types": [
+              "operation"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_115"
+            ]
+          },
+          {
+            "name": "matrix-vector multiplication",
+            "count": 1,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "operation",
+            "suggested_types": [
+              "operation"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_115"
+            ]
+          },
+          {
+            "name": "matrix graph",
+            "count": 1,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "Concept",
+            "suggested_types": [
+              "Concept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_127"
+            ]
+          }
+        ],
+        "cluster_size": 4,
+        "cluster_total_count": 5,
+        "cluster_avg_confidence": 0.9
+      },
+      "proposal_id": "4a23d067-3f43-4e85-91ff-5b4a6976715c",
+      "proposal_type": "entity_class",
+      "status": "accepted",
+      "cluster_members": [
+        "iteration matrix",
+        "matrix-matrix multiplication",
+        "matrix-vector multiplication",
+        "matrix graph"
+      ],
+      "reviewed_at": "2026-05-02T03:18:50.506396",
+      "auto_accepted": true
+    }
+  ],
+  "relation_proposals": []
+}

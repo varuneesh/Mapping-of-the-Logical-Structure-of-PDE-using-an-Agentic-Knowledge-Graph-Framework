@@ -1,0 +1,91 @@
+{
+  "extension_metadata": {
+    "extension_version": "0.6",
+    "parent_core_version": "0.0",
+    "description": "Extensions added by OntologyProposer from proposals_v011",
+    "created_at": "2026-05-02T03:29:43.678095"
+  },
+  "subclasses": {
+    "FloatingPointStandard": {
+      "parent": "TheoreticalProperty",
+      "description": "A class representing standards and concepts related to floating point arithmetic in numerical methods.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T01:55:25.154596",
+      "evidence_count": 13,
+      "proposal_id": "1609aa71-b899-4928-a74d-cec403f01e92"
+    },
+    "NumericalConcept": {
+      "parent": "MathematicalObject",
+      "description": "A class representing fundamental concepts in numerical methods, including various types of numerical representations and their properties.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T01:55:25.154596",
+      "evidence_count": 13,
+      "proposal_id": "f27bfb3e-3da1-47c2-83c3-bbe176489121"
+    },
+    "ErrorConcept": {
+      "parent": "ErrorConcept",
+      "description": "A class representing various types of errors encountered in numerical methods, including roundoff error and relative error.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T01:55:25.154596",
+      "evidence_count": 6,
+      "proposal_id": "ae20c639-e434-44f6-b71a-4b51d6ad3491"
+    },
+    "MatrixConcept": {
+      "parent": "MathematicalObject",
+      "description": "A class representing various types and properties of matrices relevant to numerical methods, including concepts such as eigenvalue problems, singular value decomposition, and matrix classifications.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T02:06:30.385904",
+      "evidence_count": 32,
+      "proposal_id": "b2cae87a-d673-4e7c-91d0-d0387c24c2c1"
+    },
+    "OrthogonalConcept": {
+      "parent": "MathematicalObject",
+      "description": "A class representing concepts related to orthogonality in mathematical structures, including orthogonal matrices and orthonormal vectors.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T02:06:30.385904",
+      "evidence_count": 7,
+      "proposal_id": "915592e0-e76c-48c8-93c9-ef299a8bcf9c"
+    },
+    "MatrixConditionConcept": {
+      "parent": "NumericalConcept",
+      "description": "A class representing properties related to the condition number of matrices, which is a crucial aspect in numerical analysis and stability of algorithms.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T02:48:37.577710",
+      "evidence_count": 9,
+      "proposal_id": "75b21277-e087-4ed0-a19a-2fb90f032120"
+    },
+    "KrylovSubspaceConcept": {
+      "parent": "NumericalConcept",
+      "description": "A conceptual framework encompassing various mathematical methods and techniques related to Krylov subspaces used in numerical linear algebra.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T03:10:56.433266",
+      "evidence_count": 8,
+      "proposal_id": "51d112c6-63f8-4ab4-835a-5cc92dc221b0"
+    },
+    "MatrixOperationConcept": {
+      "parent": "NumericalConcept",
+      "description": "A class representing various operations and concepts related to matrix manipulations in numerical methods.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T03:18:50.506396",
+      "evidence_count": 5,
+      "proposal_id": "4a23d067-3f43-4e85-91ff-5b4a6976715c"
+    },
+    "NormConcept": {
+      "parent": "MathematicalConcept",
+      "description": "A class representing various types of norms used in numerical methods to measure the size or distance of mathematical objects.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T03:29:43.655223",
+      "evidence_count": 8,
+      "proposal_id": "9327d759-e88f-4c58-8783-5e0d2b17c04b"
+    },
+    "MatrixPropertyConcept": {
+      "parent": "MatrixConcept",
+      "description": "A class representing properties and structures of matrices relevant to numerical methods, including symmetric positive definite matrices, orthogonal matrices, and related concepts.",
+      "added_by": "OntologyProposer",
+      "added_at": "2026-05-02T03:29:43.655223",
+      "evidence_count": 6,
+      "proposal_id": "c142491e-6207-424b-93d9-88d101bf6bc4"
+    }
+  },
+  "relation_extensions": {}
+}
