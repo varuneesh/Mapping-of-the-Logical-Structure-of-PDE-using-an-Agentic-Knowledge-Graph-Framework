@@ -1,0 +1,75 @@
+{
+  "metadata": {
+    "created_at": "2026-05-04T00:59:51.895968",
+    "proposals_version": 50,
+    "parent_ontology": "0.0",
+    "status": "applied",
+    "applied_at": "2026-05-04T00:59:51.957334",
+    "extension_version": "0.4"
+  },
+  "entity_proposals": [
+    {
+      "proposed_class_name": "StabilityConcept",
+      "parent_class": "TheoreticalProperty",
+      "description": "A class representing various aspects and conditions related to the stability of numerical methods.",
+      "justification": "This new class is necessary to encapsulate the specific properties and conditions of stability, which are not adequately covered by existing classes, allowing for the inclusion of future related concepts in numerical methods.",
+      "candidate": {
+        "members": [
+          {
+            "name": "stability",
+            "count": 1,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "stability concept",
+            "suggested_types": [
+              "stability concept"
+            ],
+            "sources": [
+              "Morton_Numerical Solution of PDE_chunk_28.2"
+            ]
+          },
+          {
+            "name": "second order necessary and sufficient conditions",
+            "count": 2,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "stability concept",
+            "suggested_types": [
+              "MathematicalConcept",
+              "stability concept"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267",
+              "Morton_Numerical Solution of PDE_chunk_28.2"
+            ]
+          },
+          {
+            "name": "stiff",
+            "count": 2,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "Property",
+            "suggested_types": [
+              "Property"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.1",
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.2"
+            ]
+          }
+        ],
+        "cluster_size": 3,
+        "cluster_total_count": 5,
+        "cluster_avg_confidence": 0.9
+      },
+      "proposal_id": "06596828-860f-4b94-930b-43d5114bde31",
+      "proposal_type": "entity_class",
+      "status": "accepted",
+      "cluster_members": [
+        "stability",
+        "second order necessary and sufficient conditions",
+        "stiff"
+      ],
+      "reviewed_at": "2026-05-04T00:59:51.935684",
+      "auto_accepted": true
+    }
+  ],
+  "relation_proposals": []
+}

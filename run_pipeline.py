@@ -463,7 +463,19 @@ def run_corpus(
     alignment_agent   = AlignmentAgent(index_path = str(INDEX_PATH))
     consistency_agent = ConsistencyAgent(candidates_path=str(CANDIDATES),
                                         ontology_loader=ontology)
-    graph_builder_agent = GraphBuilderAgent(graph_memory={"nodes": {}, "edges": []})
+    # Load existing graph if present (for multi-book accumulation)
+    if GRAPH_OUT.exists():
+        with open(GRAPH_OUT, "r", encoding="utf-8") as f:
+            existing_graph = json.load(f)
+        print(f"[Pipeline] Loaded existing graph — "
+            f"{len(existing_graph['nodes'])} nodes, "
+            f"{len(existing_graph['edges'])} edges")
+    else:
+        existing_graph = {"nodes": {}, "edges": []}
+        print("[Pipeline] No existing graph found — starting fresh.")
+
+    graph_builder_agent = GraphBuilderAgent(graph_memory=existing_graph)
+    
     coref_agent       = CoreferenceAgent()
  
     proposer = OntologyProposerAgent(
@@ -628,13 +640,13 @@ if __name__ == "__main__":
 
     # ── List your chunk files here ────────────────────────────────────────
     CHUNKS_FILES = [
-        str(CHUNKS_DIR / "A First Course in Numerical Methods – Ascher & Greif_chunks.json"),
+        str(CHUNKS_DIR / "Morton_Numerical Solution of PDE_chunks.json"),
         # str(CHUNKS_DIR / "leveque_chunks.json"),
         # str(CHUNKS_DIR / "trefethen_bau_chunks.json"),
     ]
 
     graph, ontology = run_corpus(
         chunks_files   = CHUNKS_FILES,
-        run_name       = "ascher_greif_run_1_auto_run",
+        run_name       = "morton_pde_run_1_auto_run",
         run_cli_review = False,    # set False to skip interactive review
     )

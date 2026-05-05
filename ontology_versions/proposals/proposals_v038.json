@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "created_at": "2026-05-03T22:42:36.436287",
+    "proposals_version": 38,
+    "parent_ontology": "0.0",
+    "status": "applied",
+    "applied_at": "2026-05-03T22:42:36.473200",
+    "extension_version": "0.1"
+  },
+  "entity_proposals": [
+    {
+      "proposed_class_name": "TimeSteppingMethod",
+      "parent_class": "NumericalMethod",
+      "description": "A class representing numerical methods that utilize time-stepping techniques, including both explicit and implicit approaches.",
+      "justification": "This new class is necessary to encapsulate the shared characteristics of explicit and implicit methods, which are both time-stepping techniques used in numerical analysis, while existing classes do not specifically address this conceptual family.",
+      "candidate": {
+        "members": [
+          {
+            "name": "explicit methods",
+            "count": 2,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "NumericalMethod",
+            "suggested_types": [
+              "method type",
+              "NumericalMethod"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450",
+              "Morton_Numerical Solution of PDE_chunk_13.12"
+            ]
+          },
+          {
+            "name": "implicit methods",
+            "count": 4,
+            "avg_confidence": 0.9,
+            "dominant_suggestion": "NumericalMethod",
+            "suggested_types": [
+              "method type",
+              "NumericalMethod"
+            ],
+            "sources": [
+              "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450",
+              "Morton_Numerical Solution of PDE_chunk_13.7",
+              "Morton_Numerical Solution of PDE_chunk_13.11",
+              "Morton_Numerical Solution of PDE_chunk_13.12"
+            ]
+          }
+        ],
+        "cluster_size": 2,
+        "cluster_total_count": 6,
+        "cluster_avg_confidence": 0.9
+      },
+      "proposal_id": "ab422754-30ec-4fe9-95f6-b8507e04a38a",
+      "proposal_type": "entity_class",
+      "status": "accepted",
+      "cluster_members": [
+        "explicit methods",
+        "implicit methods"
+      ],
+      "reviewed_at": "2026-05-03T22:42:36.460315",
+      "auto_accepted": true
+    }
+  ],
+  "relation_proposals": []
+}

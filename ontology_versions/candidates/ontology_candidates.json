@@ -25,18 +25,24 @@
       ]
     },
     "Lipschitz continuous derivative": {
-      "count": 1,
+      "count": 3,
       "confidence_scores": [
+        0.9,
+        0.9,
         0.9
       ],
       "types": [
         "NEW_TYPE"
       ],
       "suggested_types": [
-        "Property"
+        "Property",
+        "continuity property",
+        "MathematicalProperty"
       ],
       "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.3"
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.3",
+        "Morton_Numerical Solution of PDE_chunk_15.1",
+        "Morton_Numerical Solution of PDE_chunk_28.1"
       ]
     },
     "quadratic convergence": {
@@ -182,21 +188,6 @@
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
       ]
     },
-    "projector": {
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "types": [
-        "NEW_TYPE"
-      ],
-      "suggested_types": [
-        "matrix type"
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_94.8"
-      ]
-    },
     "H. Huang": {
       "count": 1,
       "confidence_scores": [
@@ -288,8 +279,10 @@
       ]
     },
     "backward error analysis": {
-      "count": 2,
+      "count": 4,
       "confidence_scores": [
+        0.9,
+        0.9,
         0.9,
         0.9
       ],
@@ -298,11 +291,14 @@
       ],
       "suggested_types": [
         "Error Concept",
-        "Error Analysis Concept"
+        "Error Analysis Concept",
+        "TheoreticalProperty"
       ],
       "sources": [
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_131.1",
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_131.2"
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_131.2",
+        "Morton_Numerical Solution of PDE_chunk_26.12",
+        "Morton_Numerical Solution of PDE_chunk_26.24"
       ]
     },
     "Quadratic equation": {
@@ -619,24 +615,6 @@
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_226.2"
       ]
     },
-    "orthogonal matrices": {
-      "count": 2,
-      "confidence_scores": [
-        0.9,
-        0.9
-      ],
-      "types": [
-        "NEW_TYPE"
-      ],
-      "suggested_types": [
-        "transformation",
-        "MathematicalConcept"
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_233",
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_239.1"
-      ]
-    },
     "sufficient condition": {
       "count": 1,
       "confidence_scores": [
@@ -771,21 +749,6 @@
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
       ]
     },
-    "second order necessary and sufficient conditions": {
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "types": [
-        "NEW_TYPE"
-      ],
-      "suggested_types": [
-        "MathematicalConcept"
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_267"
-      ]
-    },
     "feasible region": {
       "count": 1,
       "confidence_scores": [
@@ -880,8 +843,9 @@
       ]
     },
     "sparse matrices": {
-      "count": 2,
+      "count": 3,
       "confidence_scores": [
+        0.9,
         0.9,
         0.9
       ],
@@ -890,11 +854,13 @@
       ],
       "suggested_types": [
         "sparse solution concept",
-        "MathematicalConcept"
+        "MathematicalConcept",
+        "MatrixConcept"
       ],
       "sources": [
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.3",
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.4"
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_281.4",
+        "Morton_Numerical Solution of PDE_chunk_34.2"
       ]
     },
     "piecewise polynomial interpolation": {
@@ -925,21 +891,6 @@
       ],
       "sources": [
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_312"
-      ]
-    },
-    "backward difference operator": {
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "types": [
-        "NEW_TYPE"
-      ],
-      "suggested_types": [
-        "Operator"
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_314.3"
       ]
     },
     "natural conditions": {
@@ -976,21 +927,6 @@
       "sources": [
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_338.1",
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_338.2"
-      ]
-    },
-    "orthonormal vectors": {
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "types": [
-        "NEW_TYPE"
-      ],
-      "suggested_types": [
-        "BasisProperty"
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_347"
       ]
     },
     "low pass filter": {
@@ -1112,21 +1048,6 @@
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_457.1"
       ]
     },
-    "Newton divided difference interpolation formula": {
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "types": [
-        "NEW_TYPE"
-      ],
-      "suggested_types": [
-        "MathematicalConcept"
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_425"
-      ]
-    },
     "safety factor": {
       "count": 1,
       "confidence_scores": [
@@ -1205,53 +1126,6 @@
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_445.2"
       ]
     },
-    "explicit methods": {
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "types": [
-        "NEW_TYPE"
-      ],
-      "suggested_types": [
-        "method type"
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450"
-      ]
-    },
-    "implicit methods": {
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "types": [
-        "NEW_TYPE"
-      ],
-      "suggested_types": [
-        "method type"
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450"
-      ]
-    },
-    "stiff": {
-      "count": 2,
-      "confidence_scores": [
-        0.9,
-        0.9
-      ],
-      "types": [
-        "NEW_TYPE"
-      ],
-      "suggested_types": [
-        "Property"
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.1",
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.2"
-      ]
-    },
     "predator-prey model": {
       "count": 1,
       "confidence_scores": [
@@ -1265,6 +1139,833 @@
       ],
       "sources": [
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_457.2"
+      ]
+    },
+    "Palencia and Sanz-Serna": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Authors"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_4.2"
+      ]
+    },
+    "boundary layer theory": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "theoretical concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_7.1"
+      ]
+    },
+    "fluid flow problems": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "fluid dynamics concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_7.1"
+      ]
+    },
+    "viscous forces": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "physical concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_7.1"
+      ]
+    },
+    "steady flight": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "aerodynamics concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_7.1"
+      ]
+    },
+    "refinement path": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_13.3",
+        "Morton_Numerical Solution of PDE_chunk_13.4"
+      ]
+    },
+    "Ames": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Author"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_14"
+      ]
+    },
+    "Peaceman and Rachford": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "NumericalMethod"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_17.2"
+      ]
+    },
+    "boundary value problem": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "BoundaryConditionConcept",
+        "boundary concept",
+        "BoundaryCondition"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_17.9",
+        "Morton_Numerical Solution of PDE_chunk_28.2",
+        "Morton_Numerical Solution of PDE_chunk_30.2"
+      ]
+    },
+    "upwind scheme": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Method"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_21.7"
+      ]
+    },
+    "weak solutions": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "SolutionProperty"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.4"
+      ]
+    },
+    "conservation principles": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept",
+        "Property",
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.4",
+        "Morton_Numerical Solution of PDE_chunk_22.18",
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "shocks": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.4"
+      ]
+    },
+    "flood wave": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.14"
+      ]
+    },
+    "Hamiltonian": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept",
+        "MathematicalObject",
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.17",
+        "Morton_Numerical Solution of PDE_chunk_22.18",
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "symplectic methods": {
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Property",
+        "specific concept",
+        "NumericalMethod"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.18",
+        "Morton_Numerical Solution of PDE_chunk_23",
+        "Morton_Numerical Solution of PDE_chunk_26.24"
+      ]
+    },
+    "differential one-form": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalObject"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.18"
+      ]
+    },
+    "wedge product": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalObject"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.18"
+      ]
+    },
+    "Matsuno": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "NumericalMethod"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.26"
+      ]
+    },
+    "method of characteristics": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "Riemann invariants": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "Numerical analysis": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept",
+        "Journal"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23",
+        "Morton_Numerical Solution of PDE_chunk_27"
+      ]
+    },
+    "Godunov": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "Carrier and Pearson": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "Smoller": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "Evans": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "Whitham": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "Lighthill": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "LeVeque": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "Kreiss and Lorenz": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "Hairer et al.": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "Leimkuhler and Reich": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ]
+    },
+    "modified equation analysis": {
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept",
+        "TheoreticalProperty"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.17",
+        "Morton_Numerical Solution of PDE_chunk_26.24"
+      ]
+    },
+    "averaging operator": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.17"
+      ]
+    },
+    "Oscillation": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.17"
+      ]
+    },
+    "chequerboard mode": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.17"
+      ]
+    },
+    "energy analysis": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "method"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.21"
+      ]
+    },
+    "energy methods": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "NumericalMethod"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.22"
+      ]
+    },
+    "Neumann boundary condition": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "NumericalMethod"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.22"
+      ]
+    },
+    "Example 2": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Example"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.23"
+      ]
+    },
+    "Example 3": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Example"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.23"
+      ]
+    },
+    "Example 4": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Example"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.23"
+      ]
+    },
+    "compass point notation": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "specific notation"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_30.3"
+      ]
+    },
+    "Rayleigh": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Historical Figure"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_30.15"
+      ]
+    },
+    "Ritz": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Historical Figure"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_30.15"
+      ]
+    },
+    "energy norm": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "NormConcept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_30.17"
+      ]
+    },
+    "iteration matrix": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MatrixConcept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.1"
+      ]
+    },
+    "diagonally dominant matrices": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MatrixPropertyConcept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.1"
+      ]
+    },
+    "complex conjugate pair": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.5"
+      ]
+    },
+    "optimal SOR parameter": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "MathematicalConcept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.5"
+      ]
+    },
+    "relaxation methods": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "Parameter"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.6"
+      ]
+    },
+    "work unit": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "concept"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.10"
+      ]
+    },
+    "smoothing property": {
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "types": [
+        "NEW_TYPE"
+      ],
+      "suggested_types": [
+        "NumericalMethod"
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.11"
       ]
     }
   },
@@ -1554,19 +2255,6 @@
       ]
     },
     {
-      "source": "Newton's method",
-      "relation": "requires",
-      "target": "Lipschitz continuous derivative",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_76.3"
-      ],
-      "suggested_relations": []
-    },
-    {
       "source": "quadratic convergence",
       "relation": "NEW_RELATION",
       "target": "root",
@@ -1694,19 +2382,6 @@
       "suggested_relations": [
         "forms"
       ]
-    },
-    {
-      "source": "eigenvalue problems",
-      "relation": "depends_on",
-      "target": "conjugate pairs",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_85"
-      ],
-      "suggested_relations": []
     },
     {
       "source": "Euler identity",
@@ -2321,35 +2996,9 @@
       "suggested_relations": []
     },
     {
-      "source": "conjugate gradient method",
-      "relation": "approximates",
-      "target": "energy norm",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_181"
-      ],
-      "suggested_relations": []
-    },
-    {
       "source": "energy norm",
       "relation": "defined_by",
       "target": "symmetric positive definite matrices",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_182"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "symmetric positive definite matrices",
-      "relation": "implies",
-      "target": "energy norm",
       "count": 1,
       "confidence_scores": [
         0.9
@@ -2382,21 +3031,6 @@
       ],
       "sources": [
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_183"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "energy norm",
-      "relation": "has_property",
-      "target": "convergence",
-      "count": 2,
-      "confidence_scores": [
-        0.9,
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_183",
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_213.1"
       ],
       "suggested_relations": []
     },
@@ -3033,19 +3667,6 @@
     },
     {
       "source": "critical point",
-      "relation": "requires",
-      "target": "Taylor Series",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_248.2"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "critical point",
       "relation": "has_property",
       "target": "positive semidefinite",
       "count": 1,
@@ -3112,19 +3733,6 @@
       "suggested_relations": []
     },
     {
-      "source": "Newton's method",
-      "relation": "requires",
-      "target": "critical point",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_251"
-      ],
-      "suggested_relations": []
-    },
-    {
       "source": "Hessian matrix",
       "relation": "has_property",
       "target": "critical point",
@@ -3134,19 +3742,6 @@
       ],
       "sources": [
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_252"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "Newton's method",
-      "relation": "uses",
-      "target": "directional derivative",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_253.1"
       ],
       "suggested_relations": []
     },
@@ -4421,19 +5016,6 @@
       "suggested_relations": []
     },
     {
-      "source": "trapezoidal rule",
-      "relation": "has_error_analysis",
-      "target": "truncation error",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_418"
-      ],
-      "suggested_relations": []
-    },
-    {
       "source": "midpoint rule",
       "relation": "has_error_analysis",
       "target": "quadrature error",
@@ -4475,19 +5057,6 @@
       "sources": [
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_422",
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_423"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "trapezoidal rule",
-      "relation": "approximates",
-      "target": "Newton divided difference interpolation formula",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_425"
       ],
       "suggested_relations": []
     },
@@ -4574,33 +5143,7 @@
       ]
     },
     {
-      "source": "Gaussian quadrature",
-      "relation": "approximates",
-      "target": "integrating a function",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_440"
-      ],
-      "suggested_relations": []
-    },
-    {
       "source": "Simpson rule",
-      "relation": "approximates",
-      "target": "integrating a function",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_440"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "trapezoidal rule",
       "relation": "approximates",
       "target": "integrating a function",
       "count": 1,
@@ -4738,21 +5281,6 @@
       "suggested_relations": []
     },
     {
-      "source": "Forward Euler method",
-      "relation": "has_error_analysis",
-      "target": "truncation error",
-      "count": 2,
-      "confidence_scores": [
-        0.9,
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_448",
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_453.2"
-      ],
-      "suggested_relations": []
-    },
-    {
       "source": "initial value ODE",
       "relation": "defined_by",
       "target": "exact solution",
@@ -4769,79 +5297,8 @@
     },
     {
       "source": "Forward Euler method",
-      "relation": "is_instance_of",
-      "target": "explicit methods",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "Forward Euler method",
-      "relation": "is_instance_of",
-      "target": "implicit methods",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "Forward Euler method",
-      "relation": "solves",
-      "target": "initial value problem",
-      "count": 4,
-      "confidence_scores": [
-        0.9,
-        0.9,
-        0.9,
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450",
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_450",
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_453.2",
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_460.1"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "Forward Euler method",
       "relation": "has_error_analysis",
       "target": "roundoff error",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_453.2"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "Forward Euler method",
-      "relation": "has_property",
-      "target": "stability",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_453.2"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "global error",
-      "relation": "quantifies",
-      "target": "Forward Euler method",
       "count": 1,
       "confidence_scores": [
         0.9
@@ -4867,19 +5324,6 @@
       "suggested_relations": []
     },
     {
-      "source": "initial value problem",
-      "relation": "has_property",
-      "target": "stiff",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.1"
-      ],
-      "suggested_relations": []
-    },
-    {
       "source": "Forward Euler method",
       "relation": "solves",
       "target": "stiff",
@@ -4902,19 +5346,6 @@
       ],
       "sources": [
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_454.2"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "Runge-Kutta method",
-      "relation": "solves",
-      "target": "initial value problem",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_456"
       ],
       "suggested_relations": []
     },
@@ -4984,32 +5415,6 @@
       "suggested_relations": []
     },
     {
-      "source": "trapezoidal rule",
-      "relation": "solves",
-      "target": "initial value problem",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_460.1"
-      ],
-      "suggested_relations": []
-    },
-    {
-      "source": "two-step formula",
-      "relation": "solves",
-      "target": "initial value problem",
-      "count": 1,
-      "confidence_scores": [
-        0.9
-      ],
-      "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_460.1"
-      ],
-      "suggested_relations": []
-    },
-    {
       "source": "Adams-Bashforth method",
       "relation": "has_error_analysis",
       "target": "absolute error",
@@ -5052,12 +5457,16 @@
       "source": "Forward Euler method",
       "relation": "solves",
       "target": "two-dimensional partial differential equation",
-      "count": 1,
+      "count": 3,
       "confidence_scores": [
+        0.9,
+        0.9,
         0.9
       ],
       "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_469.1"
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_469.1",
+        "Morton_Numerical Solution of PDE_chunk_17.2",
+        "Morton_Numerical Solution of PDE_chunk_17.7"
       ],
       "suggested_relations": []
     },
@@ -5078,12 +5487,16 @@
       "source": "implicit methods",
       "relation": "solves",
       "target": "two-dimensional partial differential equation",
-      "count": 1,
+      "count": 3,
       "confidence_scores": [
+        0.9,
+        0.9,
         0.9
       ],
       "sources": [
-        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_469.1"
+        "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_469.1",
+        "Morton_Numerical Solution of PDE_chunk_13.8",
+        "Morton_Numerical Solution of PDE_chunk_26.20"
       ],
       "suggested_relations": []
     },
@@ -5110,6 +5523,1194 @@
       ],
       "sources": [
         "A First Course in Numerical Methods \u2013 Ascher & Greif_chunk_473.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "finite difference approximation",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 4,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_4.1",
+        "Morton_Numerical Solution of PDE_chunk_5.1",
+        "Morton_Numerical Solution of PDE_chunk_15.3",
+        "Morton_Numerical Solution of PDE_chunk_26.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "finite element methods",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_5.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "finite volume method",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_5.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "boundary layer theory",
+      "relation": "applies_to",
+      "target": "steady flight",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_7.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "steady flight",
+      "relation": "has_property",
+      "target": "lift",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_7.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "steady flight",
+      "relation": "has_property",
+      "target": "drag",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_7.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "viscous forces",
+      "relation": "depends_on",
+      "target": "boundary layer theory",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_7.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Mach number",
+      "relation": "has_property",
+      "target": "fluid flow problems",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_7.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Intermediate Value Theorem",
+      "relation": "implies",
+      "target": "refinement path",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_13.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "refinement path",
+      "relation": "requires",
+      "target": "convergence",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_13.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "implicit methods",
+      "relation": "solves",
+      "target": "two-timelevel, three-space-point schemes",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_13.11"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Crank-Nicolson scheme",
+      "relation": "solves",
+      "target": "implicit methods",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_13.12"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Ames",
+      "relation": "applies_to",
+      "target": "nonlinear equations",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_14"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lipschitz continuous derivative",
+      "relation": "has_property",
+      "target": "error function",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_15.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Crank-Nicolson scheme",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_15.3",
+        "Morton_Numerical Solution of PDE_chunk_17.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "box scheme",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_17.1",
+        "Morton_Numerical Solution of PDE_chunk_22.23",
+        "Morton_Numerical Solution of PDE_chunk_26.16"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Peaceman and Rachford",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_17.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lax-Wendroff method",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 6,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9,
+        0.9,
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_17.7",
+        "Morton_Numerical Solution of PDE_chunk_22.8",
+        "Morton_Numerical Solution of PDE_chunk_22.23",
+        "Morton_Numerical Solution of PDE_chunk_22.26",
+        "Morton_Numerical Solution of PDE_chunk_22.27",
+        "Morton_Numerical Solution of PDE_chunk_26.16"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Neumann boundary condition",
+      "relation": "applies_to",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_17.7"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "boundary value problem",
+      "relation": "applies_to",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_17.7"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "parabolic problems",
+      "relation": "has_property",
+      "target": "boundary value problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_17.9"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "boundary value problem",
+      "relation": "has_error_analysis",
+      "target": "truncation error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_17.10"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lemma 4.1",
+      "relation": "NEW_RELATION",
+      "target": "upwind scheme",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_21.7"
+      ],
+      "suggested_relations": [
+        "defines"
+      ]
+    },
+    {
+      "source": "Fourier transform",
+      "relation": "applies_to",
+      "target": "CFL condition",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.1"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Burgers' equation",
+      "relation": "has_property",
+      "target": "weak solutions",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Burgers' equation",
+      "relation": "has_property",
+      "target": "shocks",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "upwind scheme",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 4,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.8",
+        "Morton_Numerical Solution of PDE_chunk_22.23",
+        "Morton_Numerical Solution of PDE_chunk_22.26",
+        "Morton_Numerical Solution of PDE_chunk_26.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "upwind scheme",
+      "relation": "solves",
+      "target": "scalar problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.12"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lax-Wendroff method",
+      "relation": "solves",
+      "target": "scalar problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.12"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "flood wave",
+      "relation": "depends_on",
+      "target": "momentum equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.14"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "staggered leapfrog scheme",
+      "relation": "solves",
+      "target": "Hamiltonian",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.17"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Hamiltonian",
+      "relation": "has_property",
+      "target": "Poisson bracket",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.17"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "symplectic methods",
+      "relation": "has_property",
+      "target": "Hamiltonian",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.18"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "differential one-form",
+      "relation": "uses",
+      "target": "Jacobian matrix",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.18"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "wedge product",
+      "relation": "uses",
+      "target": "differential one-form",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.18"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "conservation principles",
+      "relation": "has_property",
+      "target": "Hamiltonian",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.18"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Poisson bracket",
+      "relation": "has_property",
+      "target": "Hamiltonian",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.18"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "symplectic methods",
+      "relation": "NEW_RELATION",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.20"
+      ],
+      "suggested_relations": [
+        "generalizes"
+      ]
+    },
+    {
+      "source": "staggered leapfrog scheme",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 2,
+      "confidence_scores": [
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.23",
+        "Morton_Numerical Solution of PDE_chunk_22.27"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "box scheme",
+      "relation": "NEW_RELATION",
+      "target": "boundary value problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.24"
+      ],
+      "suggested_relations": [
+        "does not require"
+      ]
+    },
+    {
+      "source": "staggered leapfrog scheme",
+      "relation": "NEW_RELATION",
+      "target": "boundary value problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.24"
+      ],
+      "suggested_relations": [
+        "does not require"
+      ]
+    },
+    {
+      "source": "Fourier transform",
+      "relation": "applies_to",
+      "target": "upwind scheme",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.26"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Matsuno",
+      "relation": "uses",
+      "target": "upwind scheme",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_22.26"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "hyperbolic PDEs",
+      "relation": "is_subclass_of",
+      "target": "Riemann invariants",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Carrier and Pearson",
+      "relation": "is_instance_of",
+      "target": "nonlinear waves",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Smoller",
+      "relation": "is_instance_of",
+      "target": "nonlinear waves",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Evans",
+      "relation": "is_instance_of",
+      "target": "nonlinear waves",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Whitham",
+      "relation": "is_instance_of",
+      "target": "waves in fluids",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Lighthill",
+      "relation": "is_instance_of",
+      "target": "waves in fluids",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "LeVeque",
+      "relation": "is_instance_of",
+      "target": "conservation principles",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Hairer et al.",
+      "relation": "is_instance_of",
+      "target": "symplectic methods",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Leimkuhler and Reich",
+      "relation": "is_instance_of",
+      "target": "symplectic methods",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Theta notation",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Fourier stability analysis",
+      "relation": "uses",
+      "target": "Parseval equality",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.8"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "discrete Fourier transform",
+      "relation": "approximates",
+      "target": "Fourier stability analysis",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.8"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "backward error analysis",
+      "relation": "has_error_analysis",
+      "target": "modified equation analysis",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.12"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "averaging operator",
+      "relation": "uses",
+      "target": "modified equation analysis",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.17"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "box scheme",
+      "relation": "uses",
+      "target": "averaging operator",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.17"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Oscillation",
+      "relation": "has_property",
+      "target": "chequerboard mode",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.17"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "explicit methods",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.20"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "energy analysis",
+      "relation": "applies_to",
+      "target": "upwind scheme",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.21"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "stability",
+      "relation": "has_property",
+      "target": "energy methods",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.22"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Example 2",
+      "relation": "has_property",
+      "target": "stability",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Example 3",
+      "relation": "has_property",
+      "target": "stability",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Example 4",
+      "relation": "has_property",
+      "target": "stability",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.23"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "backward error analysis",
+      "relation": "has_property",
+      "target": "stability",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_26.24"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "second order necessary and sufficient conditions",
+      "relation": "applies_to",
+      "target": "stability",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_28.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "convection-diffusion equation",
+      "relation": "has_property",
+      "target": "boundary value problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_30.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "compass point notation",
+      "relation": "uses",
+      "target": "finite difference approximation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_30.3"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "convection-diffusion equation",
+      "relation": "solves",
+      "target": "boundary value problem",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_30.4"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Taylor Series",
+      "relation": "NEW_RELATION",
+      "target": "truncation error",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_30.13"
+      ],
+      "suggested_relations": [
+        "defines"
+      ]
+    },
+    {
+      "source": "Rayleigh",
+      "relation": "uses",
+      "target": "trial functions",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_30.15"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Ritz",
+      "relation": "uses",
+      "target": "trial functions",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_30.15"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "energy norm",
+      "relation": "has_error_analysis",
+      "target": "finite element methods",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_30.17"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Gaussian elimination",
+      "relation": "uses",
+      "target": "sparse matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_34.2"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "SOR",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 3,
+      "confidence_scores": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.1",
+        "Morton_Numerical Solution of PDE_chunk_37.5",
+        "Morton_Numerical Solution of PDE_chunk_37.13"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Jacobi iteration",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.5"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Gauss-Seidel method",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.5"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "multigrid method",
+      "relation": "has_error_analysis",
+      "target": "work unit",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.10"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "conjugate gradient method",
+      "relation": "solves",
+      "target": "symmetric positive definite matrices",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.11"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "smoothing property",
+      "relation": "uses",
+      "target": "multigrid method",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.11"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Jacobi method",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.13"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "conjugate gradient method",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.13"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "GMRES method",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.13"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "Cholesky decomposition",
+      "relation": "solves",
+      "target": "two-dimensional partial differential equation",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_37.13"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "maximum value",
+      "relation": "has_property",
+      "target": "stability",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_42"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "energy methods",
+      "relation": "has_error_analysis",
+      "target": "convergence",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_42"
+      ],
+      "suggested_relations": []
+    },
+    {
+      "source": "modified equation analysis",
+      "relation": "has_property",
+      "target": "stability",
+      "count": 1,
+      "confidence_scores": [
+        0.9
+      ],
+      "sources": [
+        "Morton_Numerical Solution of PDE_chunk_42"
       ],
       "suggested_relations": []
     }

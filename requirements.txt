@@ -10,3 +10,4 @@ scikit-learn
 streamlit
 pylatexenc
 pyvis
+langchain_neo4j
