@@ -6,9 +6,6 @@ from typing import List, Dict
 
 
 def extract_document_body(latex_text: str) -> str:
-    """
-    Extract content inside \\begin{document} ... \\end{document}
-    """
     match = re.search(r"\\begin{document}(.*)\\end{document}", latex_text, re.DOTALL)
     if match:
         return match.group(1)
@@ -16,10 +13,6 @@ def extract_document_body(latex_text: str) -> str:
 
 
 def split_by_section(text: str) -> List[Dict]:
-    """
-    Sequentially split LaTeX document by \\section.
-    Each block keeps nearest section heading.
-    """
     section_pattern = r"(\\section\*?{.*?})"
     parts = re.split(section_pattern, text)
 
@@ -41,10 +34,6 @@ def split_by_section(text: str) -> List[Dict]:
 
 
 def paragraph_split(content: str, max_chars: int = 4000) -> List[str]:
-    """
-    Split content into size-controlled chunks
-    without breaking equations (paragraph-based splitting).
-    """
     paragraphs = content.split("\n\n")
 
     final_chunks = []
@@ -78,18 +67,16 @@ def chunk_latex_document(
 
     latex_text = extract_document_body(latex_text)
 
-    # Step 1: Split by section (empty blocks already filtered)
     section_blocks = split_by_section(latex_text)
 
     all_chunks = []
-    doc_name = Path(latex_path).parent.parent.name
+    doc_name = Path(latex_path).stem
     primary_counter = 0
 
     for block in section_blocks:
 
         sub_chunks = paragraph_split(block["content"], max_chars=max_chars)
 
-        # Guard: skip if paragraph_split returns nothing
         if not sub_chunks:
             primary_counter += 1
             continue
@@ -112,7 +99,6 @@ def chunk_latex_document(
 
         primary_counter += 1
 
-    # Step 3: Save JSON
     output_path = os.path.join(output_dir, f"{doc_name}_chunks.json")
 
     with open(output_path, "w", encoding="utf-8") as f:

@@ -9,18 +9,6 @@ CANDIDATES_PATH = (
 
 
 class ConsistencyAgent:
-    """
-    Filters low-confidence / NEW_TYPE / NEW_RELATION items and routes them
-    to the candidate pool for Ontology Proposer review.
-
-    Key fixes vs original:
-    - candidate_pool always initialised with {"entities": {}, "relations": []}
-      so _store_entity_candidate / _store_relation_candidate never KeyError.
-    - Candidate pool is loaded from and saved to ontology_candidates.json so
-      evidence accumulates across sessions.
-    - suggested_type from NEW_TYPE entities is captured and stored in the pool
-      so the Ontology Proposer has a concrete type hint to work with.
-    """
 
     def __init__(self, candidate_pool=None, candidates_path: str = None,
                  ontology_loader=None):
@@ -39,10 +27,6 @@ class ConsistencyAgent:
             }
         else:
             self.candidate_pool = self._load_from_disk()
-
-    # ------------------------------------------------------------------ #
-    #  Persistence                                                         #
-    # ------------------------------------------------------------------ #
 
     def _load_from_disk(self) -> dict:
         if self.candidates_path.exists():
@@ -67,9 +51,6 @@ class ConsistencyAgent:
             json.dump(payload, f, indent=2)
         print(f"Candidate pool saved → {self.candidates_path}")
 
-    # ------------------------------------------------------------------ #
-    #  Main run                                                            #
-    # ------------------------------------------------------------------ #
 
     def run(self, state: dict) -> dict:
 
@@ -102,9 +83,6 @@ class ConsistencyAgent:
         self.save_to_disk()
         return state
 
-    # ------------------------------------------------------------------ #
-    #  Validation                                                          #
-    # ------------------------------------------------------------------ #
 
     def _entity_is_valid(self, entity: dict) -> bool:
         if entity["confidence"] < self.entity_threshold:
@@ -118,7 +96,6 @@ class ConsistencyAgent:
             return False
         if rel["relation"] == "NEW_RELATION":
             return False
-        # Check relation type exists in ontology
         if (self.ontology_loader
                 and not self.ontology_loader.relation_exists(rel["relation"])):
             return False
@@ -127,14 +104,11 @@ class ConsistencyAgent:
             return False
         return True
 
-    # ------------------------------------------------------------------ #
-    #  Candidate pool storage                                              #
-    # ------------------------------------------------------------------ #
 
     def _store_entity_candidate(self, entity: dict, chunk_id: str) -> None:
         name     = entity["name"]
         pool     = self.candidate_pool["entities"]
-        suggested = entity.get("suggested_type")   # captured from LLM output
+        suggested = entity.get("suggested_type")  
 
         if name not in pool:
             pool[name] = {

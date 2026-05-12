@@ -1,34 +1,3 @@
-"""
-ontology_proposer.py
-
-Ontology Proposer Agent — Phase 6 of the KG construction pipeline.
-
-Responsibilities:
-  1. Scan the candidate pool for entities and relations that have
-     accumulated enough evidence to warrant ontology extension.
-  2. For each strong candidate, generate a structured proposal:
-       - Suggested class name (from LLM, informed by suggested_types)
-       - Parent class in existing ontology
-       - Justification from source evidence
-       - Salience of associated graph nodes
-  3. Write proposals to a versioned proposals JSON file for human review.
-  4. On acceptance (via CLI or Streamlit UI), write a new
-     ontology_extensions_vX_Y.json and trigger reclassification.
-
-Triggering (called from notebook loop):
-    proposer.should_run(candidate_pool) → bool
-    proposer.run(candidate_pool, graph_memory, ontology) → proposals
-
-Human review (CLI):
-    proposer.review_cli(proposals_path)
-
-Human review (Streamlit):
-    proposer.get_proposals(proposals_path) → list[dict]
-    proposer.accept(proposal_id, proposals_path, ontology)
-    proposer.reject(proposal_id, proposals_path)
-    proposer.modify(proposal_id, new_class_name, new_parent, proposals_path, ontology)
-"""
-
 import json
 import re
 from pathlib import Path
@@ -40,21 +9,18 @@ import numpy as np
 from langchain_openai import ChatOpenAI
 
 
-# ── Thresholds (all tunable) ─────────────────────────────────────────────────
-
-# ENTITY_COUNT_THRESHOLD    = 5      # min occurrences in candidate pool
-RELATION_COUNT_THRESHOLD  = 5      # min occurrences for relation candidates
-MIN_SINGLETON_COUNT = 7          # only a singleton with strong evidence gets proposed
-MIN_CLUSTER_COUNT    = 5          # total evidence for a multi-member cluster
-MIN_CLUSTER_SIZE     = 3          # clusters above this are treated as strong candidates
+# ENTITY_COUNT_THRESHOLD    = 5      
+RELATION_COUNT_THRESHOLD  = 5      
+MIN_SINGLETON_COUNT = 7          
+MIN_CLUSTER_COUNT    = 5         
+MIN_CLUSTER_SIZE     = 3        
 CLUSTER_SIM_THRESHOLD = 0.7
-MIN_AVG_CONFIDENCE        = 0.6   # min average confidence across occurrences
-TYPE_CONSISTENCY_RATIO    = 0.2    # fraction of occurrences with same suggested_type (normalised)
-# MIN_SALIENCE              = 0.5    # min salience of associated graph node (if exists)
-POOL_SIZE_TRIGGER         = 30     # trigger if pool has >= this many candidates
-CHUNK_COUNT_FALLBACK      = 50     # trigger every N chunks regardless
+MIN_AVG_CONFIDENCE        = 0.6   
+TYPE_CONSISTENCY_RATIO    = 0.2   
+# MIN_SALIENCE              = 0.5   
+POOL_SIZE_TRIGGER         = 30     
+CHUNK_COUNT_FALLBACK      = 50    
 
-# Generic tokens that should never become ontology classes
 _STOPLIST = {
     "method", "scheme", "algorithm", "approach", "procedure",
     "technique", "framework", "system", "model", "process",
@@ -65,18 +31,6 @@ _STOPLIST = {
 
 
 class OntologyProposerAgent:
-    """
-    Scans the candidate pool and proposes ontology extensions.
-
-    Parameters
-    ----------
-    ontology_dir : str | Path
-        Directory containing ontology_core and ontology_extensions files.
-    proposals_dir : str | Path
-        Directory where proposal JSON files are written.
-    model : str
-        Groq model used for class naming and justification.
-    """
 
     def __init__(
         self,
@@ -90,11 +44,8 @@ class OntologyProposerAgent:
 
         self.llm = ChatOpenAI(model=model, temperature=0)
         self._chunk_counter = 0
-        self._last_pool_entity_count = 0   # track pool changes to avoid re-runs
+        self._last_pool_entity_count = 0 
 
-    # ------------------------------------------------------------------ #
-    #  Triggering                                                          #
-    # ------------------------------------------------------------------ #
 
     def tick(self) -> None:
         """Call once per processed chunk to advance the fallback counter."""
@@ -108,32 +59,18 @@ class OntologyProposerAgent:
         entities = candidate_pool.get("entities", {})
         current_count = len(entities)
 
-        # Guard: if pool hasn't grown since last run, don't re-run.
-        # This prevents the infinite loop where the same candidate
-        # triggers the proposer on every chunk.
         if current_count <= self._last_pool_entity_count and current_count > 0:
             return False, ""
 
-        # # Condition 1: any single candidate has enough count
-        # top_count = max(
-        #     (v["count"] for v in entities.values()), default=0
-        # )
-        # if top_count >= ENTITY_COUNT_THRESHOLD:
-        #     return True, f"top candidate count={top_count} >= {ENTITY_COUNT_THRESHOLD}"
 
-        # Condition 2: pool is large enough overall
         if len(entities) >= POOL_SIZE_TRIGGER:
             return True, f"pool size={len(entities)} >= {POOL_SIZE_TRIGGER}"
 
-        # Condition 3: fallback every N chunks
         if self._chunk_counter > 0 and self._chunk_counter % CHUNK_COUNT_FALLBACK == 0:
             return True, f"chunk fallback at chunk {self._chunk_counter}"
 
         return False, ""
 
-    # ------------------------------------------------------------------ #
-    #  Main run                                                            #
-    # ------------------------------------------------------------------ #
 
     def run(
         self,
@@ -143,11 +80,7 @@ class OntologyProposerAgent:
         document_memory: Dict = None,
         logger=None,
     ) -> Path:
-        """
-        Scan the candidate pool, generate proposals, write to file.
 
-        Returns path to the proposals JSON file.
-        """
         agent = "OntologyProposerAgent"
         if logger:
             logger.info(agent, "run_started", {
@@ -155,16 +88,13 @@ class OntologyProposerAgent:
                 "relation_candidates": len(candidate_pool.get("relations", []))
             })
 
-        # ── Step 1: select strong entity candidates ──────────────────────
+
         entity_candidates = self._select_entity_candidates(
             candidate_pool.get("entities", {}),
             graph_memory,
             ontology_loader,
         )
 
-        # ── Step 2: select strong relation candidates ────────────────────
-        # Pass graph_memory and entity_candidates so relation selection can
-        # verify both endpoints exist (in graph or being proposed now).
         relation_candidates = self._select_relation_candidates(
             candidate_pool.get("relations", []),
             ontology_loader,
@@ -182,7 +112,6 @@ class OntologyProposerAgent:
                 logger.info(agent, "no_candidates", {})
             return None
 
-        # ── Step 3: generate proposals via LLM ──────────────────────────
         entity_proposals   = self._generate_entity_proposals(
             entity_candidates, ontology_loader,
             document_memory or {},
@@ -192,7 +121,6 @@ class OntologyProposerAgent:
             relation_candidates, ontology_loader, logger
         )
 
-        # ── Step 4: write proposals file ─────────────────────────────────
         proposals_path = self._write_proposals(
             entity_proposals, relation_proposals, ontology_loader
         )
@@ -208,14 +136,10 @@ class OntologyProposerAgent:
         print(f"  Entity proposals  : {len(entity_proposals)}")
         print(f"  Relation proposals: {len(relation_proposals)}")
 
-        # Track pool size so should_run() knows if pool has grown
         self._last_pool_entity_count = len(candidate_pool.get("entities", {}))
 
         return proposals_path
 
-    # ------------------------------------------------------------------ #
-    #  Candidate selection                                                 #
-    # ------------------------------------------------------------------ #
 
     def _select_entity_candidates(
         self,
@@ -223,13 +147,9 @@ class OntologyProposerAgent:
         graph_memory:    Dict,
         ontology_loader,
     ) -> List[Dict]:
-        """
-        Filter entity candidates against selection thresholds.
-        Returns list of enriched candidate dicts ready for proposal generation.
-        """
+        
         selected = []
 
-        # Build normalised set of ALL existing class names for fuzzy check
         from difflib import SequenceMatcher
         existing_classes = ontology_loader.get_all_classes()
         existing_norm = {
@@ -239,26 +159,16 @@ class OntologyProposerAgent:
 
         for name, data in entities.items():
 
-            # ── Stoplist check ───────────────────────────────────────────
             if name.lower().strip() in _STOPLIST or len(name.strip()) <= 2:
                 continue
 
-            # # ── Count threshold ──────────────────────────────────────────
-            # if data["count"] < ENTITY_COUNT_THRESHOLD:
-            #     continue
-
-            # ── Average confidence ───────────────────────────────────────
             scores = data.get("confidence_scores", [])
             avg_conf = sum(scores) / len(scores) if scores else 0.0
             if avg_conf < MIN_AVG_CONFIDENCE:
                 continue
 
-            # ── Type consistency ─────────────────────────────────────────
             suggested = data.get("suggested_types", [])
             if suggested:
-                # Normalise aggressively: lowercase, remove spaces/underscores,
-                # so 'Floating Point Representation' and 'FloatingPointRepresentation'
-                # and 'floating point representation' all become the same string.
                 def _norm_type(s):
                     return s.lower().replace(" ", "").replace("_", "").replace("-", "").strip()
 
@@ -268,7 +178,7 @@ class OntologyProposerAgent:
                     consistency = suggested_norm.count(most_common) / len(suggested_norm)
                     if consistency < TYPE_CONSISTENCY_RATIO:
                         continue
-                    # Use the original-case version for the dominant suggestion
+  
                     for s in suggested:
                         if s and _norm_type(s) == most_common:
                             dominant_suggestion = s
@@ -280,13 +190,9 @@ class OntologyProposerAgent:
             else:
                 dominant_suggestion = None
 
-            # ── Already in ontology? Exact check ─────────────────────────
             if ontology_loader.class_exists(name):
                 continue
 
-            # ── Already in ontology? Fuzzy check against class names ─────
-            # Prevents re-proposing "roundoff error" when "RoundoffError"
-            # already exists in extensions.
             name_norm = name.lower().replace("_", "").replace("-", "").replace(" ", "")
             already_exists = False
             for class_name, class_norm in existing_norm.items():
@@ -302,7 +208,6 @@ class OntologyProposerAgent:
             if already_exists:
                 continue
 
-            # ── Salience from graph (if node exists) ─────────────────────
             graph_node = graph_memory.get("nodes", {}).get(name, {})
             salience   = graph_node.get("salience", 0.0)
 
@@ -316,7 +221,6 @@ class OntologyProposerAgent:
                 "salience":           salience,
             })
 
-        # Sort by salience desc, then count desc
         selected.sort(key=lambda x: (x["salience"], x["count"]), reverse=True)
         return selected
 
@@ -327,20 +231,9 @@ class OntologyProposerAgent:
         graph_memory:       Dict = None,
         entity_candidates:  List[Dict] = None,
     ) -> List[Dict]:
-        """
-        Filter relation candidates against thresholds.
 
-        Cross-checks endpoint existence: a relation candidate is only selected
-        if BOTH its source and target either:
-          (a) exist as nodes in the current graph, OR
-          (b) are among the entity candidates being proposed in this same run
-
-        This prevents proposing relation types for entities that don't exist
-        and avoids dangling edges after acceptance.
-        """
         selected = []
 
-        # Build set of known entity names: graph nodes + entity candidates
         known_names = set()
         if graph_memory:
             known_names.update(graph_memory.get("nodes", {}).keys())
@@ -356,11 +249,9 @@ class OntologyProposerAgent:
             if avg_conf < MIN_AVG_CONFIDENCE:
                 continue
 
-            # Skip if relation type already in ontology
             if ontology_loader.relation_exists(rel["relation"]):
                 continue
 
-            # Cross-check: both endpoints must be known
             if known_names:
                 source_known = rel["source"] in known_names
                 target_known = rel["target"] in known_names
@@ -386,23 +277,17 @@ class OntologyProposerAgent:
         total_count = sum(c["count"] for c in cluster)
         avg_conf = sum(c["avg_confidence"] for c in cluster) / size
 
-        # singleton: require strong evidence
         if size == 1:
             return total_count >= MIN_SINGLETON_COUNT and avg_conf >= MIN_AVG_CONFIDENCE
         
         if size == 2:
-            # small cluster: require very strong evidence to avoid noise
             return total_count >= (MIN_CLUSTER_COUNT + 1) and avg_conf >= MIN_AVG_CONFIDENCE
 
-        # multi-member cluster: use cluster-level evidence
         if size >= MIN_CLUSTER_SIZE:
             return total_count >= MIN_CLUSTER_COUNT and avg_conf >= MIN_AVG_CONFIDENCE
 
         return False
 
-    # ------------------------------------------------------------------ #
-    #  Candidate clustering                                                #
-    # ------------------------------------------------------------------ #
 
     def _cluster_candidates(
         self,
@@ -410,30 +295,12 @@ class OntologyProposerAgent:
         document_memory: Dict,
         threshold: float = 0.7,
     ) -> List[List[Dict]]:
-        """
-        Group semantically related candidates into clusters using embeddings
-        from document_memory. Each cluster gets ONE proposal instead of
-        individual proposals per candidate.
 
-        e.g. ['double precision', 'single precision', 'machine precision',
-              'machine epsilon', 'floating point systems']
-             → one cluster → one proposed class 'FloatingPointConcept'
-
-        Uses simple greedy agglomerative clustering:
-          1. For each unassigned candidate, compute cosine similarity against
-             all existing cluster centroids.
-          2. If best similarity > threshold, assign to that cluster and
-             update the centroid.
-          3. Otherwise, start a new cluster.
-
-        Returns list of clusters, each cluster is a list of candidate dicts.
-        """
         if not candidates:
             return []
 
         entities_mem = document_memory.get("entities", {})
 
-        # Get embeddings for candidates from document_memory
         cand_embeddings = {}
         for cand in candidates:
             name = cand["name"]
@@ -446,7 +313,6 @@ class OntologyProposerAgent:
                 if norm > 0:
                     cand_embeddings[name] = emb / norm
 
-        # Candidates without embeddings go into their own singleton clusters
         has_emb = [c for c in candidates if c["name"] in cand_embeddings]
         no_emb  = [c for c in candidates if c["name"] not in cand_embeddings]
 
@@ -456,7 +322,6 @@ class OntologyProposerAgent:
         for cand in has_emb:
             emb = cand_embeddings[cand["name"]]
 
-            # Find best matching cluster
             best_idx   = -1
             best_score = 0.0
 
@@ -467,27 +332,21 @@ class OntologyProposerAgent:
                     best_idx   = i
 
             if best_score >= threshold and best_idx >= 0:
-                # Assign to existing cluster
                 clusters[best_idx].append(cand)
-                # Update centroid (running mean)
                 n = len(clusters[best_idx])
                 centroids[best_idx] = (centroids[best_idx] * (n - 1) + emb) / n
                 norm = np.linalg.norm(centroids[best_idx])
                 if norm > 0:
                     centroids[best_idx] /= norm
             else:
-                # Start new cluster
                 clusters.append([cand])
                 centroids.append(emb.copy())
 
-        # Add singleton clusters for candidates without embeddings
         for cand in no_emb:
             clusters.append([cand])
 
-        # Sort clusters by total evidence (sum of counts)
         clusters.sort(key=lambda cl: sum(c["count"] for c in cl), reverse=True)
 
-        # Print cluster summary
         for i, cl in enumerate(clusters):
             names = [c["name"] for c in cl]
             total = sum(c["count"] for c in cl)
@@ -495,9 +354,6 @@ class OntologyProposerAgent:
 
         return clusters
 
-    # ------------------------------------------------------------------ #
-    #  Proposal generation                                                 #
-    # ------------------------------------------------------------------ #
     
     def _generate_entity_proposals(
     self,
@@ -506,22 +362,15 @@ class OntologyProposerAgent:
     document_memory: Dict,
     logger=None,
     ) -> List[Dict]:
-        """
-        Cluster candidates first, then generate ONE proposal per cluster.
-        The LLM sees the full cluster, not a single representative entity.
-        """
         existing_classes = ontology_loader.get_all_classes()
 
-        # Cluster candidates by embedding similarity
         clust = self._cluster_candidates(candidates, document_memory)
 
-        # Apply proposal thresholds at the cluster level
         clusters = [cl for cl in clust if self._should_propose_cluster(cl)]
 
         proposals = []
         for cluster in clusters:
             try:
-                # Build a richer cluster payload for the LLM
                 member_payload = []
                 total_count = 0
                 total_conf = 0.0
@@ -578,7 +427,6 @@ class OntologyProposerAgent:
         ontology_loader,
         logger=None,
     ) -> List[Dict]:
-        """Generate relation proposals."""
         existing_relations = ontology_loader.get_all_relations()
         existing_classes   = ontology_loader.get_all_classes()
         proposals = []
@@ -605,10 +453,6 @@ class OntologyProposerAgent:
     cluster_info: Dict,
     existing_classes: List[str],
 ) -> Dict:
-        """
-        Ask LLM to propose ONE broad class for the full semantic cluster.
-        The prompt is cluster-first, not representative-first.
-        """
 
         members = cluster_info["members"]
 
@@ -686,7 +530,6 @@ class OntologyProposerAgent:
         existing_relations: List[str],
         existing_classes:   List[str],
     ) -> Dict:
-        """Ask LLM to formalise a new relation type."""
 
         prompt = f"""\
 You are an ontology engineer working on a numerical methods knowledge graph.
@@ -734,9 +577,6 @@ OUTPUT SCHEMA:
         content  = re.sub(r"\s*```$",     "", content)
         return json.loads(content)
 
-    # ------------------------------------------------------------------ #
-    #  File I/O                                                            #
-    # ------------------------------------------------------------------ #
 
     def _write_proposals(
         self,
@@ -744,9 +584,7 @@ OUTPUT SCHEMA:
         relation_proposals: List[Dict],
         ontology_loader,
     ) -> Path:
-        """Write versioned proposals JSON file."""
 
-        # Determine next version number from existing proposal files
         existing = sorted(self.proposals_dir.glob("proposals_v*.json"))
         next_version = len(existing) + 1
 
@@ -771,7 +609,6 @@ OUTPUT SCHEMA:
         return path
 
     def load_proposals(self, proposals_path: str) -> Dict:
-        """Load a proposals file for review."""
         with open(proposals_path, "r") as f:
             return json.load(f)
 
@@ -779,16 +616,7 @@ OUTPUT SCHEMA:
         with open(proposals_path, "w") as f:
             json.dump(proposals, f, indent=2)
 
-    # ------------------------------------------------------------------ #
-    #  Human review — CLI                                                  #
-    # ------------------------------------------------------------------ #
-
     def review_cli(self, proposals_path: str) -> None:
-        """
-        Interactive CLI review of proposals.
-        For each pending proposal: print summary, accept / reject / modify.
-        Writes decisions back to the proposals file as you go.
-        """
         proposals = self.load_proposals(proposals_path)
         all_props = (
             proposals["entity_proposals"] +
@@ -844,14 +672,13 @@ OUTPUT SCHEMA:
                 else:
                     print("  Please enter A, R, or M.")
 
-            # Save after every decision — no lost work if interrupted
             self._save_proposals(proposals, proposals_path)
 
         print(f"\n[OntologyProposer] Review complete. "
               f"Results saved → {proposals_path}")
 
     def _print_proposal(self, prop: Dict, index: int, total: int) -> None:
-        """Pretty-print a single proposal for CLI review."""
+
         print(f"\n── Proposal {index}/{total} "
               f"[{prop['proposal_type']}] ──────────────────────")
 
@@ -888,12 +715,8 @@ OUTPUT SCHEMA:
             print(f"  Suggested names    : {cand.get('suggested_relations', [])}")
             print(f"  Example sources    : {cand.get('sources', [])[:3]}")
 
-    # ------------------------------------------------------------------ #
-    #  Streamlit-friendly review interface                                 #
-    # ------------------------------------------------------------------ #
-
     def get_pending_proposals(self, proposals_path: str) -> List[Dict]:
-        """Return list of pending proposals for Streamlit UI to render."""
+
         proposals = self.load_proposals(proposals_path)
         return [
             p for p in (
@@ -904,7 +727,7 @@ OUTPUT SCHEMA:
         ]
 
     def accept_proposal(self, proposal_id: str, proposals_path: str) -> None:
-        """Accept a proposal by ID — called from Streamlit on button click."""
+
         self._update_proposal_status(
             proposal_id, proposals_path,
             {"status": "accepted", "reviewed_at": datetime.now().isoformat()}
@@ -913,7 +736,7 @@ OUTPUT SCHEMA:
     def reject_proposal(
         self, proposal_id: str, proposals_path: str, reason: str = ""
     ) -> None:
-        """Reject a proposal by ID."""
+
         self._update_proposal_status(
             proposal_id, proposals_path,
             {"status": "rejected", "reject_reason": reason,
@@ -927,7 +750,7 @@ OUTPUT SCHEMA:
         new_name:       str,
         new_parent:     str = None,
     ) -> None:
-        """Modify a proposal's name (and optionally parent) then accept it."""
+
         updates = {
             "status":     "accepted",
             "modified":   True,
@@ -956,9 +779,6 @@ OUTPUT SCHEMA:
                     p.update(updates)
         self._save_proposals(proposals, proposals_path)
 
-    # ------------------------------------------------------------------ #
-    #  Ontology extension writing                                          #
-    # ------------------------------------------------------------------ #
 
     def apply_accepted_proposals(
         self,
@@ -969,17 +789,7 @@ OUTPUT SCHEMA:
         document_memory:    Dict = None,
         logger=None,
     ) -> Optional[Tuple[Path, Dict]]:
-        """
-        Write a new ontology_extensions_vX_Y.json from all accepted proposals.
-        Also:
-          - Inserts cluster member entities directly into the graph so they
-            don't need reclassification from the pool (they are removed from
-            the pool here).
-          - Returns (extensions_path, cluster_map) where cluster_map is
-            {class_name: [member_names]} for use by reclassify_graph_nodes.
 
-        Returns None if nothing was accepted.
-        """
         proposals = self.load_proposals(proposals_path)
         accepted_entities  = [
             p for p in proposals["entity_proposals"]
@@ -994,7 +804,6 @@ OUTPUT SCHEMA:
             print("[OntologyProposer] No accepted proposals — nothing to apply.")
             return None
 
-        # ── Build new subclasses dict ─────────────────────────────────────
         new_subclasses = {}
         for p in accepted_entities:
             class_name = p["proposed_class_name"]
@@ -1010,7 +819,6 @@ OUTPUT SCHEMA:
                 "proposal_id":    p["proposal_id"],
             }
 
-        # ── Build new relation_extensions dict ───────────────────────────
         new_relations = {}
         for p in accepted_relations:
             rel_name = p["proposed_relation_name"]
@@ -1027,10 +835,6 @@ OUTPUT SCHEMA:
                 "proposal_id":    p["proposal_id"],
             }
 
-        # ── Insert cluster members directly into graph ────────────────────
-        # Cluster members are removed from the pool here — they should never
-        # go through reclassification's pool scan. Instead we insert them
-        # into the graph immediately with their accumulated evidence.
         cluster_map: Dict[str, List[str]] = {}
 
         if candidate_pool is not None:
@@ -1052,7 +856,6 @@ OUTPUT SCHEMA:
                         avg_conf = sum(scores) / len(scores) if scores else 0.0
                         best_conf = max(scores) if scores else avg_conf
 
-                        # Insert into graph
                         if graph_builder_agent is not None and sources:
                             entity = {
                                 "entity_id":          f"proposed_{member_name}",
@@ -1072,7 +875,6 @@ OUTPUT SCHEMA:
                             except Exception as e:
                                 print(f"  [graph insert FAILED] '{member_name}': {e}")
 
-                        # Update document_memory
                         if document_memory is not None:
                             mem = document_memory.setdefault("entities", {})
                             if member_name not in mem:
@@ -1084,11 +886,9 @@ OUTPUT SCHEMA:
                             else:
                                 mem[member_name]["type"] = class_name
 
-                        # Remove from pool
                         del pool_entities[member_name]
                         print(f"  [pool cleanup] removed '{member_name}' → {class_name}")
 
-            # Remove accepted relation candidates from pool
             pool_relations = candidate_pool.get("relations", [])
             for p in accepted_relations:
                 cand = p["candidate"]
@@ -1099,12 +899,10 @@ OUTPUT SCHEMA:
                             and r["target"] == cand["target"])
                 ]
 
-        # ── Merge with existing extensions ───────────────────────────────
         existing = ontology_loader.extensions
         merged_subclasses = {**existing.get("subclasses", {}), **new_subclasses}
         merged_relations  = {**existing.get("relation_extensions", {}), **new_relations}
 
-        # ── Version the new extensions file ─────────────────────────────
         cur_ver = existing.get("extension_metadata", {}).get("extension_version", "0.0")
         major, minor = cur_ver.split(".")
         new_ver = f"{major}.{int(minor) + 1}"
@@ -1133,7 +931,6 @@ OUTPUT SCHEMA:
         with open(new_ext_path, "w") as f:
             json.dump(new_extensions, f, indent=2)
 
-        # Mark proposals file as applied
         proposals["metadata"]["status"]            = "applied"
         proposals["metadata"]["applied_at"]        = datetime.now().isoformat()
         proposals["metadata"]["extension_version"] = new_ver

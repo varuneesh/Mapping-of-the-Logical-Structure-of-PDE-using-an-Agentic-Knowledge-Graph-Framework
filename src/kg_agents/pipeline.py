@@ -17,47 +17,38 @@ from kg_agents.extraction.chunk_classifier import should_skip
 
 class GraphState(TypedDict):
  
-    # ── Chunk inputs ─────────────────────────────────────────────────────
     chunk_id:       str
     chunk_heading:  str
     primary_chunk:  str
     context_chunks: List[str]
-    chunk_type:     str     # "content" | "bibliography" | "frontmatter" | "exercise"
+    chunk_type:     str     
  
-    # ── Shared memories ──────────────────────────────────────────────────
     ontology_loader:  Any
     document_memory:  Dict
- 
-    # ── Coreference outputs ──────────────────────────────────────────────
+
     resolved_chunk:          str
     coreference_annotations: Dict
  
-    # ── Extraction outputs ───────────────────────────────────────────────
     entities:       List[Dict]
     relationships:  List[Dict]
  
-    # ── Validation ───────────────────────────────────────────────────────
     validation_status: str
     validation_errors: List[str]
     entity_errors:     List[str]
     relation_errors:   List[str]
  
-    # ── Retry control (per-stage counters) ───────────────────────────────
     entity_retry_count:   int
     relation_retry_count: int
     retry_feedback:       str
-    extraction_started:   bool   # True after first entity extraction attempt
-    _rate_limited:        bool   # True when LLM hit rate limit — skip loop
+    extraction_started:   bool   
+    _rate_limited:        bool   
  
-    # ── Routing ──────────────────────────────────────────────────────────
     next_step:   str
     agent_trace: List[str]
- 
-    # ── Post-consistency outputs ─────────────────────────────────────────
+
     consistent_entities:       List[Dict]
     consistent_relationships:  List[Dict]
- 
-    # ── Agent handles (injected once, reused across chunks) ──────────────
+
     coreference_agent: Any
     entity_agent:      Any
     relation_agent:    Any
@@ -66,20 +57,13 @@ class GraphState(TypedDict):
     alignment_agent:   Any
     consistency_agent: Any
     graph_builder:     Any
+
+    logger: Any    
  
-    # ── Logger ───────────────────────────────────────────────────────────
-    logger: Any    # PipelineLogger instance — shared across all chunks
- 
- 
-# ────────────────────────────────────────────────────────────────────────────
-#  Node functions
-# ────────────────────────────────────────────────────────────────────────────
+
  
 def classifier_node(state: GraphState):
-    """
-    Classify chunk type before any LLM work.
-    Skipped chunks go straight to END — no API calls wasted.
-    """
+
     print("\n----- CHUNK CLASSIFIER -----")
     logger = state.get("logger")
     chunk  = {"heading": state["chunk_heading"],
@@ -99,7 +83,6 @@ def classifier_node(state: GraphState):
             "reason":     reason,
         })
         if skip:
-            # Close the chunk immediately — nothing will run
             logger.end_chunk(state["chunk_id"], state)
  
     state["agent_trace"].append("classifier")
@@ -107,7 +90,7 @@ def classifier_node(state: GraphState):
  
  
 def route_from_classifier(state: GraphState) -> str:
-    """Skip non-content chunks entirely — go straight to END."""
+
     if state["chunk_type"] in ("bibliography", "frontmatter"):
         print(f"  → Skipping {state['chunk_type']} chunk.")
         return "skip"
@@ -148,7 +131,7 @@ def entity_extraction_node(state: GraphState):
     logger = state.get("logger")
     if state.get("resolved_chunk"):
         state["primary_chunk"] = state["resolved_chunk"]
-    state["extraction_started"] = True   # mark that extraction has been attempted
+    state["extraction_started"] = True   
     try:
         state = state["entity_agent"].run(state)
         if logger:
@@ -253,10 +236,6 @@ def route_from_supervisor(state: GraphState):
     return state["next_step"]
  
  
-# ────────────────────────────────────────────────────────────────────────────
-#  Pipeline construction
-# ────────────────────────────────────────────────────────────────────────────
- 
 def build_pipeline():
  
     graph = StateGraph(GraphState)
@@ -271,7 +250,6 @@ def build_pipeline():
     graph.add_node("consistency_agent",  consistency_agent_node)
     graph.add_node("graph_builder",      graph_builder_node)
  
-    # Classifier runs first — skips non-content chunks immediately
     graph.set_entry_point("classifier")
     graph.add_conditional_edges(
         "classifier",
@@ -305,10 +283,6 @@ def build_pipeline():
     print(display(Image(Graph.get_graph(xray=True).draw_mermaid_png())))
     return Graph
  
- 
-# ────────────────────────────────────────────────────────────────────────────
-#  Initialisation
-# ────────────────────────────────────────────────────────────────────────────
  
 def initialize_pipeline():
  
@@ -354,57 +328,43 @@ def make_chunk_state(
     gb,
     logger=None,
 ) -> GraphState:
-    """
-    Build a clean, fully-initialised state dict for a single chunk.
-    Call this in your notebook instead of constructing the dict manually.
-    Every field is reset to its correct default so nothing leaks between chunks.
-    """
-    # Register this chunk with the logger so timing and problems are tracked
+
     if logger:
         logger.start_chunk(chunk["chunk_id"], chunk.get("heading", ""))
  
     return GraphState(
-        # Chunk inputs
         chunk_id       = chunk["chunk_id"],
         chunk_heading  = chunk.get("heading", ""),
         primary_chunk  = chunk["content"],
         context_chunks = context_chunks,
-        chunk_type     = "",   # filled by classifier_node
+        chunk_type     = "",  
  
-        # Shared memories
         ontology_loader  = None,
         document_memory  = document_memory,
  
-        # Coreference — populated by coreference_node
         resolved_chunk          = "",
         coreference_annotations = {},
  
-        # Extraction outputs — empty until agents run
         entities      = [],
         relationships = [],
  
-        # Validation — reset every chunk
         validation_status = "",
         validation_errors = [],
         entity_errors     = [],
         relation_errors   = [],
- 
-        # Retry counters — MUST be reset per chunk
+
         entity_retry_count   = 0,
         relation_retry_count = 0,
         retry_feedback       = "",
         extraction_started   = False,
         _rate_limited        = False,
  
-        # Routing
         next_step   = "",
         agent_trace = [],
  
-        # Post-consistency
         consistent_entities      = [],
         consistent_relationships = [],
- 
-        # Agent handles
+
         coreference_agent = coref_agent,
         entity_agent      = entity_agent,
         relation_agent    = relation_agent,
@@ -413,7 +373,5 @@ def make_chunk_state(
         alignment_agent   = align,
         consistency_agent = consist,
         graph_builder     = gb,
- 
-        # Logger — shared across all chunks, None is safe (agents check)
         logger = logger,
     )

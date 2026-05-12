@@ -2,16 +2,6 @@ import math
 
 
 class GraphBuilderAgent:
-    """
-    Incrementally builds a persistent knowledge graph.
-
-    Key fixes vs original:
-    - Nodes store confidence_scores (per spec) — was silently dropped before.
-    - Node type conflicts are tracked explicitly: if a canonical entity is
-      inserted with type A in chunk 1 and type B in chunk 5, both types are
-      recorded and the conflict is flagged so the Ontology Proposer / human
-      reviewer can resolve it later.
-    """
 
     def __init__(self, graph_memory: dict):
         self.graph = graph_memory
@@ -31,33 +21,16 @@ class GraphBuilderAgent:
 
         return state
 
-    # ------------------------------------------------------------------ #
 
     def _compute_salience(self, confidence_scores: list, source_count: int) -> float:
-        """
-        Salience = mean_confidence × log(1 + source_count)
-
-        Intuition:
-          - mean_confidence reflects extraction reliability
-          - log(1 + source_count) rewards entities seen across many chunks
-            while dampening the effect of very high counts so a node seen
-            200 times isn't absurdly dominant over one seen 40 times
-
-        Examples:
-          2 sources,  mean_conf=0.88 → 0.88 × log(3)  ≈ 0.97
-          40 sources, mean_conf=0.88 → 0.88 × log(41) ≈ 3.27
-        """
+        
         if not confidence_scores:
             return 0.0
         mean_conf = sum(confidence_scores) / len(confidence_scores)
         return round(mean_conf * math.log(1 + source_count), 4)
 
     def recompute_all_salience(self) -> None:
-        """
-        Recompute salience for every node in the graph.
-        Call this after reclassification or any bulk graph update
-        to ensure scores reflect the latest evidence.
-        """
+
         for name, node in self.graph["nodes"].items():
             node["salience"] = self._compute_salience(
                 node.get("confidence_scores", []),
@@ -66,10 +39,7 @@ class GraphBuilderAgent:
         print(f"Salience recomputed for {len(self.graph['nodes'])} nodes.")
 
     def top_nodes_by_salience(self, n: int = 20) -> list:
-        """
-        Return the top-n nodes ranked by salience score.
-        Useful for notebook inspection and Ontology Proposer prioritisation.
-        """
+
         ranked = sorted(
             self.graph["nodes"].items(),
             key=lambda kv: kv[1].get("salience", 0.0),
@@ -94,7 +64,7 @@ class GraphBuilderAgent:
                 "confidence_scores": [confidence],
                 "type_conflict":     False,
                 "observed_types":    [etype],
-                "salience":          0.0,   # computed below
+                "salience":          0.0,   
             }
         else:
             node = nodes[name]
@@ -102,15 +72,12 @@ class GraphBuilderAgent:
             if chunk_id not in node["sources"]:
                 node["sources"].append(chunk_id)
 
-            # Track type conflicts — don't silently overwrite
             if etype not in node["observed_types"]:
                 node["observed_types"].append(etype)
                 node["type_conflict"] = True
                 print(f"  [type conflict] '{name}': "
                       f"previously '{node['type']}', now seen as '{etype}'")
 
-        # Recompute salience after every update so it always reflects
-        # the latest evidence — cheap operation, always consistent
         node = nodes[name]
         node["salience"] = self._compute_salience(
             node["confidence_scores"],

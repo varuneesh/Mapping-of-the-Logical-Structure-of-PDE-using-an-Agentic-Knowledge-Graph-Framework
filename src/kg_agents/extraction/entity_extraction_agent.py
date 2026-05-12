@@ -126,7 +126,6 @@ class EntityExtractionAgent:
             logger=logger, agent="EntityExtractionAgent", chunk_id=chunk_id
         )
 
-        # Rate limit exhausted — return empty list, do NOT loop
         if response is None:
             state["entities"] = []
             state["_rate_limited"] = True

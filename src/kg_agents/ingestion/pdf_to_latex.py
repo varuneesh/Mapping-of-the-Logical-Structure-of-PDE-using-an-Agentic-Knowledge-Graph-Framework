@@ -2,8 +2,6 @@ import os
 import time
 import json
 import shutil
-
-# from urllib import response
 import requests
 from pathlib import Path
 import zipfile
@@ -26,18 +24,6 @@ def convert_pdf_to_latex(
     poll_interval: int = 20,
     timeout: int = 7200,
 ) -> str:
-    """
-    Convert a PDF to LaTeX using Mathpix Convert API.
-
-    Args:
-        pdf_path (str): Path to input PDF.
-        output_dir (str): Directory to store LaTeX output.
-        poll_interval (int): Seconds between polling attempts.
-        timeout (int): Max time to wait for conversion (seconds).
-
-    Returns:
-        str: Path to saved LaTeX file.
-    """
 
     if not os.path.exists(pdf_path):
         raise FileNotFoundError(f"PDF not found: {pdf_path}")
@@ -106,8 +92,6 @@ def convert_pdf_to_latex(
         print(f"Status: {status} | Waiting {poll_interval}s...")
         time.sleep(poll_interval)
 
-    # Download LaTeX
-    # LaTeX zip
     latex_response = requests.get(
         f"https://api.mathpix.com/v3/pdf/{pdf_id}.tex.zip", headers=headers
     )
@@ -125,51 +109,17 @@ def convert_pdf_to_latex(
 
     print(f"LaTeX ZIP saved to: {zip_output_path}")
 
-    # pdf_name = Path(pdf_path).stem
-    # final_tex_path = os.path.join(output_dir, f"{pdf_name}.tex")
-
-    # # Extract .tex directly without preserving internal folders
-    # with zipfile.ZipFile(zip_output_path, "r") as zip_ref:
-    #     tex_member = None
-
-    #     for member in zip_ref.namelist():
-    #         if member.endswith(".tex"):
-    #             tex_member = member
-    #             break
-
-    #     if not tex_member:
-    #         raise MathpixConversionError("No .tex file found inside ZIP.")
-
-    #     # Read .tex file from zip
-    #     with zip_ref.open(tex_member) as tex_file:
-    #         tex_content = tex_file.read()
-
-    # # Write directly to desired location
-    # with open(final_tex_path, "wb") as f:
-    #     f.write(tex_content)
-
-    # # Delete ZIP file
-    # os.remove(zip_output_path)
-
-    # print(f"LaTeX saved to: {final_tex_path}")
-
-    # return final_tex_path
-
-
     pdf_name = Path(pdf_path).stem
     doc_output_dir = os.path.join(output_dir, pdf_name)
 
-    # Ensure clean folder
     if os.path.exists(doc_output_dir):
         shutil.rmtree(doc_output_dir)
 
     os.makedirs(doc_output_dir, exist_ok=True)
 
-    # Extract full ZIP into that folder
     with zipfile.ZipFile(zip_output_path, "r") as zip_ref:
         zip_ref.extractall(doc_output_dir)
 
-    # Remove ZIP file
     os.remove(zip_output_path)
 
     print(f"LaTeX project extracted to: {doc_output_dir}")

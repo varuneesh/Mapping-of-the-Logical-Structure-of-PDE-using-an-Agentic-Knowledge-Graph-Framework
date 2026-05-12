@@ -10,25 +10,10 @@ openai_client = OpenAI(api_key=OPENAI_API_KEY)
 
 
 class AlignmentAgent:
-    """
-    Canonicalises entity names using embedding similarity + optional LLM
-    verification, then rewrites relationships and updates document_memory.
-
-    Key fixes vs original:
-    - Embeddings are generated once per entity and cached in a local dict
-      for the duration of the current chunk.  _update_memory re-uses the
-      cached embedding instead of making a second API call.
-    - LLM verification model is configurable via the verify_model parameter
-      (defaults to Groq llama-3.3-70b-versatile so no extra API key is needed,
-      but can be set to "gpt-4o-mini" if preferred).
-    - Alias map collision: if two surface forms in the same chunk both resolve
-      to different canonicals, the higher-confidence entity wins.
-    """
 
     def __init__(self, index_path: str = None, verify_model: str = None):
         self.index_path = index_path
         
-        # Load existing index if path provided and file exists
         if index_path:
             self.index = EntityIndex.load(index_path)
         else:
@@ -38,13 +23,9 @@ class AlignmentAgent:
         self._verify_llm   = ChatOpenAI(model=self._verify_model, temperature=0)
 
     def save_index(self) -> None:
-        """Call this at end of each run to persist index."""
         if self.index_path:
             self.index.save(self.index_path)
 
-    # ------------------------------------------------------------------ #
-    #  Main entry                                                          #
-    # ------------------------------------------------------------------ #
 
     def run(self, state: Dict[str, Any]) -> Dict[str, Any]:
 
@@ -52,12 +33,10 @@ class AlignmentAgent:
         relationships = state["relationships"]
         memory        = state["document_memory"]
 
-        # ── Step 1: generate all embeddings once and cache them ──────────
         embedding_cache: Dict[str, np.ndarray] = {}
         for entity in entities:
             embedding_cache[entity["name"]] = self._generate_embedding(entity, state)
 
-        # ── Step 2: build alias map ──────────────────────────────────────
         alias_map: Dict[str, str] = {}
         for entity in entities:
             embedding = embedding_cache[entity["name"]]
@@ -65,11 +44,9 @@ class AlignmentAgent:
             alias_map[entity["name"]] = canonical
             print(f"  Mapping: {entity['name']} → {canonical}")
 
-        # ── Step 3: rewrite entities and relationships ───────────────────
         state["entities"]      = self._canonicalize_entities(entities, alias_map)
         state["relationships"] = self._rewrite_relationships(relationships, alias_map)
 
-        # ── Step 4: update document memory (re-use cached embeddings) ────
         self._update_memory(
             state["entities"],
             memory,
@@ -82,19 +59,10 @@ class AlignmentAgent:
         print("Alias map:", alias_map)
         return state
 
-    # ------------------------------------------------------------------ #
-    #  Alignment logic                                                     #
-    # ------------------------------------------------------------------ #
 
     def _align_entity(self, entity: dict, embedding: np.ndarray) -> str:
-        """Return canonical name for entity, using index + optional LLM."""
 
         name        = entity["name"]
-        # entity_type = entity["type"]
-
-        # ── Step 1: normalised string match (catches plurals, case, punctuation) ──
-        # This catches "Discretization errors" ↔ "discretization error" etc.
-        # without needing embedding similarity at all.
         norm_name = self._normalise(name)
         for existing_name in self.index.names:
             if self._normalise(existing_name) == norm_name:
@@ -102,13 +70,11 @@ class AlignmentAgent:
                     print(f"  [align] string-norm match: '{name}' → '{existing_name}'")
                 return existing_name
 
-        # ── Step 2: embedding similarity ─────────────────────────────────────────
         candidates = self.index.search(embedding, top_k=10)
 
         if not candidates:
             return name
 
-        # ---- 3. Score candidates ----
         scored = []
         for c in candidates:
             if c["name"] == name:
@@ -132,16 +98,12 @@ class AlignmentAgent:
         scored.sort(key=lambda x: x["score"], reverse=True)
         best = scored[0]
         
-        # ---- 4. High confidence ----
         if best["score"] > 0.80:
             return best["name"]
 
-        # ---- 5. Medium confidence → conditional LLM rerank ----
-        # Filter candidates above threshold
         good_candidates = [c for c in scored if c["score"] > 0.6]
 
         if good_candidates:
-            # If multiple strong candidates → compare top 3
             if len(good_candidates) >= 3:
                 candidates_for_llm = good_candidates[:3]
             else:
@@ -155,26 +117,15 @@ class AlignmentAgent:
 
     @staticmethod
     def _normalise(s: str) -> str:
-        """
-        Normalise entity name for string comparison.
-        Lowercases, strips punctuation, removes trailing 's' for plural handling.
-        e.g. "Discretization errors" → "discretization error"
-             "Taylor's series" → "taylor series"
-        """
+
         import re
         s = s.lower().strip()
-        s = re.sub(r"['\-]", " ", s)   # apostrophes and hyphens → space
-        s = re.sub(r"[^a-z0-9 ]", "", s)  # remove other punctuation
+        s = re.sub(r"['\-]", " ", s)  
+        s = re.sub(r"[^a-z0-9 ]", "", s)  
         s = re.sub(r"\s+", " ", s).strip()
-        # Simple plural normalisation: remove trailing 's' if > 4 chars
-        # if s.endswith("s") and len(s) > 4 and not s.endswith("ss"):
-        #     s = s[:-1]
         return s
     
     
-    # =========================
-    # TOKEN OVERLAP
-    # =========================
     def _token_overlap_score(self, a: str, b: str) -> float:
         a_set = set(self._normalise(a).split())
         b_set = set(self._normalise(b).split())
@@ -184,9 +135,7 @@ class AlignmentAgent:
 
         return len(a_set & b_set) / len(a_set | b_set)
 
-    # =========================
-    # EMBEDDING
-    # =========================
+
     def _generate_embedding(self, entity: dict, state: Dict[str, Any]) -> np.ndarray:
 
         name    = self._normalise(entity["name"])
@@ -230,10 +179,7 @@ class AlignmentAgent:
 
         return chunk[:300]
     
-    
-    # =========================
-    # LLM SELECTION
-    # =========================
+
     def _llm_select_best(self, name: str, candidates: list) -> Optional[str]:
 
         options = "\n".join(
@@ -255,11 +201,9 @@ class AlignmentAgent:
         response = self._verify_llm.invoke(prompt)
         ans = response.content.strip().upper()
 
-        # ---- Handle NONE ----
         if "NONE" in ans:
             return None
 
-        # ---- Extract first number robustly ----
         import re
         match = re.search(r"\d+", ans)
         if not match:
@@ -272,17 +216,11 @@ class AlignmentAgent:
 
         return None
 
-    # ------------------------------------------------------------------ #
-    #  Canonicalization                                                    #
-    # ------------------------------------------------------------------ #
 
     def _canonicalize_entities(
         self, entities: list, alias_map: Dict[str, str]
     ) -> list:
-        """
-        Group entities by canonical name; keep the highest-confidence
-        representative from each group.
-        """
+        
         groups: Dict[str, list] = {}
         for e in entities:
             canonical = alias_map[e["name"]]
@@ -313,10 +251,6 @@ class AlignmentAgent:
             rewritten.append(new_r)
         return rewritten
 
-    # ------------------------------------------------------------------ #
-    #  Document memory update                                              #
-    # ------------------------------------------------------------------ #
-
     def _update_memory(
         self,
         entities: list,
@@ -325,18 +259,13 @@ class AlignmentAgent:
         embedding_cache: Dict[str, np.ndarray],
         alias_map: Dict[str, str],
     ) -> None:
-        """
-        Update document_memory with canonical entities.
-        Re-uses embeddings from cache — no extra API calls.
-        """
+
         memory.setdefault("entities", {})
 
         for entity in entities:
             name        = entity["name"]
             entity_type = entity["type"]
 
-            # Find the pre-alias embedding — the canonical name may differ
-            # from every key in the cache, so we look up the original name
             original_name = next(
                 (orig for orig, canon in alias_map.items() if canon == name),
                 name
@@ -369,6 +298,4 @@ class AlignmentAgent:
                     new_emb /= np.linalg.norm(new_emb)
 
                     node["embedding"] = new_emb
-                    self.index.add_entity(name, new_emb)
-                    
-                    
+                    self.index.add_entity(name, new_emb)                  

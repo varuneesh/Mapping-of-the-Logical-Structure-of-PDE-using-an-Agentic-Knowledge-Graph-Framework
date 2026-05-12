@@ -1,9 +1,3 @@
-"""
-retrieval.py — Neo4j-based Graph-Guided Retrieval Pipeline.
-
-Query → LLM generates Cypher → Neo4j executes → Chunk IDs collected
-→ Chunks retrieved → LLM generates answer with LaTeX preservation.
-"""
 import json
 import os
 import re

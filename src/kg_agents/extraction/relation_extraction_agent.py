@@ -141,7 +141,6 @@ class RelationExtractionAgent:
 
         entity_names = [e["name"] for e in state["entities"]]
 
-        # No entities → no point calling the LLM
         if not entity_names:
             state["relationships"] = []
             return state
@@ -164,7 +163,6 @@ class RelationExtractionAgent:
             logger=logger, agent="RelationExtractionAgent", chunk_id=chunk_id
         )
 
-        # Rate limit exhausted — return empty, do NOT loop
         if response is None:
             state["relationships"] = []
             state["_rate_limited"] = True
@@ -173,32 +171,25 @@ class RelationExtractionAgent:
         print(response.content)
         data = self.parser.parse(response.content)
 
-        # Build set of ontology class names for hallucination detection
         ontology_classes = set(self.ontology.get_all_classes())
         
         entities  = state.get("entities", [])
-        # Entity names from current chunk
         current_entity_names = {e["name"]: e["type"] for e in entities}
 
-        # Entity names seen in any previous chunk of this document
         memory_entity_names = {
             name: info["type"]
             for name, info in state.get("document_memory", {})
                                    .get("entities", {}).items()
         }
 
-        # Union: an entity is "known" if it's in the current chunk OR memory
         all_known_entities = {**memory_entity_names, **current_entity_names}
 
         relations = []
         for rel in data["relationships"]:
 
-            # Filter: self-loops
             if rel["source"] == rel["target"]:
                 continue
 
-            # Filter: LLM hallucinated an ontology TYPE NAME as an entity name
-            # e.g. source="NumericalMethod" or target="MathematicalObject"
             if rel["source"] in ontology_classes or rel["target"] in ontology_classes:
                 print(f"  [filtered] type-as-entity: "
                       f"{rel['source']} →[{rel['relation']}]→ {rel['target']}")
@@ -215,10 +206,6 @@ class RelationExtractionAgent:
                 rel["source"], rel["target"] = rel["target"], rel["source"]
             
 
-            # Fix: if relation type doesn't exist in ontology and isn't
-            # NEW_RELATION, convert it to NEW_RELATION with the original
-            # type as suggested_relation. This catches 'defines', 'avoids',
-            # 'forms' etc. that the LLM invents.
             relation_type       = rel["relation"]
             suggested_relation  = rel.get("suggested_relation")
 

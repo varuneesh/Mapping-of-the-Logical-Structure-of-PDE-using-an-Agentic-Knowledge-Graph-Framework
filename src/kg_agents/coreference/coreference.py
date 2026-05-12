@@ -1,41 +1,7 @@
-"""
-coreference_agent.py
-
-Three-stage hybrid coreference resolution for mathematical LaTeX text.
-
-Stage 1 — LLM sweep:
-    One LLM call over the whole chunk returns a structured JSON list of
-    detected references and their suggested resolutions.  The LLM does
-    the semantic heavy lifting and catches everything a rule set would miss.
-
-Stage 2 — Rule-based validation:
-    For each LLM-suggested resolution, deterministic checks verify:
-      (a) The resolved name actually exists in document_memory or
-          context_chunks — prevents hallucinated resolutions.
-      (b) The reference class is type-compatible with the resolved entity
-          (e.g. a pronoun reference should resolve to a NumericalMethod,
-          not a TheoreticalProperty).
-    Failed validations are dropped — leaving original text unchanged is
-    always safer than a wrong resolution.
-
-Stage 3 — Deterministic insertion:
-    Validated resolutions are applied to the chunk text with whole-word,
-    LaTeX-safe replacement.
-
-Outputs:
-    state["resolved_chunk"]          — rewritten text for extraction LLM
-    state["coreference_annotations"] — {span → resolved_name} for provenance
-"""
-
 import re
 import json
 from typing import Dict, Any, List, Optional
 from langchain_openai import ChatOpenAI
-
-
-# ── Type-compatibility rules ─────────────────────────────────────────────────
-# Used in Stage 2 validation only — not for detection.
-# Maps reference_class → set of ontology types that are plausible resolutions.
 
 _TYPE_COMPATIBILITY: Dict[str, set] = {
     "method_reference": {
@@ -58,7 +24,6 @@ _TYPE_COMPATIBILITY: Dict[str, set] = {
     },
 }
 
-# Noun heads that signal each reference class — used to classify LLM output
 _METHOD_NOUNS   = {"method", "scheme", "approach", "algorithm", "procedure",
                    "discretization", "solver", "technique", "framework",
                    "estimator", "approximation", "formulation"}
@@ -67,7 +32,6 @@ _PROPERTY_NOUNS = {"stability", "convergence", "consistency", "property",
                    "condition", "estimate", "bound", "order", "rate"}
 
 
-# ── LLM sweep prompt ─────────────────────────────────────────────────────────
 
 _SWEEP_PROMPT = """\
 You are a coreference resolution specialist for mathematical textbooks.
@@ -125,16 +89,6 @@ If no coreferences are found, return: {"references": []}
 
 
 class CoreferenceAgent:
-    """
-    Three-stage hybrid coreference resolution agent.
-
-    Parameters
-    ----------
-    model : str
-        Groq model for the LLM sweep.
-    min_confidence : float
-        Minimum LLM confidence for a resolution to proceed to validation.
-    """
 
     def __init__(
         self,
@@ -144,9 +98,6 @@ class CoreferenceAgent:
         self.llm            = ChatOpenAI(model=model, temperature=0)
         self.min_confidence = min_confidence
 
-    # ------------------------------------------------------------------ #
-    #  Main entry                                                          #
-    # ------------------------------------------------------------------ #
 
     def run(self, state: Dict[str, Any]) -> Dict[str, Any]:
 
@@ -155,12 +106,10 @@ class CoreferenceAgent:
         document_memory = state.get("document_memory", {})
         chunk_heading   = state.get("chunk_heading", "")
 
-        # Build lookup structures for Stage 2 validation
         known_entities  = self._build_known_entities(document_memory)
         context_surface = self._extract_surface_names(context_chunks)
         all_known_names = set(known_entities.keys()) | context_surface
 
-        # ── Stage 1: LLM sweep ───────────────────────────────────────────
         raw_references = self._llm_sweep(
             chunk_text, known_entities, context_chunks,
             chunk_heading
@@ -168,7 +117,6 @@ class CoreferenceAgent:
 
         print(f"  [coref] LLM detected {len(raw_references)} candidate reference(s)")
 
-        # ── Stage 2: Rule-based validation ──────────────────────────────
         validated: List[Dict] = []
 
         for ref in raw_references:
@@ -181,7 +129,6 @@ class CoreferenceAgent:
 
         print(f"  [coref] {len(validated)} resolution(s) passed validation")
 
-        # ── Stage 3: Deterministic insertion ─────────────────────────────
         annotations: Dict[str, str] = {}
         resolved_text = chunk_text
 
@@ -200,9 +147,6 @@ class CoreferenceAgent:
         print(f"Coreference complete: {len(annotations)} substitution(s) applied")
         return state
 
-    # ------------------------------------------------------------------ #
-    #  Stage 1 — LLM sweep                                                #
-    # ------------------------------------------------------------------ #
 
     def _llm_sweep(
         self,
@@ -211,24 +155,19 @@ class CoreferenceAgent:
         context_chunks: List[str],
         chunk_heading: str = "",
     ) -> List[Dict]:
-        """
-        Call the LLM once over the full chunk and return raw reference list.
-        Returns [] on any parse failure — never raises.
-        """
-        # Summarise known entities as a compact list for the prompt
         entity_summary = "\n".join(
             f"  - {name} ({etype})"
             for name, etype in known_entities.items()
         ) or "  (none yet)"
 
         context_preview = "\n---\n".join(
-            c for c in context_chunks[-3:]   # last 3 context chunks, full text
+            c for c in context_chunks[-3:]  
         ) or "(none)"
 
         prompt = (
             _SWEEP_PROMPT
             .replace("<<CHUNK_HEADING>>",  chunk_heading)
-            .replace("<<CHUNK>>",          chunk_text)       # full chunk, no truncation
+            .replace("<<CHUNK>>",          chunk_text)      
             .replace("<<KNOWN_ENTITIES>>", entity_summary)
             .replace("<<CONTEXT>>",        context_preview)
         )
@@ -237,7 +176,6 @@ class CoreferenceAgent:
             response = self.llm.invoke(prompt)
             content  = response.content.strip()
 
-            # Strip markdown fences if the model adds them despite instructions
             content = re.sub(r"^```json\s*", "", content)
             content = re.sub(r"\s*```$",     "", content)
 
@@ -248,37 +186,26 @@ class CoreferenceAgent:
             print(f"  [coref] LLM sweep parse error: {e} — skipping coreference")
             return []
 
-    # ------------------------------------------------------------------ #
-    #  Stage 2 — Rule-based validation                                    #
-    # ------------------------------------------------------------------ #
-
     def _validate(
         self,
         ref: Dict,
         all_known_names: set,
         known_entities: Dict[str, str],
     ) -> Optional[Dict]:
-        """
-        Validate a single LLM-suggested resolution.
-        Returns the ref dict if valid, None if it should be dropped.
-        """
         span         = ref.get("span", "").strip()
         resolved     = ref.get("resolved_name")
         ref_class    = ref.get("reference_class", "general_reference")
         confidence   = ref.get("confidence", 0.0)
 
-        # ── Basic sanity checks ──────────────────────────────────────────
         if not span or not resolved:
             return None
 
         if confidence < self.min_confidence:
             return None
 
-        # ── Check 1: resolved name must exist in known entities or context
         if resolved not in all_known_names:
             return None
 
-        # ── Check 2: type compatibility ──────────────────────────────────
         resolved_type = known_entities.get(resolved)
 
         if resolved_type is not None:
@@ -286,27 +213,16 @@ class CoreferenceAgent:
                 ref_class,
                 _TYPE_COMPATIBILITY["general_reference"]
             )
-            # Walk up one parent level: if resolved_type itself isn't in
-            # allowed_types, accept it anyway for general_reference class
-            # (avoids over-rejection for subclass types not listed above)
             if ref_class != "general_reference" and \
                resolved_type not in allowed_types:
                 return None
 
         return ref
 
-    # ------------------------------------------------------------------ #
-    #  Helper: build known entity lookup                                  #
-    # ------------------------------------------------------------------ #
 
     def _build_known_entities(
         self, document_memory: Dict
     ) -> Dict[str, str]:
-        """
-        Return {entity_name → ontology_type} from document_memory,
-        sorted by evidence count so most-prominent entities come first
-        when the dict is iterated.
-        """
         mem = document_memory.get("entities", {})
         ranked = sorted(
             mem.items(),
@@ -317,11 +233,7 @@ class CoreferenceAgent:
                 for name, info in ranked}
 
     def _extract_surface_names(self, context_chunks: List[str]) -> set:
-        """
-        Extract candidate entity names from context chunks using a
-        lightweight noun-phrase pattern.  Used to validate resolutions
-        to entities not yet in document_memory (e.g. introduced this chunk).
-        """
+        
         pattern = re.compile(
             r"\b([A-Z][a-zA-Z]+(?:\s+[A-Za-z]+){0,3}?\s+)?"
             r"(method|scheme|equation|operator|algorithm|formula|"
@@ -336,19 +248,10 @@ class CoreferenceAgent:
                     names.add(phrase)
         return names
 
-    # ------------------------------------------------------------------ #
-    #  Stage 3 — Safe text replacement                                    #
-    # ------------------------------------------------------------------ #
 
     def _safe_replace(self, text: str, span: str, resolved: str) -> str:
-        """
-        Replace first occurrence of span with resolved name.
-        - Uses whole-word boundaries.
-        - Skips replacements inside LaTeX commands (\\command{...}).
-        - Case-insensitive match, preserves surrounding whitespace.
-        """
+        
         escaped = re.escape(span)
-        # Negative lookbehind for backslash prevents matching inside \command
         pattern = re.compile(
             r"(?<!\\)\b" + escaped + r"\b",
             re.IGNORECASE

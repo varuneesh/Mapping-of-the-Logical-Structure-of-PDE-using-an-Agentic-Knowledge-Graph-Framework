@@ -53,13 +53,7 @@ class OntologyLoader:
         return relation_name in self.relations
 
     def _get_ancestors(self, class_name: str) -> set:
-        """
-        Walk the parent chain and return all ancestor class names
-        (inclusive of class_name itself).
 
-        e.g. ComputationalStructure → MathematicalObject → (root)
-             returns {'ComputationalStructure', 'MathematicalObject'}
-        """
         ancestors = set()
         current = class_name
 
@@ -76,22 +70,7 @@ class OntologyLoader:
     def validate_domain_range(
         self, relation: str, source_type: str, target_type: str
     ) -> bool:
-        """
-        Return True if source_type satisfies the relation's domain
-        AND target_type satisfies the relation's range.
 
-        A type satisfies a constraint if it IS that type or any subclass of it
-        (i.e. the constraint type appears anywhere in its ancestor chain).
-
-        Examples that now pass correctly:
-          uses(NumericalMethod, ComputationalStructure)
-            domain=NumericalMethod  ✓ (exact match)
-            range=MathematicalObject ✓ (ComputationalStructure's ancestor)
-
-          has_property(NumericalMethod, TheoreticalProperty)
-            domain=NumericalMethod  ✓
-            range=TheoreticalProperty ✓
-        """
         if relation not in self.relations:
             return False
 
