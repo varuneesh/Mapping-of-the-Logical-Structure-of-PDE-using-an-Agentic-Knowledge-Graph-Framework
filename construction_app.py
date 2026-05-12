@@ -8,6 +8,7 @@ import json, sys, os, math
 from pathlib import Path
 from collections import Counter
 from datetime import datetime
+import numpy as np
 
 ROOT_DIR = Path.cwd()
 sys.path.insert(0, str(ROOT_DIR))
@@ -76,6 +77,355 @@ def sj(d,p):
     Path(p).parent.mkdir(parents=True,exist_ok=True)
     json.dump(d,open(p,"w"),indent=2,default=str)
 
+
+def save_graph(graph_memory: dict, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(graph_memory, f, indent=2)
+    print(f"[Streamlit] Graph saved → {path}")
+
+def get_context_chunks(chunks: list, index: int, window: int = 2) -> list:
+    start = max(0, index - window)
+    return [c.get("content", "") for c in chunks[start:index]]
+
+
+def _to_jsonable(obj):
+    """Recursively convert numpy objects to JSON-serializable Python objects."""
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    if isinstance(obj, (np.integer, np.int64, np.int32)):
+        return int(obj)
+    if isinstance(obj, (np.floating, np.float32, np.float64)):
+        return float(obj)
+    if isinstance(obj, dict):
+        return {k: _to_jsonable(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_to_jsonable(v) for v in obj]
+    if isinstance(obj, tuple):
+        return [_to_jsonable(v) for v in obj]
+    return obj
+
+def load_chunks(chunks_json_path: str):
+    with open(chunks_json_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def load_document_memory(path: Path) -> dict:
+    if not path.exists():
+        return {"entities": {}}
+    with open(path, "r", encoding="utf-8") as f:
+        document_memory = json.load(f)
+    entities = document_memory.get("entities", {})
+    for name, info in entities.items():
+        emb = info.get("embedding")
+        if emb is not None and not isinstance(emb, np.ndarray):
+            info["embedding"] = np.array(emb, dtype=float)
+    return document_memory
+
+def save_document_memory(document_memory: dict, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    serializable_memory = _to_jsonable(document_memory)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(serializable_memory, f, indent=2, ensure_ascii=False)
+
+def reload_agents_ontology(ontology, entity_agent, relation_agent, validator):
+    entity_agent.ontology = ontology
+    relation_agent.ontology = ontology
+    validator.ontology = ontology
+
+def run_inter_chunk(
+    chunks_json_path: str,
+    graph_builder_agent,
+    ontology,
+    logger,
+    doc_id: str = "",
+    reason: str = "",
+) -> dict:
+    extractor = InterChunkRelationExtractor(chunks_json_path)
+    report = extractor.run(
+        graph_memory=graph_builder_agent.graph,
+        ontology_loader=ontology,
+        logger=logger,
+        doc_id=doc_id,
+    )
+    return report
+
+def run_ontology_update(
+    proposer,
+    reclass,
+    consistency_agent,
+    graph_builder_agent,
+    document_memory,
+    ontology,
+    entity_agent,
+    relation_agent,
+    validator,
+    logger,
+    chunks_json_path: str = "",
+    run_cli_review: bool = True,
+) -> OntologyLoader:
+    proposals_path = proposer.run(
+        candidate_pool=consistency_agent.candidate_pool,
+        graph_memory=graph_builder_agent.graph,
+        ontology_loader=ontology,
+        document_memory=document_memory,
+        logger=logger,
+    )
+
+    if proposals_path is None:
+        return ontology
+
+    if run_cli_review:
+        proposer.review_cli(str(proposals_path))
+    else:
+        proposals = proposer.load_proposals(str(proposals_path))
+        for section in ("entity_proposals", "relation_proposals"):
+            for p in proposals[section]:
+                if p["status"] == "pending":
+                    p["status"] = "accepted"
+                    p["reviewed_at"] = datetime.now().isoformat()
+                    p["auto_accepted"] = True
+        proposer._save_proposals(proposals, str(proposals_path))
+
+    result = proposer.apply_accepted_proposals(
+        proposals_path=str(proposals_path),
+        ontology_loader=ontology,
+        candidate_pool=consistency_agent.candidate_pool,
+        graph_builder_agent=graph_builder_agent,
+        document_memory=document_memory,
+        logger=logger,
+    )
+
+    if result is None:
+        return ontology
+
+    new_ext_path, _cluster_map = result
+    new_ontology = OntologyLoader(str(CORE), str(new_ext_path))
+
+    reclass.reclassify_graph_nodes(
+        str(new_ext_path),
+        graph_builder_agent=graph_builder_agent,
+        document_memory=document_memory,
+        logger=logger,
+    )
+    reclass.reclassify_relations(
+        str(new_ext_path),
+        graph_builder_agent=graph_builder_agent,
+        consistency_agent=consistency_agent,
+        ontology_loader=new_ontology,
+        logger=logger,
+    )
+    reclass.rescue_stranded_relations(
+        graph_builder_agent=graph_builder_agent,
+        consistency_agent=consistency_agent,
+        ontology_loader=new_ontology,
+        logger=logger,
+    )
+    graph_builder_agent.recompute_all_salience()
+    if chunks_json_path:
+        run_inter_chunk(
+            chunks_json_path=chunks_json_path,
+            graph_builder_agent=graph_builder_agent,
+            ontology=new_ontology,
+            logger=logger,
+            reason="post-reclassification",
+        )
+    reload_agents_ontology(new_ontology, entity_agent, relation_agent, validator)
+    return new_ontology
+
+def process_chunks_like_run_pipeline(
+    chunks_json_path: str,
+    ontology: OntologyLoader,
+    entity_agent,
+    relation_agent,
+    supervisor,
+    validator,
+    alignment_agent,
+    consistency_agent,
+    graph_builder_agent,
+    coref_agent,
+    proposer,
+    reclass,
+    document_memory: dict,
+    logger: PipelineLogger,
+    status,
+    prog,
+    detail,
+    auto_accept_proposals: bool = True,
+    export_to_neo4j: bool = True,
+):
+    chunks = load_chunks(chunks_json_path)
+    doc_name = Path(chunks_json_path).stem.replace("_chunks", "")
+
+    pipeline = build_pipeline()
+    stats = {"c": 0, "e": 0, "r": 0, "n": len(graph_builder_agent.graph.get("nodes", {})), "ed": len(graph_builder_agent.graph.get("edges", [])), "p": 0, "s": 0}
+    content_chunks_since_interchunk = 0
+
+    status.write(f"📘 {doc_name} — {len(chunks)} chunks")
+
+    for i, ch in enumerate(chunks):
+        cid = ch["chunk_id"]
+        prog.progress((i + 1) / len(chunks))
+
+        chunk_type, _signals = classify_chunk(ch)
+        if chunk_type != "content":
+            stats["s"] += 1
+            status.write(f"⏭ {i+1}/{len(chunks)} skip")
+            continue
+
+        stats["c"] += 1
+        status.write(f"⚙️ {i+1}/{len(chunks)} — {ch.get('heading', '')[:45]}")
+
+        context_chunks = get_context_chunks(chunks, i, window=2)
+        state = make_chunk_state(
+            chunk=ch,
+            context_chunks=context_chunks,
+            document_memory=document_memory,
+            coref_agent=coref_agent,
+            entity_agent=entity_agent,
+            relation_agent=relation_agent,
+            sup=supervisor,
+            val=validator,
+            align=alignment_agent,
+            consist=consistency_agent,
+            gb=graph_builder_agent,
+            logger=logger,
+        )
+
+        try:
+            res = pipeline.invoke(state)
+            if res.get("chunk_type", "content") == "content":
+                content_chunks_since_interchunk += 1
+            stats["e"] += len(res.get("consistent_entities", []))
+            stats["r"] += len(res.get("consistent_relationships", []))
+            stats["n"] = len(graph_builder_agent.graph["nodes"])
+            stats["ed"] = len(graph_builder_agent.graph["edges"])
+            with detail.container():
+                ents = res.get("consistent_entities", [])
+                rels = res.get("consistent_relationships", [])
+                if ents:
+                    st.markdown(" ".join(ec(e["name"], e["type"]) for e in ents[:8]), unsafe_allow_html=True)
+                if rels:
+                    for r in rels[:4]:
+                        st.markdown(f'<div class="rrow">{r["source"]} →[{r["relation"]}]→ {r["target"]}</div>', unsafe_allow_html=True)
+        except Exception as ex:
+            status.write(f"❌ {i+1}: {str(ex)[:80]}")
+            logger.warning("Pipeline", "exception", {"chunk_id": cid, "error": str(ex)})
+            continue
+
+        proposer.tick()
+
+        should_run, _reason = proposer.should_run(consistency_agent.candidate_pool)
+        if should_run:
+            status.write("💡 Ontology update triggered...")
+            old_ontology = ontology
+            ontology = run_ontology_update(
+                proposer=proposer,
+                reclass=reclass,
+                consistency_agent=consistency_agent,
+                graph_builder_agent=graph_builder_agent,
+                document_memory=document_memory,
+                ontology=ontology,
+                entity_agent=entity_agent,
+                relation_agent=relation_agent,
+                validator=validator,
+                logger=logger,
+                chunks_json_path=chunks_json_path,
+                run_cli_review=False,
+            )
+            if ontology is not old_ontology:
+                stats["p"] += 1
+                content_chunks_since_interchunk = 0
+
+        elif content_chunks_since_interchunk >= 30:
+            run_inter_chunk(
+                chunks_json_path=chunks_json_path,
+                graph_builder_agent=graph_builder_agent,
+                ontology=ontology,
+                logger=logger,
+                doc_id=doc_name,
+                reason=f"cadence ({30} content chunks)",
+            )
+            content_chunks_since_interchunk = 0
+
+        if (i + 1) % 25 == 0:
+            save_graph(graph_builder_agent.graph, GRAPH_OUT)
+
+    run_inter_chunk(
+        chunks_json_path=chunks_json_path,
+        graph_builder_agent=graph_builder_agent,
+        ontology=ontology,
+        logger=logger,
+        doc_id=doc_name,
+        reason="end of document",
+    )
+
+    # Final ontology pass, matching run_pipeline.py
+    final_proposals = proposer.run(
+        candidate_pool=consistency_agent.candidate_pool,
+        graph_memory=graph_builder_agent.graph,
+        ontology_loader=ontology,
+        document_memory=document_memory,
+        logger=logger,
+    )
+    if final_proposals:
+        proposals = proposer.load_proposals(str(final_proposals))
+        for section in ("entity_proposals", "relation_proposals"):
+            for p in proposals[section]:
+                if p["status"] == "pending":
+                    p["status"] = "accepted"
+                    p["reviewed_at"] = datetime.now().isoformat()
+                    p["auto_accepted"] = True
+        proposer._save_proposals(proposals, str(final_proposals))
+
+        final_result = proposer.apply_accepted_proposals(
+            str(final_proposals),
+            ontology_loader=ontology,
+            candidate_pool=consistency_agent.candidate_pool,
+            graph_builder_agent=graph_builder_agent,
+            document_memory=document_memory,
+            logger=logger,
+        )
+        if final_result:
+            new_ext, _cluster_map = final_result
+            ontology = OntologyLoader(str(CORE), str(new_ext))
+            reclass.reclassify_graph_nodes(
+                str(new_ext),
+                graph_builder_agent=graph_builder_agent,
+                document_memory=document_memory,
+                logger=logger,
+            )
+            reclass.reclassify_relations(
+                str(new_ext),
+                graph_builder_agent=graph_builder_agent,
+                consistency_agent=consistency_agent,
+                ontology_loader=ontology,
+                logger=logger,
+            )
+            reclass.rescue_stranded_relations(
+                graph_builder_agent=graph_builder_agent,
+                consistency_agent=consistency_agent,
+                ontology_loader=ontology,
+                logger=logger,
+            )
+            graph_builder_agent.recompute_all_salience()
+            reload_agents_ontology(ontology, entity_agent, relation_agent, validator)
+
+    graph_builder_agent.recompute_all_salience()
+    save_graph(graph_builder_agent.graph, GRAPH_OUT)
+    alignment_agent.save_index()
+    save_document_memory(document_memory, DMEM_PATH)
+    consistency_agent.save_to_disk()
+
+    if export_to_neo4j:
+        try:
+            from graph_neo4j import Neo4jExporter
+            ex = Neo4jExporter()
+            ex.export(graph_builder_agent.graph, incremental=True)
+        except Exception as e:
+            logger.warning("Neo4j", "export_failed", {"error": str(e)})
+
+    return ontology, stats, graph_builder_agent.graph, document_memory
+
 def graph_html(graph,w=900,h=550):
     N=[{"id":n,"type":d.get("type","?"),"sal":d.get("salience",0.5),"src":len(d.get("sources",[]))} for n,d in graph.get("nodes",{}).items()]
     L=[{"source":e["source"],"target":e["target"],"rel":e["relation"]} for e in graph.get("edges",[])]
@@ -110,120 +460,173 @@ with t1:
     with cu:
         st.markdown("### Upload")
         up=st.file_uploader("PDF or Chunks JSON",type=["pdf","json"])
-        if up and up.name.endswith(".json"): st.success(f"📄 {up.name}")
-        elif up: st.success(f"📄 {up.name} (PDF)")
+        if up and up.name.endswith(".json"): st.success(f"📄 {up.name} — chunks file")
+        elif up:
+            st.success(f"📄 {up.name} — PDF")
+            st.markdown("**Mathpix credentials**")
+            mx_id=st.text_input("App ID",key="mxid")
+            mx_key=st.text_input("App Key",type="password",key="mxkey")
+
         aa=st.checkbox("Auto-accept proposals",True)
-        ne=st.checkbox("Export to Neo4j",True)
+        export_to_neo4j=st.checkbox("Export to Neo4j",True)
         run_btn=up and st.button("🚀 Run Pipeline",type="primary",use_container_width=True)
+
+        st.markdown("---")
+        st.markdown("### Pipeline Stages")
+        st.markdown("""
+1. **PDF → LaTeX** — Mathpix preserves math notation
+2. **Chunking** — Section-based with heading metadata
+3. **Coreference** — Resolves implicit references
+4. **Entity Extraction** — Ontology-typed concepts
+5. **Relation Extraction** — Domain-range validated
+6. **Alignment** — Embedding-based deduplication
+7. **Graph Construction** — Incremental with salience
+8. **Ontology Evolution** — Evidence-driven proposals
+        """)
+
+        st.markdown("---")
+        st.markdown("### Ingested Documents")
+        g_check = lj(str(GRAPH_OUT)) or {"nodes":{},"edges":[]}
+        if not g_check.get("nodes"):
+            st.caption("No documents processed yet.")
+        else:
+            ds=set()
+            for d in g_check["nodes"].values():
+                for s in d.get("sources",[]):
+                    ds.add(s.rsplit("_chunk_",1)[0] if "_chunk_" in s else s)
+            for did in sorted(ds):
+                nc=sum(1 for nd in g_check["nodes"].values()
+                       if any(did in s for s in nd.get("sources",[])))
+                st.markdown(f"""<div style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;
+                    padding:.6rem .9rem;margin:.3rem 0;font-size:.82rem;">
+                    📘 <strong>{did.split('/')[-1]}</strong><br/>
+                    <span style="color:#6b7280;">{nc} entities · {len(g_check['nodes'])} total nodes</span>
+                </div>""",unsafe_allow_html=True)
 
     with cm:
         st.markdown("### Monitor")
         if st.session_state.pstate=="idle" and not run_btn:
-            st.info("Upload a document to begin.")
+            st.info("Upload a document and click Run Pipeline.")
         elif run_btn or st.session_state.pstate=="running":
-            if up.name.endswith(".json"):
-                chunks=json.load(up)
-                CHUNKS_DIR.mkdir(parents=True,exist_ok=True)
-                sj(chunks,str(CHUNKS_DIR/up.name))
-                chunks_file=str(CHUNKS_DIR/up.name)
+            # Keep the existing UI, but run the same document flow as run_pipeline.py.
+            if st.session_state.pstate != "running":
+                st.session_state.pstate = "running"
+
+            # PDF path: save to disk, run convert_pdf_to_latex + chunker
+            if not up.name.endswith(".json"):
+                import tempfile
+                pdf_bytes = up.read()
+                with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+                    tmp.write(pdf_bytes)
+                    tmp_pdf_path = tmp.name
+
+                latex_out_dir = ROOT_DIR / "data" / "latex_outputs"
+                chunks_out_dir = ROOT_DIR / "data" / "chunks"
+
+                with st.status("📄 Converting PDF → LaTeX...", expanded=True) as conv_status:
+                    try:
+                        from kg_agents.ingestion.pdf_to_latex import convert_pdf_to_latex
+                        conv_status.write("⏳ Calling Mathpix API (may take 1-3 min)...")
+                        latex_file = convert_pdf_to_latex(tmp_pdf_path, str(latex_out_dir))
+                        conv_status.write(f"✅ LaTeX saved to {latex_file}")
+                    except Exception as e:
+                        st.error(f"PDF conversion failed: {e}")
+                        st.stop()
+
+                with st.status("✂️ Chunking LaTeX...", expanded=False) as ch_status:
+                    try:
+                        from kg_agents.ingestion.chunker import chunk_latex_document
+                        file_path = None
+                        for folder in os.listdir(latex_file):
+                            folder_path = os.path.join(latex_file, folder)
+                            candidate = os.path.join(folder_path, folder + ".tex")
+                            if os.path.isfile(candidate):
+                                file_path = candidate
+                                break
+
+                        if not file_path:
+                            st.error("No .tex file found in extracted LaTeX output.")
+                            st.stop()
+
+                        doc_name = Path(up.name).stem
+                        proper_dir = ROOT_DIR / "data" / "latex_outputs" / doc_name
+                        proper_dir.mkdir(parents=True, exist_ok=True)
+                        proper_tex = proper_dir / f"{doc_name}.tex"
+
+                        import shutil
+                        shutil.copy(file_path, proper_tex)
+                        file_path = str(proper_tex)
+
+                        if os.path.isfile(file_path):
+                            chunks = chunk_latex_document(
+                                latex_path=file_path,
+                                output_dir=str(chunks_out_dir),
+                                max_chars=4000
+                            )
+                            chunks_file = str(chunks_out_dir / f"{Path(file_path).stem}_chunks.json")
+                            ch_status.update(label=f"✅ {len(chunks)} chunks created", state="complete")
+                    except Exception as e:
+                        st.error(f"Chunking failed: {e}")
+                        st.stop()
             else:
-                st.warning("PDF support requires Mathpix. Upload chunks JSON."); st.stop()
+                chunks = json.load(up)
+                CHUNKS_DIR.mkdir(parents=True, exist_ok=True)
+                chunks_file = str(CHUNKS_DIR / up.name)
+                sj(chunks, chunks_file)
 
-            ont=OntologyLoader(str(CORE),str(EXTS))
-            eg=lj(str(GRAPH_OUT)) or {"nodes":{},"edges":[]}
-            gb=GraphBuilderAgent(graph_memory=eg)
-            cs=ConsistencyAgent(candidates_path=str(CANDS),ontology_loader=ont)
-            ea=EntityExtractionAgent(ontology=ont)
-            ra=RelationExtractionAgent(ontology=ont)
-            va=ExtractionValidator(ontology=ont)
-            su=ExtractionSupervisor()
-            al=AlignmentAgent(index_path=str(IDX_PATH))
-            co=CoreferenceAgent()
-            pr=OntologyProposerAgent(ontology_dir=str(ONT_DIR),proposals_dir=str(PROP_DIR))
-            rc=ReclassificationPass(core_path=str(CORE),candidates_path=str(CANDS))
-            dm=lj(str(DMEM_PATH)) or {"entities":{}}
-            LOG_DIR.mkdir(parents=True,exist_ok=True)
-            lg=PipelineLogger(str(LOG_DIR),f"app_{datetime.now():%Y%m%d_%H%M%S}")
-            pipe=build_pipeline(ea,ra,va,su,al,cs,gb,co)
+            ont = OntologyLoader(str(CORE), str(EXTS))
+            eg = lj(str(GRAPH_OUT)) or {"nodes": {}, "edges": []}
+            gb = GraphBuilderAgent(graph_memory=eg)
+            cs = ConsistencyAgent(candidates_path=str(CANDS), ontology_loader=ont)
+            ea = EntityExtractionAgent(ontology_loader=ont)
+            ra = RelationExtractionAgent(ontology_loader=ont)
+            va = ExtractionValidator(ontology_loader=ont)
+            su = ExtractionSupervisor()
+            al = AlignmentAgent(index_path=str(IDX_PATH))
+            co = CoreferenceAgent()
+            pr = OntologyProposerAgent(ontology_dir=str(ONT_DIR), proposals_dir=str(PROP_DIR))
+            rc = ReclassificationPass(core_path=str(CORE), candidates_path=str(CANDS))
+            dm = load_document_memory(DMEM_PATH)
+            LOG_DIR.mkdir(parents=True, exist_ok=True)
+            lg = PipelineLogger(f"app_{datetime.now():%Y%m%d_%H%M%S}", str(LOG_DIR))
 
-            prog=st.progress(0)
-            status=st.status("Running...",expanded=True)
-            detail=st.empty()
-            S={"c":0,"e":0,"r":0,"n":0,"ed":0,"p":0,"s":0}
+            prog = st.progress(0)
+            status = st.status("Running...", expanded=True)
+            detail = st.empty()
 
-            for i,ch in enumerate(chunks):
-                cid=ch["chunk_id"];prog.progress((i+1)/len(chunks))
-                ct,_=classify_chunk(ch.get("heading",""),ch.get("content",""))
-                if ct!="content": S["s"]+=1; status.write(f"⏭ {i+1}/{len(chunks)} skip"); continue
-                S["c"]+=1
-                status.write(f"⚙️ {i+1}/{len(chunks)} — {ch.get('heading','')[:45]}")
-                state=make_chunk_state(chunk_id=cid,primary_chunk=ch.get("content",""),
-                    chunk_heading=ch.get("heading",""),context_chunks=[],
-                    document_memory=dm,ontology=ont,logger=lg)
-                try:
-                    res=pipe.invoke(state)
-                    ne_=len(res.get("consistent_entities",[]));nr_=len(res.get("consistent_relationships",[]))
-                    S["e"]+=ne_
-                    S["r"]+=nr_
-                    S["n"]=len(gb.graph["nodes"])
-                    S["ed"]=len(gb.graph["edges"])
-                    with detail.container():
-                        ents=res.get("consistent_entities",[]);rels=res.get("consistent_relationships",[])
-                        if ents: 
-                            st.markdown(" ".join(ec(e["name"],e["type"]) for e in ents[:8]),unsafe_allow_html=True)
-                        if rels:
-                            for r in rels[:4]: 
-                                st.markdown(f'<div class="rrow">{r["source"]} →[{r["relation"]}]→ {r["target"]}</div>',unsafe_allow_html=True)
-                except Exception as ex:
-                    status.write(f"❌ {i+1}: {str(ex)[:80]}")
-                    lg.warning("Pipeline","exception",{"chunk_id":cid,"error":str(ex)})
-
-                sr,_=pr.should_run(cs.candidate_pool)
-                if sr:
-                    status.write("💡 Proposer triggered...")
-                    pp=pr.run(cs.candidate_pool,gb.graph,ont,dm,lg)
-                    if pp:
-                        props=pr.load_proposals(str(pp))
-                        for sec in ("entity_proposals","relation_proposals"):
-                            for p in props[sec]:
-                                if p["status"]=="pending": 
-                                    p["status"]="accepted"
-                                    p["reviewed_at"]=datetime.now().isoformat()
-                        pr._save_proposals(props,str(pp))
-                        r2=pr.apply_accepted_proposals(str(pp),ont,cs.candidate_pool,gb,dm,lg)
-                        if r2:
-                            ne_,cm_=r2
-                            ont=OntologyLoader(str(CORE),str(ne_))
-                            ea.ontology=ont
-                            ra.ontology=ont
-                            va.ontology=ont
-                            cs.ontology_loader=ont
-                            rc.reclassify_graph_nodes(str(ne_),gb,dm,lg)
-                            rc.rescue_stranded_relations(gb,cs,ont,lg)
-                            gb.recompute_all_salience()
-                            S["p"]+=1
-                            status.write("✅ Ontology extended")
+            try:
+                ont, S, graph, dm = process_chunks_like_run_pipeline(
+                    chunks_json_path=chunks_file,
+                    ontology=ont,
+                    entity_agent=ea,
+                    relation_agent=ra,
+                    supervisor=su,
+                    validator=va,
+                    alignment_agent=al,
+                    consistency_agent=cs,
+                    graph_builder_agent=gb,
+                    coref_agent=co,
+                    proposer=pr,
+                    reclass=rc,
+                    document_memory=dm,
+                    logger=lg,
+                    status=status,
+                    prog=prog,
+                    detail=detail,
+                    auto_accept_proposals=aa,
+                    export_to_neo4j=export_to_neo4j,
+                )
+                st.session_state.stats = S
+                st.session_state.graph = graph
+                st.session_state.pstate = "complete"
+            except Exception as ex:
+                status.write(f"❌ Pipeline failed: {ex}")
+                lg.warning("App", "pipeline_failed", {"error": str(ex)})
+                st.session_state.pstate = "idle"
+                st.stop()
 
             prog.progress(1.0)
-            status.update(label=f"✅ Done — {S['n']} nodes, {S['ed']} edges",state="complete",expanded=False)
-
-            sj(gb.graph,str(GRAPH_OUT));st.session_state.graph=gb.graph
-            import numpy as np
-            dms={k:{kk:(vv.tolist() if isinstance(vv,np.ndarray) else vv) for kk,vv in v.items()} for k,v in dm.get("entities",{}).items()}
-            sj({"entities":dms},str(DMEM_PATH))
-            al.save_index();cs.save_to_disk()
-
-            if ne:
-                status.write("🔄 Exporting to Neo4j...")
-                try:
-                    from graph_neo4j import Neo4jExporter
-                    ex=Neo4jExporter()
-                    r3=ex.export(gb.graph,incremental=True)
-                    st.success(f"Neo4j: {r3['nodes_written']} nodes, {r3['edges_written']} edges")
-                except Exception as e: 
-                    st.warning(f"Neo4j failed: {e}")
-
-            st.session_state.pstate="complete";st.session_state.stats=S
+            status.update(label=f"✅ Done — {S['n']} nodes, {S['ed']} edges", state="complete", expanded=False)
 
         elif st.session_state.pstate=="complete":
             S=st.session_state.stats

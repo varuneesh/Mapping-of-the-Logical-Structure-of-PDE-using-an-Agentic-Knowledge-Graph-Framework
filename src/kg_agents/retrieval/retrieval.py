@@ -36,7 +36,7 @@ class GraphGuidedRetriever:
     def __init__(self, chunks_dir: str, model: str = "gpt-4o-mini",
                  max_chunks: int = 12, embed_model: str = "text-embedding-3-small"):
         
-        self.neo4j = Neo4jGraph(url=os.getenv("NEO4J_URL"),
+        self.neo4j = Neo4jGraph(url=os.getenv("NEO4J_URI"),
                                 username=os.getenv("NEO4J_USERNAME"),
                                 password=os.getenv("NEO4J_PASSWORD"))
         self.chunks_dir = Path(chunks_dir)

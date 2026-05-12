@@ -1,0 +1,607 @@
+======================================================================
+KNOWLEDGE GRAPH EVALUATION — MASTER REPORT
+======================================================================
+
+>>> Running Eval 1: Entity Recall
+
+======================================================================
+RECALL: Ascher-Greif
+======================================================================
+  Index terms evaluated : 166
+  Matched (>= 70)     : 132  (79.5%)
+  Missed                : 34  (20.5%)
+
+  -- TOP 20 MATCHED TERMS (by score) --
+    [100.000000]  'Adams-Bashforth method'  →  'Adams-Bashforth method'  (sal=1.751, Algorithm / Method)
+    [100.000000]  'Adams-Moulton method'  →  'Adams-Moulton method'  (sal=1.751, Algorithm / Method)
+    [100.000000]  'adaptive quadrature'  →  'adaptive quadrature'  (sal=1.613, Algorithm / Method)
+    [100.000000]  'advection equation'  →  'advection equation'  (sal=0.624, Algorithm / Method)
+    [100.000000]  'backward difference operator'  →  'backward difference operator'  (sal=1.751, Algorithm / Method)
+    [100.000000]  'backward error analysis'  →  'backward error analysis'  (sal=0.624, Numerical Concept)
+    [100.000000]  'backward substitution'  →  'backward substitution'  (sal=2.601, Algorithm / Method)
+    [100.000000]  'Big-O notation'  →  'Big-O notation'  (sal=2.072, Definition)
+    [100.000000]  'BiCGSTAB'  →  'BiCGSTAB'  (sal=0.989, Algorithm / Method)
+    [100.000000]  'bisection method'  →  'bisection method'  (sal=2.236, Algorithm / Method)
+    [100.000000]  'boundary value problem'  →  'boundary value problem'  (sal=3.406, Problem Type)
+    [100.000000]  'Chebyshev points'  →  'Chebyshev points'  (sal=2.822, Mathematical Object)
+    [100.000000]  'Cholesky decomposition'  →  'Cholesky decomposition'  (sal=2.550, Algorithm / Method)
+    [100.000000]  'condition number'  →  'condition number'  (sal=2.495, Numerical Concept)
+    [100.000000]  'conjugate gradient method'  →  'conjugate gradient method'  (sal=3.031, Algorithm / Method)
+    [100.000000]  'convergence'  →  'convergence'  (sal=2.740, Theoretical Property)
+    [100.000000]  'Crank-Nicolson scheme'  →  'Crank-Nicolson scheme'  (sal=2.696, Algorithm / Method)
+    [100.000000]  'critical point'  →  'critical point'  (sal=2.072, Constraint / Optimisation)
+    [100.000000]  'differential equation'  →  'differential equation'  (sal=2.999, Problem Type)
+    [100.000000]  'discrete cosine transform'  →  'discrete cosine transform'  (sal=1.448, Algorithm / Method)
+
+  -- MISSED TERMS BY FAILURE MODE --
+  Close miss (65-69): 18 terms
+    [ 69.77]  'leapfrog method'  →  closest: 'unstaggered leap-frog method'
+    [ 69.57]  'continuation'  →  closest: 'convolution'
+    [ 69.57]  'principal component analysis'  →  closest: 'Numerical analysis'
+    [ 69.23]  'barrier method'  →  closest: 'GMRES method'
+    [ 69.23]  'machine precision'  →  closest: 'precision'
+    [ 69.09]  'forward difference operator'  →  closest: 'backward difference operator'
+    [ 68.97]  'eigenvalue'  →  closest: 'eigenvalue problems'
+    [ 68.29]  'least squares via QR'  →  closest: 'Least Squares Theorem'
+  Moderate miss (60-64): 6 terms
+    [ 64.86]  'adaptive algorithm'  →  closest: 'adaptive quadrature'
+    [ 64.71]  'ill-posed problem'  →  closest: 'elliptic problems'
+    [ 63.16]  'Gram-Schmidt algorithm'  →  closest: 'Thomas algorithm'
+    [ 62.75]  'absolute stability region'  →  closest: 'Fourier stability analysis'
+    [ 60.47]  'approximate minimum degree'  →  closest: 'minimum degree or approximate minimum degree (AMD) algorithm'
+    [ 60.00]  'incomplete LU'  →  closest: 'complete aircraft'
+  Far miss (<60): 10 terms
+    [ 59.46]  'backward Euler'  →  closest: 'backward error analysis'
+    [ 57.78]  'continuous least squares'  →  closest: 'Least Squares Theorem'
+    [ 55.81]  'Delaunay triangulation'  →  closest: 'differential equation'
+    [ 55.17]  'machine epsilon'  →  closest: 'Hessian matrix'
+    [ 54.05]  'augmented Lagrangian method'  →  closest: 'Lagrangian'
+    [ 52.38]  'generalized minimum residual'  →  closest: 'global minimum'
+    [ 52.17]  'successive over-relaxation'  →  closest: 'Gaussian elimination'
+    [ 51.85]  'backtracking'  →  closest: 'Poisson bracket'
+
+  -- CATEGORY BREAKDOWN --
+  Category                         Matched   Recall
+  --------------------------------------------------
+  Algorithm / Method                    75   100.0%
+  Mathematical Object                   17   100.0%
+  Problem Type                          12   100.0%
+  Theorem / Result                       9   100.0%
+  Theoretical Property                   5   100.0%
+  Error Concept                          5   100.0%
+  Constraint / Optimisation              3   100.0%
+  Numerical Concept                      2   100.0%
+  Definition                             2   100.0%
+  Matrix Concept                         2   100.0%
+
+======================================================================
+RECALL: Morton-Mayers
+======================================================================
+  Index terms evaluated : 151
+  Matched (>= 70)     : 94  (62.3%)
+  Missed                : 57  (37.7%)
+
+  -- TOP 20 MATCHED TERMS (by score) --
+    [100.000000]  'advection equation'  →  'advection equation'  (sal=0.624, Algorithm / Method)
+    [100.000000]  'amplification factor'  →  'amplification factor'  (sal=1.751, Mathematical Object)
+    [100.000000]  'amplification matrix'  →  'amplification matrix'  (sal=0.624, Mathematical Object)
+    [100.000000]  'boundary conditions'  →  'boundary conditions'  (sal=0.624, Problem Type)
+    [100.000000]  'box scheme'  →  'box scheme'  (sal=2.236, Algorithm / Method)
+    [100.000000]  'central differences'  →  'central differences'  (sal=2.782, Algorithm / Method)
+    [100.000000]  'CFL condition'  →  'CFL condition'  (sal=2.437, Theoretical Property)
+    [100.000000]  'comparison function'  →  'comparison function'  (sal=0.624, Mathematical Object)
+    [100.000000]  'conjugate gradient method'  →  'conjugate gradient method'  (sal=3.031, Algorithm / Method)
+    [100.000000]  'consistency'  →  'consistency'  (sal=1.448, Theoretical Property)
+    [100.000000]  'convergence'  →  'convergence'  (sal=2.740, Theoretical Property)
+    [100.000000]  'Crank-Nicolson scheme'  →  'Crank-Nicolson scheme'  (sal=2.696, Algorithm / Method)
+    [100.000000]  'Dufort-Frankel scheme'  →  'Dufort-Frankel scheme'  (sal=0.989, Algorithm / Method)
+    [100.000000]  'error analysis'  →  'error analysis'  (sal=0.624, Error Concept)
+    [100.000000]  'finite element method'  →  'finite element method'  (sal=0.624, Algorithm / Method)
+    [100.000000]  'Fourier transform'  →  'Fourier transform'  (sal=3.061, Algorithm / Method)
+    [100.000000]  'group velocity'  →  'group velocity'  (sal=0.989, Mathematical Object)
+    [100.000000]  'hat function'  →  'hat function'  (sal=0.624, Mathematical Object)
+    [100.000000]  'heat equation'  →  'heat equation'  (sal=0.624, Algorithm / Method)
+    [100.000000]  'iteration matrix'  →  'iteration matrix'  (sal=1.248, Matrix Concept)
+
+  -- MISSED TERMS BY FAILURE MODE --
+  Close miss (65-69): 14 terms
+    [ 69.84]  'three-time-level scheme'  →  closest: 'two-timelevel, three-space-point schemes'
+    [ 69.23]  'consistent data'  →  closest: 'consistency'
+    [ 69.23]  'restriction'  →  closest: 'parametrization'
+    [ 68.97]  'weak solutions'  →  closest: 'unique solution'
+    [ 68.29]  'incomplete Cholesky'  →  closest: 'Cholesky decomposition'
+    [ 67.92]  'triangular elements'  →  closest: 'elementary lower triangular matrix'
+    [ 66.67]  'domain of dependence'  →  closest: 'linear independence'
+    [ 66.67]  'elliptic equations'  →  closest: 'advection equation'
+  Moderate miss (60-64): 25 terms
+    [ 64.86]  'chequerboard mode'  →  closest: 'Forward Euler method'
+    [ 64.86]  'dispersion relation'  →  closest: 'advection equation'
+    [ 64.86]  'tridiagonal matrix'  →  closest: 'orthogonal matrices'
+    [ 64.71]  'generalised solution'  →  closest: 'exact solution'
+    [ 64.71]  'semi-discrete methods'  →  closest: 'Secant method'
+    [ 64.29]  'control volume'  →  closest: 'control points'
+    [ 64.29]  'practical stability'  →  closest: 'stability'
+    [ 64.00]  'coarse grid correction'  →  closest: 'deferred correction approach'
+  Far miss (<60): 18 terms
+    [ 58.82]  'irreducible matrix'  →  closest: 'iteration matrix'
+    [ 58.82]  'recurrence relations'  →  closest: 'relative error'
+    [ 58.33]  'dissipative difference schemes'  →  closest: 'second differences'
+    [ 58.33]  'theta-method'  →  closest: 'GMRES method'
+    [ 57.14]  'geometric integrators'  →  closest: 'Hermite interpolation'
+    [ 56.41]  'boundary-fitted mesh'  →  closest: 'boundary conditions'
+    [ 56.25]  'summation by parts'  →  closest: 'exact solution'
+    [ 55.56]  'stencil'  →  closest: 'consistency'
+
+  -- CATEGORY BREAKDOWN --
+  Category                         Matched   Recall
+  --------------------------------------------------
+  Algorithm / Method                    45   100.0%
+  Mathematical Object                   15   100.0%
+  Problem Type                          13   100.0%
+  Theoretical Property                  12   100.0%
+  Error Concept                          4   100.0%
+  Matrix Concept                         3   100.0%
+  Theorem / Result                       1   100.0%
+  Definition                             1   100.0%
+
+======================================================================
+TOP-20 SALIENCE NODES vs INDEX PRESENCE
+======================================================================
+  Node                                          Salience  Type                         In Index
+  ------------------------------------------------------------------------------------------
+  truncation error                                3.7976  ErrorConcept                 ✓
+  Newton's method                                 3.4458  NumericalMethod              ✓
+  boundary value problem                          3.4058  ProblemType                  ✓
+  Gaussian elimination                            3.3639  NumericalMethod              ✓
+  stability                                       3.3200  TheoreticalProperty          ✓
+  symmetric positive definite matrices            3.2972  MatrixConcept                ✓
+  LU decomposition                                3.2252  NumericalMethod              ✓
+  Taylor Series                                   3.1998  Theorem                      ✓
+  maximum value                                   3.1469  MathematicalObject           ✗
+  Lax-Wendroff method                             3.0906  NumericalMethod              ✓
+  finite difference approximation                 3.0611  NumericalMethod              ✗
+  Fourier transform                               3.0611  NumericalMethod              ✓
+  Forward Euler method                            3.0611  NumericalMethod              ✓
+  QR decomposition                                3.0306  NumericalMethod              ✓
+  conjugate gradient method                       3.0306  NumericalMethod              ✓
+  differential equation                           2.9990  ProblemType                  ✓
+  trapezoidal rule                                2.9990  NumericalMethod              ✓
+  Jacobi method                                   2.9323  NumericalMethod              ✓
+  normal equations                                2.8970  NumericalMethod              ✓
+  Simpson rule                                    2.8970  NumericalMethod              ✓
+
+======================================================================
+RECALL SUMMARY
+======================================================================
+  Ascher-Greif  : 79.5%  (132/166 terms matched)
+  Morton-Mayers : 62.3%  (94/151 terms matched)
+  Fuzzy threshold: 70/100
+
+>>> Running Eval 2: Cross-Book Alignment
+
+======================================================================
+EVAL 2 — CROSS-BOOK ALIGNMENT QUALITY
+======================================================================
+
+  -- NODE PARTITION --
+  Total nodes       : 480
+  Cross-book merged : 85  (17.7% of graph)
+  Ascher-only       : 293
+  Morton-only       : 102
+
+  -- SALIENCE COMPARISON --
+  Cross-book nodes        : mean=2.2076, median=2.2364, max=3.7976, σ=0.6881
+  Ascher-only nodes       : mean=1.2348, median=0.9888, max=3.2252, σ=0.6554
+  Morton-only nodes       : mean=1.0752, median=0.6238, max=3.0906, σ=0.6075
+  Single-book mean  : 1.1936
+  Cross-book boost  : 1.85×  (cross-book mean / single-book mean)
+
+  -- TYPE DISTRIBUTION (CROSS-BOOK NODES) --
+    NumericalMethod                       39
+    ProblemType                           16
+    TheoreticalProperty                    8
+    MathematicalObject                     8
+    ErrorConcept                           4
+    Theorem                                3
+    Definition                             2
+    MatrixConcept                          1
+    OrthogonalConcept                      1
+    NormConcept                            1
+    CriticalPointConcept                   1
+    DerivativeConcept                      1
+
+  -- TOP 20 CROSS-BOOK NODES (by salience) --
+  Name                                             Sal     A    M  Type
+  -------------------------------------------------------------------------------------
+  truncation error                               3.798    23   44  ErrorConcept
+  Newton's method                                3.446    43    2  NumericalMethod
+  boundary value problem                         3.406    19   24  ProblemType *
+  Gaussian elimination                           3.364    38    3  NumericalMethod
+  stability                                      3.320     9   30  TheoreticalProperty
+  symmetric positive definite matrices           3.297    37    1  MatrixConcept *
+  Taylor Series                                  3.200    29    5  Theorem *
+  maximum value                                  3.147     1   31  MathematicalObject *
+  finite difference approximation                3.061     8   21  NumericalMethod *
+  Fourier transform                              3.061    15   14  NumericalMethod *
+  Forward Euler method                           3.061    24    5  NumericalMethod
+  conjugate gradient method                      3.031    20    8  NumericalMethod
+  differential equation                          2.999    12   15  ProblemType *
+  trapezoidal rule                               2.999    26    1  NumericalMethod
+  Jacobi method                                  2.932    15   10  NumericalMethod
+  Poisson equation                               2.822    10   12  NumericalMethod *
+  initial value problem                          2.822    12   10  ProblemType
+  eigenvalue problems                            2.782    17    4  ProblemType *
+  two-dimensional partial differential equation  2.782     8   13  ProblemType *
+  convergence                                    2.740     8   12  TheoreticalProperty *
+
+  -- SALIENCE BOOST EXAMPLES (actual vs hypothetical single-book) --
+  Name                                           Actual   A-only   M-only   Boost(A)   Boost(M)
+  ----------------------------------------------------------------------------------------------------
+  truncation error                               3.7976   2.8602   3.4260      1.33×      1.11×
+  Newton's method                                3.4458   3.4058   0.9888      1.01×      3.49×
+  boundary value problem                         3.4058   2.6962   2.8970      1.26×      1.18×
+  Gaussian elimination                           3.3639   3.2972   1.2477      1.02×      2.70×
+  stability                                      3.3200   2.0723   3.0906      1.60×      1.07×
+  symmetric positive definite matrices           3.2972   3.2738   0.6238      1.01×      5.29×
+  Taylor Series                                  3.1998   3.0611   1.6126      1.05×      1.98×
+  maximum value                                  3.1469   0.6238   3.1192      5.04×      1.01×
+  finite difference approximation                3.0611   1.9775   2.7819      1.55×      1.10×
+  Fourier transform                              3.0611   2.4953   2.4372      1.23×      1.26×
+  Forward Euler method                           3.0611   2.8970   1.6126      1.06×      1.90×
+  conjugate gradient method                      3.0306   2.7401   1.9775      1.11×      1.53×
+  differential equation                          2.9990   2.3085   2.4953      1.30×      1.20×
+  trapezoidal rule                               2.9990   2.9663   0.6238      1.01×      4.81×
+  Jacobi method                                  2.9323   2.4953   2.1581      1.18×      1.36×
+
+  -- CROSS-BOOK EDGE CONNECTIVITY --
+  Edges between two cross-book nodes : 391
+  Edges: cross-book → Ascher-only    : 467
+  Edges: cross-book → Morton-only    : 264
+
+>>> Running Eval 3: Graph Structure
+
+======================================================================
+EVAL 3 — GRAPH STRUCTURE ANALYSIS
+======================================================================
+
+  Total nodes : 480
+  Total edges : 1680
+
+  -- NODE TYPE DISTRIBUTION --
+  NumericalMethod                      211  ( 44.0%)  █████████████
+  MathematicalObject                    80  ( 16.7%)  █████
+  ProblemType                           61  ( 12.7%)  ███
+  TheoreticalProperty                   34  (  7.1%)  ██
+  Theorem                               25  (  5.2%)  █
+  MatrixConcept                         20  (  4.2%)  █
+  ErrorConcept                          17  (  3.5%)  █
+  Definition                             8  (  1.7%)  
+  MatrixPropertyConcept                  5  (  1.0%)  
+  ConstraintConcept                      5  (  1.0%)  
+  NumericalConcept                       3  (  0.6%)  
+  MatrixOperationConcept                 3  (  0.6%)  
+  OrthogonalConcept                      2  (  0.4%)  
+  DerivativeConcept                      2  (  0.4%)  
+  NormConcept                            1  (  0.2%)  
+  CriticalPointConcept                   1  (  0.2%)  
+  SolutionProperty                       1  (  0.2%)  
+  FiniteDifferenceMethod                 1  (  0.2%)  
+
+  -- SALIENCE DISTRIBUTION --
+  max=3.7976  mean=1.3732  median=1.2477  min=0.5199  σ=0.7595
+    Nodes >=3.0 : 15
+    Nodes >=2.0 : 107
+    Nodes >=1.0 : 248
+    Nodes <1.0  : 232
+
+  -- SOURCE COUNT DISTRIBUTION --
+    single_chunk  : 162
+    2_to_5        : 169
+    6_to_20       : 120
+    >20           : 29
+
+  -- TOP 20 NODES BY SALIENCE --
+  Name                                             Sal     A    M  Type
+  --------------------------------------------------------------------------------
+   truncation error                             3.7976    23   44  ErrorConcept
+   Newton's method                              3.4458    43    2  NumericalMethod
+  *boundary value problem                       3.4058    19   24  ProblemType
+   Gaussian elimination                         3.3639    38    3  NumericalMethod
+   stability                                    3.3200     9   30  TheoreticalProperty
+  *symmetric positive definite matrices         3.2972    37    1  MatrixConcept
+   LU decomposition                             3.2252    35    0  NumericalMethod
+  *Taylor Series                                3.1998    29    5  Theorem
+  *maximum value                                3.1469     1   31  MathematicalObject
+   Lax-Wendroff method                          3.0906     0   30  NumericalMethod
+  *finite difference approximation              3.0611     8   21  NumericalMethod
+  *Fourier transform                            3.0611    15   14  NumericalMethod
+   Forward Euler method                         3.0611    24    5  NumericalMethod
+   QR decomposition                             3.0306    28    0  NumericalMethod
+   conjugate gradient method                    3.0306    20    8  NumericalMethod
+  *differential equation                        2.9990    12   15  ProblemType
+   trapezoidal rule                             2.9990    26    1  NumericalMethod
+   Jacobi method                                2.9323    15   10  NumericalMethod
+   normal equations                             2.8970    24    0  NumericalMethod
+   Simpson rule                                 2.8970    24    0  NumericalMethod
+
+  -- EDGE DENSITY --
+  Mean out-degree         : 3.5
+  Mean degree (undirected): 7.0
+  Max out-degree          : 39
+  Max in-degree           : 51
+  Top nodes by out-degree:
+    Lax-Wendroff method                           out=39
+    Newton's method                               out=35
+    truncation error                              out=34
+    finite difference approximation               out=30
+    Gaussian elimination                          out=28
+    LU decomposition                              out=26
+    central differences                           out=26
+    Forward Euler method                          out=23
+    SOR                                           out=22
+    Jacobi method                                 out=22
+  Top nodes by in-degree:
+    stability                                     in=51
+    truncation error                              in=50
+    differential equation                         in=35
+    boundary value problem                        in=34
+    linear systems                                in=33
+    symmetric positive definite matrices          in=33
+    initial value problem                         in=27
+    two-dimensional partial differential equation in=25
+    eigenvalue problems                           in=20
+    tridiagonal systems of equations              in=20
+
+  -- RELATION TYPE DISTRIBUTION --
+  solves                           303  ( 18.0%)  ████
+  uses                             264  ( 15.7%)  ███
+  approximates                     217  ( 12.9%)  ███
+  has_property                     191  ( 11.4%)  ██
+  requires                         162  (  9.6%)  ██
+  has_error_analysis               130  (  7.7%)  █
+  applies_to                       102  (  6.1%)  █
+  quantifies                        90  (  5.4%)  █
+  depends_on                        89  (  5.3%)  █
+  implies                           67  (  4.0%)  
+  is_instance_of                    42  (  2.5%)  
+  defined_by                        13  (  0.8%)  
+  is_subclass_of                    10  (  0.6%)  
+
+  -- MULTI-SOURCE EDGES --
+  Count              : 354  (21.1% of all edges)
+  Mean sources/edge  : 2.72
+  Top relations      : {'solves': 71, 'uses': 55, 'has_property': 40, 'approximates': 37, 'requires': 31}
+
+  -- INTER-CHUNK EDGES --
+  Count : 151  (9.0% of all edges)
+
+  -- TYPE CONFLICTS --
+  Nodes with type conflicts : 99  (20.6% of nodes)
+  Most common conflict pairs:
+    ('MathematicalObject', 'NumericalMethod')                    : 15
+    ('NumericalMethod', 'ProblemType')                           : 8
+    ('NumericalMethod', 'Theorem')                               : 6
+    ('MathematicalObject', 'ProblemType')                        : 5
+    ('Definition', 'NumericalMethod')                            : 2
+    ('ErrorConcept', 'Theorem')                                  : 2
+    ('ProblemType', 'TheoreticalProperty')                       : 2
+    ('Definition', 'MathematicalObject')                         : 2
+    ('MatrixConcept', 'TheoreticalProperty')                     : 2
+    ('MatrixConcept', 'NumericalMethod')                         : 2
+
+>>> Running Eval 4: Ontology Evolution
+
+======================================================================
+EVAL 4 — ONTOLOGY EVOLUTION ANALYSIS
+======================================================================
+
+  -- ASCHER-GREIF ONTOLOGY TIMELINE --
+  Extensions applied : 9
+  New classes total  : 14
+  Relations rescued  : 120
+  Inter-chunk passes : 24
+
+    v0.1  @chunk 77     +classes: FloatingPointStandard, NumericalConcept, ErrorConcept
+    v0.2  @chunk 94     +classes: MatrixConcept, OrthogonalConcept
+    v0.3  @chunk 164    +classes: MatrixConditionConcept
+    v0.4  @chunk 201    +classes: KrylovSubspaceConcept
+    v0.5  @chunk 213    +classes: MatrixOperationConcept
+    v0.6  @chunk 217    +classes: NormConcept, MatrixPropertyConcept
+    v0.7  @chunk 268    +classes: CriticalPointConcept, ConstraintConcept
+    v0.8  @chunk 303    +classes: SolutionProperty
+    v0.9  @chunk 327    +classes: DerivativeConcept
+
+    Reclassification rescues per version:
+      @chunk 77     rescued 13 relations
+      @chunk 77     rescued 0 relations
+      @chunk 94     rescued 21 relations
+      @chunk 94     rescued 0 relations
+      @chunk 164    rescued 27 relations
+      @chunk 164    rescued 0 relations
+      @chunk 201    rescued 19 relations
+      @chunk 201    rescued 0 relations
+      @chunk 213    rescued 8 relations
+      @chunk 213    rescued 0 relations
+      @chunk 217    rescued 5 relations
+      @chunk 217    rescued 0 relations
+      @chunk 268    rescued 15 relations
+      @chunk 268    rescued 0 relations
+      @chunk 303    rescued 8 relations
+      @chunk 303    rescued 0 relations
+      @chunk 327    rescued 4 relations
+      @chunk 327    rescued 0 relations
+
+  -- MORTON-MAYERS ONTOLOGY TIMELINE --
+  Extensions applied : 5
+  New classes total  : 5
+  Relations rescued  : 76
+  Inter-chunk passes : 9
+
+    v0.1  @chunk 14     +classes: TimeSteppingMethod
+    v0.2  @chunk 17     +classes: FiniteDifferenceMethod
+    v0.3  @chunk 26     +classes: FourierAnalysisConcept
+    v0.4  @chunk 28     +classes: StabilityConcept
+    v0.5  @chunk 37     +classes: MatrixConcept
+
+    Reclassification rescues per version:
+      @chunk 14     rescued 14 relations
+      @chunk 14     rescued 0 relations
+      @chunk 17     rescued 7 relations
+      @chunk 17     rescued 0 relations
+      @chunk 26     rescued 31 relations
+      @chunk 26     rescued 0 relations
+      @chunk 28     rescued 8 relations
+      @chunk 28     rescued 0 relations
+      @chunk 37     rescued 16 relations
+      @chunk 37     rescued 0 relations
+
+  -- ALL NEW CLASSES ACROSS BOTH RUNS (18) --
+  Ascher-only  (13): ConstraintConcept, CriticalPointConcept, DerivativeConcept, ErrorConcept, FloatingPointStandard, KrylovSubspaceConcept, MatrixConditionConcept, MatrixOperationConcept, MatrixPropertyConcept, NormConcept, NumericalConcept, OrthogonalConcept, SolutionProperty
+  Morton-only  (4): FiniteDifferenceMethod, FourierAnalysisConcept, StabilityConcept, TimeSteppingMethod
+  Shared       (1): MatrixConcept
+
+  -- EXTENDED CLASSES: NODE COUNTS & EXAMPLES --
+
+  ConstraintConcept  (5 nodes)
+    Desc: Constraint types in constrained optimisation (active set, KKT, etc.)
+    e.g.: 'inequality constraints', 'equality constraints', 'constraint qualification'
+
+  CriticalPointConcept  (1 nodes)
+    Desc: Critical points, saddle points, local/global extrema in optimisation
+    e.g.: 'critical point'
+
+  DerivativeConcept  (2 nodes)
+    Desc: Named derivative or differentiation concepts (Jacobian, Hessian, gradient)
+    e.g.: 'k th derivative', 'directional derivative'
+
+  ErrorConcept  (17 nodes)
+    Desc: Quantified or named error types in numerical computation
+    e.g.: 'truncation error', 'roundoff error', 'relative error'
+
+  FiniteDifferenceMethod  (1 nodes)
+    Desc: Specific finite difference discretisation schemes
+    e.g.: 'second differences'
+
+  FloatingPointStandard  (0 nodes)
+    Desc: Standards or specifications for floating-point arithmetic (e.g. IEEE 754)
+
+  FourierAnalysisConcept  (0 nodes)
+    Desc: Fourier analysis tools used in stability and error analysis of PDE solvers
+
+  KrylovSubspaceConcept  (0 nodes)
+    Desc: Krylov subspace and related iterative solver concepts
+
+  MatrixConcept  (20 nodes)
+    Desc: Named matrix classes with special structural properties
+    e.g.: 'symmetric positive definite matrices', 'upper triangular matrix', 'upper Hessenberg matrix'
+
+  MatrixConditionConcept  (0 nodes)
+    Desc: Condition number and conditioning concepts for matrices
+
+  MatrixOperationConcept  (3 nodes)
+    Desc: Named matrix factorisation or decomposition operations
+    e.g.: 'matrix-matrix multiplication', 'matrix-vector multiplication', 'matrix graph'
+
+  MatrixPropertyConcept  (5 nodes)
+    Desc: Named scalar or structural properties of matrices
+    e.g.: 'projector', 'column-stochastic matrix', 'real diagonal matrices'
+
+  NormConcept  (1 nodes)
+    Desc: Named vector and matrix norms
+    e.g.: 'energy norm'
+
+  NumericalConcept  (3 nodes)
+    Desc: Fundamental numerical computing concepts (precision, machine epsilon, rounding)
+    e.g.: 'condition number', 'backward error analysis', 'step size'
+
+  OrthogonalConcept  (2 nodes)
+    Desc: Orthogonality concepts — orthogonal projections, orthonormal bases
+    e.g.: 'orthogonal matrices', 'orthonormal vectors'
+
+  SolutionProperty  (1 nodes)
+    Desc: Properties of solutions to numerical problems (uniqueness, feasibility)
+    e.g.: 'unique solution'
+
+  StabilityConcept  (0 nodes)
+    Desc: Specific stability concepts for PDE schemes (von Neumann, CFL, TVD)
+
+  TimeSteppingMethod  (0 nodes)
+    Desc: Methods for advancing solutions in time (explicit/implicit time integration)
+
+  -- INTER-CHUNK RELATION EXTRACTION PASSES --
+  Ascher-Greif        : 24 passes, 69 relations inserted
+  Morton-Mayers       : 9 passes, 84 relations inserted
+
+>>> Running Eval 5: Pipeline Robustness
+
+======================================================================
+EVAL 5 — PIPELINE ROBUSTNESS
+======================================================================
+
+  Metric                                    Ascher-Greif   Morton-Mayers
+  --------------------------------------------------------------------
+  Total chunks                                       653             191
+  Skipped (front/back matter)                         38              21
+  Content chunks processed                           615             170
+  Status: ok                                         301              67
+  Status: error                                      352             124
+  --------------------------------------------------------------------
+  Error: rate-limit exhausted                         12               0
+  Error: validation failed                           323             123
+    (but still produced output)                      313             122
+  --------------------------------------------------------------------
+  Chunks with retry traces                           227             105
+  Max retries in single chunk                          2               4
+  --------------------------------------------------------------------
+  Entities extracted                                2131             909
+  Entities consistent                               1883             824
+  Entity consistency rate                          88.4%           90.6%
+  Relations extracted                               1595             752
+  Relations consistent                              1112             576
+  Relation consistency rate                        69.7%           76.6%
+  Coreference resolutions                            861             441
+  Mean coref/chunk                                   2.3             3.1
+  --------------------------------------------------------------------
+  Total runtime (hours)                             7.6h           4.88h
+  Mean time/content chunk (s)                       40.8            98.4
+  Max time/chunk (s)                               210.4           356.4
+
+  -- TOP VALIDATION ERRORS: Ascher-Greif --
+    solves                                   : 337 violations
+    has_property                             : 194 violations
+    applies_to                               : 144 violations
+    uses                                     : 135 violations
+    approximates                             : 131 violations
+    has_error_analysis                       : 101 violations
+    requires                                 : 98 violations
+    quantifies                               : 90 violations
+    Unknown entity errors                    : 155
+
+  -- TOP VALIDATION ERRORS: Morton-Mayers --
+    has_property                             : 168 violations
+    solves                                   : 160 violations
+    has_error_analysis                       : 158 violations
+    applies_to                               : 64 violations
+    quantifies                               : 48 violations
+    uses                                     : 47 violations
+    approximates                             : 28 violations
+    defined_by                               : 13 violations
+    Unknown entity errors                    : 141
+
+  -- AGENT ERROR COUNTS: Ascher-Greif --
+    ExtractionValidator                 : 690
+    EntityExtractionAgent               : 83
+    RelationExtractionAgent             : 7
+    AlignmentAgent                      : 5
+
+  -- AGENT ERROR COUNTS: Morton-Mayers --
+    ExtractionValidator                 : 304
+    RelationExtractionAgent             : 1
+    EntityExtractionAgent               : 1
+    AlignmentAgent                      : 5
+
+  -- RUNTIME INTERPRETATION --
+  Morton chunks are 2.4× slower on average (98.4s vs 40.8s)
+  Likely cause: Morton content chunks are denser (PDE-heavy, fewer skipped sections)
+  Ascher: 615 content chunks × 40.8s = 7.6h total
+  Morton: 170 content chunks × 98.4s = 4.88h total
